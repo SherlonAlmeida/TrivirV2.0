@@ -1,0 +1,14 @@
+Após instalar todos os executáveis
+Usar os comandos:
+	npm install
+	Rscript installpackages.R
+Modificar o caminho no index.js para onde o trivir foi instalado
+	npm start
+	Daí abrir o navegador com o trivir
+
+Atualização do sistema em 17/09/2019
+	-atualizar a versão do R para a 3.6.1
+	-dar acesso à pasta que foi criada (como explica o manual)
+	-Baixar a versão atualizada do sistema "git pull"
+	-rodar o script installPackages.R
+		Rscript installPackages.R

@@ -1,0 +1,124 @@
+/*Define as propriedades comuns entre os estilos dos botoes a seguir*/
+#docviewmenu .btn {
+	height: 32px;               /*Tamanho da altura do botao*/
+    line-height: 20px;          /*Altura do texto do botao*/
+    margin-right: 8px;          /*Espacamento entre um botao e o outro*/
+	font-size: 14px;
+}
+
+/*Estilo do botao de carregamento do Dataset*/
+#docviewmenu .btn-load-dataset {
+	color: #fff;				/*Cor do texto*/
+    background-color: #00b300;  /*Cor do fundo*/
+    border-color: #008000;      /*Cor da borda*/
+}
+#docviewmenu .btn-load-dataset.effect{ /*Efeito adicionado ao botao quando o mouse passa em cima*/
+    background-color: #009900;  /*Cor do fundo*/
+}
+
+/*Estilo do botao para definir Documentos SEED*/
+#docviewmenu .btn-seed { /*Efeito adicionado ao botao quando o mouse passa em cima*/
+	color: #fff;				/*Cor do texto*/
+    background-color: #1a53ff;  /*Cor do fundo*/
+    border-color: #0033cc;      /*Cor da borda*/
+}
+#docviewmenu .btn-seed.effect{
+	background-color: #0039e6;  /*Cor do fundo*/
+}
+
+/*Estilo do botao para treinar o algoritmo de Machine Learning*/
+#docviewmenu .btn-train { /*Efeito adicionado ao botao quando o mouse passa em cima*/
+	color: #000;				/*Cor do texto*/
+    background-color: #ffff00;  /*Cor do fundo*/
+    border-color: #b3b300;      /*Cor da borda*/
+}
+#docviewmenu .btn-train.effect{
+	background-color: #e6e600;  /*Cor do fundo*/
+}
+
+/*Estilo do botao de exportar a Sessao*/
+#docviewmenu .btn-export-session { /*Efeito adicionado ao botao quando o mouse passa em cima*/
+	color: #fff;				/*Cor do texto*/
+    background-color: #e60000;  /*Cor do fundo*/
+    border-color: #990000;      /*Cor da borda*/
+}
+#docviewmenu .btn-export-session.effect {
+	background-color: #cc0000;  /*Cor do fundo*/
+}
+
+/*Estilo dos cabeçalhos*/
+#docviewheader {
+	margin: 0px 0px 0px 3px;
+    width: 100%;
+    background-color: #ebebe0;
+    border: #6b6b47 1px solid;
+    height: 30px;
+    margin-top: 1px;
+    position: relative;
+    top: 4px;
+}
+
+#scatterplotheader {
+	margin: 0px -1px -2px 0px;
+    width: 98.1%;
+    background-color: #ebebe0;
+    border: #6b6b47 1px solid;
+    height: 30px;
+    margin-top: 0px;
+    position: relative;
+    top: 4px;
+}
+
+#docviewheader h2,
+#scatterplotheader h2 {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 27px;
+}
+
+/*Define o estilo do icone de Ajuda do FontAwesome*/
+#docviewcontainer i {
+	color: yellow;
+}
+
+/*Define o estilo da explicação das cores dos Circulos*/
+#scatterplotdescription {
+	margin: 0px -1px -2px 0px;
+    width: 98.1%;
+    background-color: whitesmoke;
+    border: #6b6b47 1px solid;
+    height: 30px;
+    margin-top: 0px;
+    position: relative;
+    top: 4px;
+	text-align: center;
+}
+#scatterplotdescription .scatterplotSeed {
+	color: rgb(0, 117, 39);;
+}
+#scatterplotdescription .scatterplotRelevant {
+	color: rgb(23, 162, 184);;
+}
+#scatterplotdescription .scatterplotNotRelevant {
+	color: rgb(215, 90, 74);
+}
+#scatterplotdescription .scatterplotSuggested {
+	color: rgb(255, 193, 7);
+}
+#scatterplotdescription .scatterplotUnlabeled {
+	color: rgb(189, 189, 189);
+}
+#scatterplotdescription span {
+	font-size: 16px; /*Define o tamanho do circulo no cabecalho*/
+	position: relative;
+    top: 3px;
+}
+#scatterplotdescription p {
+	margin-right: 15px;
+	color: #000;
+	display: inline-block;
+	font-size: 15px;
+	position: relative;
+    top: 2px;
+}

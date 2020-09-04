@@ -1,0 +1,12 @@
+Como Criar uma sessão com usuário novo:
+	
+
+Cmd Windows:
+	cd Documents
+	cd TRIVIR
+	cd Server
+	npm start
+
+Interface Web:
+	abrir pasta Client
+	abrir 'trivir' no navegador
