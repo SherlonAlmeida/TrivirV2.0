@@ -4,6 +4,7 @@ The code will be available on April 30th, 2019.
 
 Este arquivo contém a descrição das pastas e arquivos deste projeto.
 
+(Em desenvolvimento...)
 Descrição:
 
 	Client: Contém a implementação do front-end do sistema.
