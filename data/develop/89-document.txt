@@ -1,0 +1,7 @@
+Information Retrieval System and Machine Translation: A Review
+Mangala Madankar and M.B. Chandak and Nekita Chavhan
+2016
+In this paper we introduce some of the most important areas of information retrieval i.e. Cross-lingual Information Retrieval (CLIR), Multi-lingual Information Retrieval (MLIR), Machine translation approaches and techniques. In today's growing nation, local database storage and retrieval is essential for the developing countries. CLIR deals with asking queries in one language and demand for retrieving documents in another language. MLIR deals with asking questions in one or more languages and retrieving documents in one or more different languages. Machine translation plays an important role to achieve the CLIR and MLIR system.
+
+
+Information Retrieval, Cross Language Information Retrieval, Multilanguage Information Retrieval, Multilingual Indian Language, Machine Translation

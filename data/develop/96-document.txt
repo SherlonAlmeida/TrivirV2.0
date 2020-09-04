@@ -1,0 +1,5 @@
+Information retrieval from interval-valued fuzzy automata through KÎ± operators
+M. GÃ³mez and I. Lizasoain and C. Moreno
+2017
+In this paper, fuzzy finite transition systems and fuzzy transformation semigroups are analyzed when the truth structure is the set of all the closed real subintervals contained in . Our approach involves the application of interval-valued fuzzy sets techniques in order to retrieve the information given by the transition functions of the considered automata. In particular, a characterization of those Atanassov's  operators which provide a fuzzy transformation semigroup starting from an interval-valued fuzzy automaton is achieved. Conversely, different ways of getting an interval-valued fuzzy transformation semigroup starting from two real fuzzy automata are compared.
+Interval-valued fuzzy sets, Fuzzy finite state machines, Fuzzy finite transition systems, Atanassov's  operators, Fuzzy transformation semigroups

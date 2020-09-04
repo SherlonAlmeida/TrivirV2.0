@@ -1,0 +1,5 @@
+Monolingual Information Retrieval using Terrier: FIRE 2010 Experiments Based on N-gram Indexing
+Santosh K. Vishwakarma and Kamaljit I. Lakhtaria and Divya Bhatnagar and Akhilesh K. Sharma
+2015
+N-gram based indexing technique has been proved as a useful technique for efficient document retrieval. We applied the n-gram approach and performed experiments in Hindi language text collections. The experiments are performed on the dataset of FIRE 2010 Hindi text collections. We used the Terrier open search engine for experimental purpose. Our experiments state that 4-gram gives the best results among all n-grams of different length. The results show an increase in value of mean average precision.
+Information Retrieval, N-gram, MAP, Pruning, Hindi Monolingual

@@ -1,0 +1,5 @@
+A probabilistic model to exploit user expectations in XML information retrieval
+Fouad Dahak and Mohand Boughanem and Amar Balla
+2017
+The main objective of this paper is to exploit a new source of evidence derived from the document hierarchical structure for XML information retrieval. We consider that the structure of XML document is an important source of prior knowledge, and the structural features of an element may influence the user to consider that element as relevant. We build a probabilistic model to estimate the probability that the structural characteristics of an element attract user to explore the content of this element and consider it as relevant. This probability reflects the context importance. We propose a simple, well-motivated probabilistic model to estimate the context importance. Finally, we demonstrate the effectiveness of the context importance through comprehensive experimental studies carried out on IEEE XML document collection. Experimental results show that the proposed approach outperforms models exploiting other sources of evidence.
+Priors, Element importance, User browsing map, Language model

@@ -1,0 +1,7 @@
+Geocoding Textual Documents Through the Usage of Hierarchical Classifiers
+Melo, Fernando and Martins, Bruno
+2015
+In this paper, we evaluate automated techniques, based on a hierarchical representation for the Earth's surface and leveraging SVM classifiers, for assigning geospatial coordinates to previously unseen documents, using only the raw text as input evidence. We report on experiments with Wikipedia documents in four different languages, and with two Twitter datasets from previous studies. We obtained state-of-the-art results, showing that document geocoding can be handled effectively with appropriate bag-of-words representations and with out-of-the-box supervised learning methods.
+
+
+document geocoding, hierarchical document classification, processing geospatial language, supervised learning

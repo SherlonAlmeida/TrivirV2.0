@@ -1,0 +1,5 @@
+Information retrieval with unambiguous output
+Ville Junnila and Tero Laihonen
+2015
+The main problem in information storage has previously been how large amounts of data can be stored. However, the technological development over the years has been able to give rather satisfactory answers to this problem. Recently, the focus has shifted towards determining how stored information can be efficiently retrieved. This problem is addressed in an article by E. Yaakobi and J. Bruck (2012), where information retrieval in associative memories is studied. In this paper, we focus on the case where the retrieved information unit is unambiguous. In particular, we present characterizations and study various extremal properties of such associative memories. Moreover, the algorithmic complexity of certain naturally rising problems is considered.
+Associative memory, Information retrieval, Extremal graph, Covering code, Forced vertex, Algorithmic complexity

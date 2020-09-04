@@ -1,0 +1,5 @@
+Modeling query-document dependencies with topic language models for information retrieval
+Meng-Sung Wu
+2015
+This paper addresses deficiencies in current information retrieval models by integrating the concept of relevance into the generation model using various topical aspects of the query. The models are adapted from the latent Dirichlet allocation model, but differ in the way that the notation of query-document relevance is introduced in the modeling framework. In the first method, query terms are added to relevant documents in the training of the latent Dirichlet allocation model. In the second method, the latent Dirichlet allocation model is expanded to deal with relevant query terms. The topic of each term within a given document may be sampled using either the normal document-specific mixture weights in LDA using query-specific mixture weights. We also developed an efficient method based on the Gibbs sampling technique for parameter estimation. Experiment results based on the Text REtrieval Conference Corpus (TREC) demonstrate the superiority of the proposed models.
+Topic model, Information retrieval, Query-document relevance, Latent Dirichlet allocation

@@ -1,0 +1,5 @@
+Multimodal medical information retrieval with unsupervised rank fusion
+AndrÃ© MourÃ£o and FlÃ¡vio Martins and JoÃ£o MagalhÃ£es
+2015
+Modern medical information retrieval systems are paramount to manage the insurmountable quantities of clinical data. These systems empower health care experts in the diagnosis of patients and play an important role in the clinical decision process. However, the ever-growing heterogeneous information generated in medical environments poses several challenges for retrieval systems. We propose a medical information retrieval system with support for multimodal medical case-based retrieval. The system supports medical information discovery by providing multimodal search, through a novel data fusion algorithm, and term suggestions from a medical thesaurus. Our search system compared favorably to other systems in 2013 ImageCLEFMedical.
+Medical search, Search interfaces, Assisted query formulation, Multimodal retrieval, Data fusion

@@ -1,0 +1,9 @@
+Integrating and Evaluating Neural Word Embeddings in Information Retrieval
+Zuccon, Guido and Koopman, Bevan and Bruza, Peter and Azzopardi, Leif
+2015
+Recent advances in neural language models have contributed new methods for learning distributed vector representations of words (also called word embeddings). Two such methods are the continuous bag-of-words model and the skipgram model. These methods have been shown to produce embeddings that capture higher order relationships between words that are highly effective in natural language processing tasks involving the use of word similarity and word analogy. Despite these promising results, there has been little analysis of the use of these word embeddings for retrieval.
+
+Motivated by these observations, in this paper, we set out to determine how these word embeddings can be used within a retrieval model and what the benefit might be. To this aim, we use neural word embeddings within the well known translation language model for information retrieval. This language model captures implicit semantic relations between the words in queries and those in relevant documents, thus producing more accurate estimations of document relevance.
+
+The word embeddings used to estimate neural language models produce translations that differ from previous translation language model approaches; differences that deliver improvements in retrieval effectiveness. The models are robust to choices made in building word embeddings and, even more so, our results show that embeddings do not even need to be produced from the same corpus being used for retrieval.
+

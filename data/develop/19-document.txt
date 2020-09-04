@@ -1,0 +1,5 @@
+Music Information Retrieval for Polyphonic Signals Using Hidden Markov Model
+S. Chithra and M.S. Sinith and A. Gayathri
+2015
+Now-a-days, almost all music can be easily accessed via the Internet, but at the same time music can be hard to find. This has created the demand for intelligent music retrieval which allows the user to access the songs that he or she likes. The idea of music information retrieval is basically used in music search systems. In a music search system there will be a huge database of songs. For an efficient music search system, when a particular song in the database is requested, the song has to be correctly identified and retrieved from the database. Music information retrieval for polyphonic music is presented here.
+Hidden Markov Model, Music Information Retrieval.

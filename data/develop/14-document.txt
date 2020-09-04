@@ -1,0 +1,5 @@
+MOSS-IR: Multi-Ontology Based Search System for Information Retrieval in E-health Domain
+V. Viji Rajendran and S. Swamynathan
+2015
+With the development of the Semantic Web, ontology has become the crucial means for representing concepts in various domains of interest. Although the current search engines return results based on keyword search and page ranking, human intervention is still required to select the most relevant document. Hence to overcome the disadvantages with the current search scenario, this paper proposes search based on multiple ontologies to make information retrieval efficient. It rewrites the user query by adding semantic information, after consulting multiple ontologies.
+Ontology, Semantic Web, Query expansion, Reasoning.

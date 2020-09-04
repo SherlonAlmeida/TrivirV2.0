@@ -1,0 +1,5 @@
+Integrating social profile to improve the source selection and the result merging process in distributed information retrieval
+Zakaria Saoud and Samir Kechid
+2016
+In this paper we present a new personalized approach, which integrates a social profile into a distributed search system. Most previous studies on distributed information retrieval are based on textual information, and rarely consider any social information. Based on this observation, we propose an approach which exploits the social profile and the different relations between social entities. We believe that this method can: (i) enhance a query expansion, (ii) personalize and improve both the source selection and the result merging process in distributed information retrieval systems.
+Information retrieval, Social profile, Folksonomy, Source selection process, Merging process

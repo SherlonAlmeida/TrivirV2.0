@@ -1,0 +1,5 @@
+Information retrieval system based semantique and big data
+Youssef CHOUNI and Mohamed ERRITALI and Youness MADANI and Hanane EZZIKOURI
+2019
+In traditional word-based information retrieval systems, a document is considered a set of words representing graphs without semantics. In this paper, we focus on enriching the similarity measure by using synonymy and performance evaluation of semantic indexing approaches to a document corpus. We will also present comparisons showing that the use of synonymy with Leacock and Chodorow measures increases the semantic similarity that makes research more efficient.
+Information retrieval systems, semantic indexing, semantic similarity

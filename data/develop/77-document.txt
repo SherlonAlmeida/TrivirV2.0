@@ -1,0 +1,5 @@
+Indian Tourism Information Retrieval System: An Onto-Semantic Approach
+Shilpa S. Laddha and Nitin A. Koli and Pradip M. Jawandhiya
+2018
+The huge amount of information in the tourism industry gives a base to this development of powerful and efficient information retrieval system. The usage of such information retrieval framework utilizes the heterogeneous data available on the web from the Indian tourism domain. The existing information retrieval frameworks are syntactic in nature, which renders irrelevant outcomes along with relevant outcomes to the given query. The aim of this approach is to devise a semantic based Indian tourism information retrieval system. The proposed approach utilizes ontology derived for the Indian tourism domain for the efficient information retrieval. This approach is evaluated with existing keyword based search engineâ€™s and the results shows that there is remarkable improvement in this approach.
+Information Retrieval, Semantic Search Engine, Ontology, Tourism

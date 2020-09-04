@@ -1,0 +1,5 @@
+A Semantic Information Retrieval Framework within the Scope of IPS2-PLM
+Michael Abramovici and Philip Gebus and Jens Christian GÃ¶bel and Hoang Bao Dang
+2016
+The Product Lifecycle Management (PLM) approach faces new challenges if transferred for Industrial Product Service Systems (IPS2). The vast amount of heterogeneous data generated throughout an IPS2's lifecycle complicates the retrieval of required information for IPS2 actors. However, these actorsâ€™ risky decisions determine an IPS2's success during use phase. Thus, an approach is needed that supports actors in finding targeted information. This paper presents a framework that utilizes semantic and text mining techniques in order to improve the information retrieval process in IPS2-PLM and to allow IPS2 actors to focus on their value-adding tasks rather than spending a lot of time for finding information.
+IPS, Semantic Information Retrieval, IPS-PLM, Semantic Search

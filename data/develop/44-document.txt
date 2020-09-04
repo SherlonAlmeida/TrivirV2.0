@@ -1,0 +1,5 @@
+Assessing the impact of Stemming Accuracy on Information Retrieval â€“ A multilingual perspective
+Felipe N. Flores and Viviane P. Moreira
+2016
+The quality of stemming algorithms is typically measured in two different ways: (i) how accurately they map the variant forms of a word to the same stem; or (ii) how much improvement they bring to Information Retrieval systems. In this article, we evaluate various stemming algorithms, in four languages, in terms of accuracy and in terms of their aid to Information Retrieval. The aim is to assess whether the most accurate stemmers are also the ones that bring the biggest gain in Information Retrieval. Experiments in English, French, Portuguese, and Spanish show that this is not always the case, as stemmers with higher error rates yield better retrieval quality. As a byproduct, we also identified the most accurate stemmers and the best for Information Retrieval purposes.
+Stemming, Information Retrieval, Evaluation, Multilingual

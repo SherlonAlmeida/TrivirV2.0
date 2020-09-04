@@ -1,0 +1,7 @@
+Enhanced Probabilistic Classify and Count Methods for Multi-Label Text Quantification
+Levin, Roy and Roitman, Haggai
+2017
+In this work we address the problem of Multi-Label Text Quantification. To this end, for a given collection of documents, each was pre-classified with one or more labels by some multi-label classifier, our goal is to find an estimate of the cardinality of each actual label set, as accurate as possible. We present two enhanced Probabilistic Classify and Count (PCC) methods that focus on improving the quantification accuracy by employing another supervised learning phase. Using a real-world multi-label documents dataset, we report on an experimental evaluation that compares the estimated label counts produced by our solution (and several alternatives) to the actual label counts derived from labels assigned by human experts. Our results confirm that, using our solution, the quantification accuracy can be significantly improved.
+
+
+probabilistic classify and count, text quantification

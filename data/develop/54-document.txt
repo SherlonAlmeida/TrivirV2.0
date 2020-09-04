@@ -1,0 +1,7 @@
+Privacy-enhanced attribute-based private information retrieval
+Jianchang Lai and Yi Mu and Fuchun Guo and Peng Jiang and Willy Susilo
+2018
+A private information retrieval protocol allows a user to retrieve wth data item (or k items) of its choice from a database of N data items without revealing its choice w to the server. The traditional private information retrieval protocols based on the notion of oblivious transfer must publish the description of each data item stored in the database in order for the user to make a choice before users run the protocol (each data itemâ€™s content is not revealed though). Aiming to eliminate the information leakage of the data item in the private information retrieval system, in this work, we propose a novel attribute-based private information retrieval protocol which can enhance the data privacy. In our proposed protocol, each data item is associated with a set of attributes which is not made public to users who are only given a universal attribute set, which reveals no information about individual data item. For each query, the user can only obtain the data items whose attributes are within its chosen attribute set. We provide a rigorous security analysis of our protocol and demonstrate its efficiency and feasibility.
+
+
+Private information retrieval, Data privacy-enhanced, Attribute-based

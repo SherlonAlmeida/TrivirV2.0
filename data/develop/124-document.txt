@@ -1,0 +1,9 @@
+Simurg: An Extendable Multilingual Corpus for Abstractive Single Document Summarization
+Modaresi, Pashutan and Conrad, Stefan
+2016
+Abstractive single document summarization is considered as a challenging problem in the field of artificial intelligence and natural language processing. Meanwhile and specifically in the last two years, several deep learning summarization approaches were proposed that once again attracted the attention of researchers to this field.
+
+It is a well-known issue that deep learning approaches do not work well with small amounts of data. With some exceptions, this is, unfortunately, the case for most of the datasets available for the summarization task. Besides this problem, it should be considered that phonetic, morphological, semantic and syntactic features of the language are constantly changing over the time and unfortunately most of the summarization corpora are constructed from old resources. Another problem is the language of the corpora. Not only in the summarization field, but also in other fields of natural language processing, most of the corpora are only available in English. In addition to the above problems, license terms, and fees of the corpora are obstacles that prevent many academics and specifically non-academics from accessing these data.
+
+This work describes an open source framework to create an extendable multilingual corpus for abstractive single document summarization that addresses the above-mentioned problems. We describe a tool consisted of a scalable crawler and a centralized key-value store database to construct a corpus of an arbitrary size using a news aggregator service.
+Abstractive text summarization, extendable corpora, multilingual corpora, single document summarization

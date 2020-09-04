@@ -1,0 +1,7 @@
+Applicability of Text-representing Centroids for Thai Language Documents
+Nualnim, Sureeporn and Romyen, Nirach and Sodanil, Maleerat
+2019
+Text-representing centroids are investigated method recently used to categorize and compare documents written in European languages. As it will be shown, Asian languages and in particular Thai exhibit completely other language structures. Nevertheless, a strong justification will be given that the methodology of the text-representing centroids can be successfully applied to Thai documents, too. For the experiments, a corpus which contained 100 randomly selected articles from an offline Thai Wikipedia was used. The obtained centroids well reflect the topic of those documents as in the original publication. In addition, the centroids are quite suitable to compare any two files.
+
+
+Centroid term, Co-occurrence graph, Document similarity, Text Mining, Text Representing centroids, Text processing

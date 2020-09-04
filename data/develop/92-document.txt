@@ -1,0 +1,7 @@
+Efficient motion analysis of IT support for information retrieval at manual workplaces
+Johanna C. Kubenke and Andreas Kunz
+2019
+Within the context of the â€œIndustrie 4.0â€ initiative, workers should be enabled by information technologies to extend their abilities to handle a wider range of work processes. However, such information technology also requires additional workload, which is not clearly measurable yet. This paper thus introduces a concept of an extended application of the MTM method to measure and analyze the information retrieval phase and to also provide a platform to compare different smart devices for their suitability to the current task at hand. Finally, the paper briefly shows the current evaluation processes at a German car manufacturer.
+
+
+Motion analysis, Wearables, Objective measurement, Process optimization, Industrial engineering, Methods-time measurement (MTM)

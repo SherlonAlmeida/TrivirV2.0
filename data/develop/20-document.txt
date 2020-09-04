@@ -1,0 +1,11 @@
+Information retrieval from hospital information system: Increasing effectivity using swarm intelligence
+Miroslav Bursa and Lenka Lhotska and Vaclav Chudacek and Jiri Spilka and Petr Janku and Lukas Hruban
+2015
+This paper details the process of mining information from a hospital information system that has been designed approximately 15 years ago. The information is distributed within database tables in large textual attributes with a free structure. Information retrieval from these information is necessary for complementing cardiotocography signals with additional information that is to be implemented in a decision support system.
+
+The basic statistical overview (n-gram analysis) helped with the insight into data structure, however more sophisticated methods have to be used as human (and expert) processing of the whole data were out of consideration: over 620,000 text fields contained text reports in natural language with (many) typographical errors, duplicates, ambiguities, syntax errors and many (nonstandard) abbreviations.
+
+There was a strong need to efficiently determine the overall structure of the database and discover information that is important from the clinical point of view. We have used three different methods: k-means, self-organizing map and a self-organizing approach inspired by ant-colonies that performed clustering of the records. The records were visualized and revealed the most prominent information structure(s) that were consulted with medical experts and served for further mining from the database.
+
+The outcome of this task is a set of ordered or nominal attributes with a structural information that is available for rule discovery mining and automated processing for the research of asphyxia prediction during delivery. The proposed methodology has significantly reduced the processing time of loosely structured textual records for both IT and medical experts.
+Swarm intelligence, Ant colony, Textual data mining, Medical record processing, Hospital information system

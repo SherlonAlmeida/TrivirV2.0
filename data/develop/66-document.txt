@@ -1,0 +1,11 @@
+Development of an information retrieval tool for biomedical patents
+Tiago Alves and RÃºben Rodrigues and Hugo Costa and Miguel Rocha
+2018
+Background and objective: The volume of biomedical literature has been increasing in the last years. Patent documents have also followed this trend, being important sources of biomedical knowledge, technical details and curated data, which are put together along the granting process. The field of Biomedical text mining (BioTM) has been creating solutions for the problems posed by the unstructured nature of natural language, which makes the search of information a challenging task. Several BioTM techniques can be applied to patents. From those, Information Retrieval (IR) includes processes where relevant data are obtained from collections of documents. In this work, the main goal was to build a patent pipeline addressing IR tasks over patent repositories to make these documents amenable to BioTM tasks.
+
+Methods: The pipeline was developed within @Note2, an open-source computational framework for BioTM, adding a number of modules to the core libraries, including patent metadata and full text retrieval, PDF to text conversion and optical character recognition. Also, user interfaces were developed for the main operations materialized in a new @Note2 plug-in.
+
+Results: The integration of these tools in @Note2 opens opportunities to run BioTM tools over patent texts, including tasks from Information Extraction, such as Named Entity Recognition or Relation Extraction. We demonstrated the pipelineâ€™s main functions with a case study, using an available benchmark dataset from BioCreative challenges. Also, we show the use of the plug-in with a user query related to the production of vanillin.
+
+Conclusions: This work makes available all the relevant content from patents to the scientific community, decreasing drastically the time required for this task, and provides graphical interfaces to ease the use of these tools.
+Biomedical text mining, Information retrieval, Information extraction, Patents, PDF to text conversion

@@ -1,0 +1,5 @@
+Exploiting Wikipedia API for Hindi-english Cross-language Information Retrieval
+Vijay Kumar Sharma and Namita Mittal
+2016
+The rapidly increasing demographics of the internet population and the abundance of multilingual content on the web increased the communication in multiple languages. Most of the people use their regional languages to express their needs and the language diversity becomes a great barrier. Cross-Language Information Retrieval (CLIR) provides a solution for that language barrier which allows a user to ask a query in the native language and get the relevant documents in the different language. In this paper, we proposed a Wikipedia API based query translation approach. Queries are tokenized and multi-words query terms are created using N-gram technique. Wikipedia title and inter-wiki link features are exploited for query translation. Target language documents are retrieved using vector space retrieval model and BM25 retrieval algorithm. Experiment results shows that the proposed approach achieves better results without exploiting any language resources.
+Cross-Language Information Retrieval, Inter-Wiki Link, Wikipedia API

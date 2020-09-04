@@ -1,0 +1,7 @@
+Digging Text Viz: An Archaeological Review of ACM Digital Library Text Visualizations Publications (1991 -- 2003)
+Omizo, Ryan M. and Hart-Davidson, William
+2017
+Text visualization is a rapidly growing area of research and practice in the design of communication [1]. But, as text analysis and particularly big data techniques, become more useful across knowledge domains, text visualization will become less of a specialty area and more of a crucial aspect of everyday work. This paper offers an integrated review of 42 text visualization projects published by an Association for Computing Machinery organization and hosted in the Association for Computing Machinery Digital Library from 1991--2003. This survey will trace trends in text visualizations projects that specifically apply to the work of designers, user experience researchers, technical communicators and provide a view of the current state of text visualization to better approach evolving frameworks and methods to conduct analysis.
+
+
+information visualization, systematic review, text visualization

@@ -1,0 +1,13 @@
+SPIRITuS: a SimPle Information Retrieval regressIon Test Selection approach
+Simone Romano and Giuseppe Scanniello and Giuliano Antoniol and Alessandro Marchetto
+2018
+Context:Regression Test case Selection (RTS) approaches aim at selecting only those test cases of a test suite that exercise changed parts of the System Under Test (SUT) or parts affected by changes.
+
+Objective:We present SPIRITuS (SimPle Information Retrieval regressIon Test Selection approach). It uses method code coverage information and a Vector Space Model to select test cases to be run. In a nutshell, the extent of a lexical modification to a method is used to decide if a test case has to be selected. The main design goals of SPIRITuS are to be: (i) easy to adapt to different programming languages and (ii) tunable via an easy to understand threshold.
+
+Method:To assess SPIRITuS, we conducted a large experiment on 389 faulty versions of 14 open-source programs implemented in Java. We were mainly interested in investigating the tradeoff between the number of selected test cases from the original test suite and fault detection effectiveness. We also compared SPIRITuS against well-known RTS approaches.
+
+Results:SPIRITuS selects a number of test cases significantly smaller than the number of test cases the other approaches select at the price of a slight reduction in fault detection capability.
+
+Conclusions:SPIRITuS can be considered a viable competitor of existing test case selection approaches especially when the average number of test cases covering a modified method increases (such information can be easily derived before test case selection takes place).
+SPIRITuS, Regression test case selection, Regression testing

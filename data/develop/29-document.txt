@@ -1,0 +1,7 @@
+CAS-based information retrieval in semi-structured documents: CASISS model
+Larbi Guezouli and Hassane Essafi
+2016
+This paper aims to address the assessment the similarity between documents or pieces of documents. For this purpose we have developed CASISS (CAlculation of SImilarity of Semi-Structured documents) method to quantify how two given texts are similar. The method can be employed in wide area of applications including content reuse detection which is a hot and challenging topic. It can be also used to increase the accuracy of the information retrieval process by taking into account not only the presence of query terms in the given document (Content Only search â€” CO) but also the topology (position continuity) of these terms (based on Content And Structure Search â€” CAS). Tracking the origin of the information in social media, copy right management, plagiarism detection, social media mining and monitoring, digital forensic are among other applications require tools such as CASISS to measure, with a high accuracy, the content overlap between two documents.
+
+CASISS identify elements of semi-structured documents using elements descriptors. Each semi-structured document is pre-processed before the extraction of a set of elements descriptors, which characterize the content of the elements.
+CASISS, Information retrieval, Semi-structured information processing

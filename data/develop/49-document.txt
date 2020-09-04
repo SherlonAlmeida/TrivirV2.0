@@ -1,0 +1,15 @@
+OntoADR a semantic resource describing adverse drug reactions to support searching, coding, and information retrieval
+Julien Souvignet and Gunnar Declerck and Hadyl Asfari and Marie-Christine Jaulent and CÃ©dric Bousquet
+2016
+Introduction
+Efficient searching and coding in databases that use terminological resources requires that they support efficient data retrieval. The Medical Dictionary for Regulatory Activities (MedDRA) is a reference terminology for several countries and organizations to code adverse drug reactions (ADRs) for pharmacovigilance. Ontologies that are available in the medical domain provide several advantages such as reasoning to improve data retrieval. The field of pharmacovigilance does not yet benefit from a fully operational ontology to formally represent the MedDRA terms. Our objective was to build a semantic resource based on formal description logic to improve MedDRA term retrieval and aid the generation of on-demand custom groupings by appropriately and efficiently selecting terms: OntoADR.
+
+Methods
+The method consists of the following steps: (1) mapping between MedDRA terms and SNOMED-CT, (2) generation of semantic definitions using semi-automatic methods, (3) storage of the resource and (4) manual curation by pharmacovigilance experts.
+
+Results
+We built a semantic resource for ADRs enabling a new type of semantics-based term search. OntoADR adds new search capabilities relative to previous approaches, overcoming the usual limitations of computation using lightweight description logic, such as the intractability of unions or negation queries, bringing it closer to user needs. Our automated approach for defining MedDRA terms enabled the association of at least one defining relationship with 67% of preferred terms. The curation work performed on our sample showed an error level of 14% for this automated approach. We tested OntoADR in practice, which allowed us to build custom groupings for several medical topics of interest.
+
+Discussion
+The methods we describe in this article could be adapted and extended to other terminologies which do not benefit from a formal semantic representation, thus enabling better data retrieval performance. Our custom groupings of MedDRA terms were used while performing signal detection, which suggests that the graphical user interface we are currently implementing to process OntoADR could be usefully integrated into specialized pharmacovigilance software that rely on MedDRA.
+Knowledge representation, Pharmacovigilance, Biological ontologies, Terminological reasoning, Data retrieval

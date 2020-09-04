@@ -1,12 +1,12 @@
 1-Instaladores/
 
-data/
+core/demo
 
-Datasets/
+core/develop
 
-core/
+file/demo
 
-file/
+file/develop
 
 Server/node_modules/
 

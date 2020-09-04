@@ -1,0 +1,5 @@
+Aggregation operators in Information Retrieval
+Stefania Marrara and Gabriella Pasi and Marco Viviani
+2017
+Information Retrieval is a complex task, which deals with both the subjectivity related to the user's needs and the uncertainty and vagueness that characterize the retrieval process. For this reason, deciding to which extent a document is relevant to a user's needs is not easy, and it strongly depends on several dimensions such as topicality, novelty, user's context, and so on. One of the most straightforward ways to interpret this activity is as a Multi-Criteria Decision Making (MCDM) problem, in which the choice of appropriate aggregation operators can play an important role in various tasks related to, or characterizing the IR process. This article aims to provide a presentation of the main approaches that in the literature have made use of aggregation operators in Information Retrieval.
+Aggregation operators, Information Retrieval, Indexing, Query languages, Multidimensional relevance assessment, Metasearch, OWA operators, Copulas, Choquet integrals

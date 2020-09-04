@@ -1,0 +1,5 @@
+Text clustering as graph community detection
+Elizaveta K. Mikhina and Vsevolod I. Trifalenkov
+2018
+This article suggests a method of text clustering that does not depend on any user-set parameters. Text documents and connections between them are represented as graph nodes and edges and graph community detection method is thus applied to the text clustering problem. The method was tested against news articles collections and proved effective â€“ manual and automatic clustering of text documents in collections were same or really close.
+text clustering, non-parameter clustering, graph community detection, modularity

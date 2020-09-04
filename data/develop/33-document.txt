@@ -1,0 +1,5 @@
+Bottom-k document retrieval
+Gonzalo Navarro and Sharma V. Thankachan
+2015
+We consider the problem of retrieving the k documents from a collection of strings where a given pattern P appears least often. This has potential applications in data mining, bioinformatics, security, and big data. We show that adapting the classical linear-space solutions for this problem is trivial, but the compressed-space solutions are not easy to extend. We design a new solution for this problem that matches the best-known result when using  bits, where  is a Compressed Suffix Array. Our structure answers queries in the time needed by the  to find the suffix array interval of the pattern plus  accesses to suffix array cells, for any constant .
+Compact data structures, Document retrieval, String collections

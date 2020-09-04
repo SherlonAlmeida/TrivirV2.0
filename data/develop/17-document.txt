@@ -1,0 +1,5 @@
+Reductions between private information retrieval and oblivious transfer at the quantum level
+Yu-Guang Yang and Si-Jia Sun and Qing-Xiang Pan and Peng Xu
+2015
+Although private information retrieval and oblivious transfer are equivalent in classical cryptography, we show that the existence of secure quantum private information retrieval is necessary but not sufficient for secure quantum oblivious transfer, which provides a strong evidence of nonequivalence of two flavors of oblivious transfer at the quantum level.
+Private information retrieval, Oblivious transfer, Reduction

@@ -1,0 +1,5 @@
+A new fuzzy logic based ranking function for efficient Information Retrieval system
+Yogesh Gupta and Ashish Saini and A.K. Saxena
+2015
+The relevant documents from large data sets are retrieved with the help of ranking function in Information Retrieval system. In this paper, a new fuzzy logic based ranking function is proposed and implemented to enhance the performance of Information Retrieval system. The proposed ranking function is based on the computation of different terms of term-weighting schema such as term frequency, inverse document frequency and normalization. Fuzzy logic is used at two levels to compute relevance score of a document with respect to the query in present work. All the experiments are performed on CACM and CISI benchmark data sets. The experimental results reveal that the performance of our proposed ranking function is much better than the fuzzy based ranking function developed by Rubens along with other widely used ranking function Okapi-BM25 in terms of precision, recall and F-measure.
+Information Retrieval, Fuzzy Logic Controller, Precision, Recall, Ranking function

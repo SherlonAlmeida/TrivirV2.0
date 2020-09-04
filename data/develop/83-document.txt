@@ -1,0 +1,7 @@
+Support Vector Machines for a new Hybrid Information Retrieval System
+Hamid Khalifi and Abderrahim Elqadi and Youssef Ghanou
+2018
+Information Retrieval systems are used to extract, from a large database, relevant information for users. When the type of data is text, the complex nature of the database makes the process of retrieving information more difficult. Generally, such processes reformulate queries according to associations among information items before the query session. In this latter, semantic relationships or other approaches such as machine learning techniques can be applied to select the appropriate results to return. This paper presents a formal model and a new search algorithm. The proposed algorithm is applied to find associations between information items, and then use them to structure search results. It incorporates a natural language preprocessing stage, a statistical representation of short documents and queries and a machine learning model to select relevant results. On a series of experiments through Yahoo dataset, the proposed hybrid information retrieval system returned significantly satisfying results.
+
+
+Information retrieval, natural language processing, unsupervised classification, supervised classification, support vector machines

@@ -1,0 +1,5 @@
+An analysis of MapReduce efficiency in document clustering using parallel K-means algorithm
+Tanvir Habib Sardar and Zahid Ansari
+2018
+One of the significant data mining techniques is clustering. Due to expansion and digitalization of each field, large datasets are being generated rapidly. Such large dataset clustering is a challenge for traditional sequential clustering algorithms due to huge processing time. Distributed parallel architectures and algorithms are thus helpful to achieve performance and scalability requirement of clustering large datasets. In this study, we design and experiment a parallel k-means algorithm using MapReduce programming model and compared the result with sequential k-means for clustering varying size of document dataset. The result demonstrates that proposed k-means obtains higher performance and outperformed sequential k-means while clustering documents.
+MapReduce, Hadoop, Parallel K-means, Document clustering, Distributed computing
