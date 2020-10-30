@@ -1,7 +1,0 @@
-Soft Short-Text Clustering Using PageRank As a Centrality Measure
-Abdalgader, Khaled
-2017
-While a hard clustering algorithm lets a pattern to belong to a single cluster class, soft clustering allows patterns to belong to all cluster classes with different degrees of relationship. This is important in the case of short-text clustering, in which a small-sized text fragment such as a quotation or sentence may be related to more than one subject or topic. However, soft clustering of short-text is complicated by the computational difficulties inherent in defining cluster centroids using conventional cluster centrality measures. Therefore, this paper proposes a new soft short-text clustering algorithm based on the use of PageRank as a centrality measure. Results suggest that when used in hard clustering mode, its performance is on par with state-of-the-art spectral clustering algorithms. Advantages of the algorithm include its ability to perform soft clustering, its ability to operate on non-symmetric matrices, and its ability to converge automatically to an appropriate number of cluster classes.
-
-
-Centrality Measurement, PageRank, Soft Short-Text Clustering

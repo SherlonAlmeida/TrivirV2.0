@@ -1,7 +1,0 @@
-Linked Data for Toponym Linking in French Literary Texts
-Brando, Carmen and Frontini, Francesca and Ganascia, Jean-Gabriel
-2015
-The present article discusses first experiments in toponym linking of Modern French digital editions aiming to provide an external referent to Linked Data sources. We have so far focused on testing two knowledge bases - French DBpedia and Geonames - for recall. Results highlight quality issues in these data sets for usage in NLP-tasks in domain-specific heritage texts.
-
-
-digital humanities, linked data, named-entity linking

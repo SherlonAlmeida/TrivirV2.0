@@ -1,7 +1,0 @@
-Facility Detection and Popularity Assessment from Text Classification of Social Media and Crowdsourced Data
-Sparks, Kevin A. and Li, Roger G. and Thakur, Gautam S. and Stewart, Robert N. and Urban, Marie L.
-2016
-Advances in technology have continually progressed our understanding of where people are, how they use the environment around them, and why they are at their current location. Having a better knowledge of when various locations become popular through space and time could have large impacts on research fields like urban dynamics and energy consumption. In this paper, we discuss the ability to identify and locate various facility types (e.g. restaurant, airport, stadiums) using social media, and assess methods in determining when these facilities become popular over time. We use standard natural language processing tools and machine learning classifiers to interpret geotagged Twitter text and determine if a user is seemingly at a location of interest when the tweet was sent. On average our classifiers are approximately 85% accurate varying across multiple facility types, with a peak precision of 98%. By using these standard methods to classify unstructured text, geotagged social media data can be an extremely useful tool to better understanding the composition of places and how and when people use them.
-
-
-crowd-sourced data, geographic information systems, machine learning, occupancy analysis, participatory sensing, social media, text classification

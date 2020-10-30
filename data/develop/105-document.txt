@@ -1,5 +1,0 @@
-Imaging of the Functional and Dysfunctional Visual System
-Edgar A. DeYoe and John L. Ulmer and Wade M. Mueller and David S. Sabsevitz and Danielle C. Reitsma and Jay J. Pillai
-2015
-Functional magnetic resonance imaging (fMRI) is used clinically to map the visual cortex before brain surgery or other invasive treatments to achieve an optimal balance between therapeutic effect and the avoidance of postoperative vision deficits. Clinically optimized stimuli, analyses, and displays permit identification of cortical subregions supporting high-acuity central vision that is critical for reading and other essential visual functions. A novel data display permits instant appreciation of the functional relationship between the pattern of fMRI brain activation and the pattern of vision loss and preservation within the patient×³s field of view. Neurovascular uncoupling and its detection in the visual cortex are key issues for the interpretation of fMRI results in patients with existing brain pathology.
-

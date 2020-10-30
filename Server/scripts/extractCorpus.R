@@ -261,4 +261,4 @@ extractWos <- function(input, dirName){
 #extractCorpus("C:/Users/sherl/Documents/TRIVIR/Dataset_Sherlon.bib", "Sherlon3DObjectRetrieval", "wos") #Usuario Sherlon (Primeira Tentativa - Arquivo .bib do WoS)
 #extractCorpus("C:/Users/sherl/Documents/TRIVIR/Dataset_Text.csv", "SherlonText", "parsifal") #Usuario Sherlon
 
-extractCorpus("C:/Users/sherl/Documents/TRIVIR/UAVs.bib", "IsadoraUAVs", "wos") #Usuario Isadora
+extractCorpus("C:/Users/sherl/Documents/TRIVIR_Estudo_Validacao/Datasets/corpus_selfdriving_develop.csv", "develop", "scopus") #Usuario admin

@@ -1,7 +1,0 @@
-INST: An Adaptive Metric for Information Retrieval Evaluation
-Moffat, Alistair and Bailey, Peter and Scholer, Falk and Thomas, Paul
-2015
-A large number of metrics have been proposed to measure the effectiveness of information retrieval systems. Here we provide a detailed explanation of one recent proposal, INST, articulate the various properties that it embodies, and describe a number of pragmatic issues that need to be taken in to account when writing an implementation. The result is a specification for a program inst_eval for use in TREC-style IR experimentation.
-
-
-User behavior, relevance measures, test collections

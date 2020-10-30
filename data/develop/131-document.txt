@@ -1,7 +1,0 @@
-JIGSAW: Structuring Text into Tables
-Gupta, Dhruv and Berberich, Klaus
-2019
-We present JIGSAW, an end-to-end query driven system that efficiently generates structured tables from unstructured documents. To do so, first we describe how we can quickly retrieve sentences in support of structured queries that describe the table schema. Second, we describe how we can estimate table cell values using document context where such values can not be retrieved. Third, we describe how we can link together similar rows, rank, and diversify them to generate high-quality tables. We show that JIGSAW can generate tables from 25 million documents within seconds.
-
-
-duplicate detection, information extraction, linking unstructured and structured data, natural language processing, semantic annotations, structured summarization, table generation, unstructured text

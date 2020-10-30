@@ -1,7 +1,0 @@
-Open and Closed Schema for Aligning Knowledge and Text Collections
-Kelcey, Matthew
-2015
-When it comes to knowledge bases most people's first thought are structured sources such as Freebase/Wikidata and their relationship to similarly structured web sources such as Wikipedia. A lot of additional and interesting "knowledge" though is captured in unstructured databases constructed in a less supervised manner using open information extraction techniques. In this talk we'll discuss some of the differences between open/closed schema knowledge bases including the ideas of objective vs subjective content as well as freshness and trust. We'll give an overview on approaches to aligning such data sources in a way that their relative strengths can be combined and finish with applications of such alignments; particularly around open question and answer systems.
-
-
-information extraction, knowledge bases, question answering, semantic annotation

@@ -1,18 +1,5 @@
-Supporting information retrieval from electronic health records: A report of University of Michiganâ€™s nine-year experience in developing and using the Electronic Medical Record Search Engine (EMERSE)
-David A. Hanauer and Qiaozhu Mei and James Law and Ritu Khanna and Kai Zheng
-2015
-Objective
-This paper describes the University of Michiganâ€™s nine-year experience in developing and using a full-text search engine designed to facilitate information retrieval (IR) from narrative documents stored in electronic health records (EHRs). The system, called the Electronic Medical Record Search Engine (EMERSE), functions similar to Google but is equipped with special functionalities for handling challenges unique to retrieving information from medical text.
-
-Materials and methods
-Key features that distinguish EMERSE from general-purpose search engines are discussed, with an emphasis on functions crucial to (1) improving medical IR performance and (2) assuring search quality and results consistency regardless of usersâ€™ medical background, stage of training, or level of technical expertise.
-
-Results
-Since its initial deployment, EMERSE has been enthusiastically embraced by clinicians, administrators, and clinical and translational researchers. To date, the system has been used in supporting more than 750 research projects yielding 80 peer-reviewed publications. In several evaluation studies, EMERSE demonstrated very high levels of sensitivity and specificity in addition to greatly improved chart review efficiency.
-
-Discussion
-Increased availability of electronic data in healthcare does not automatically warrant increased availability of information. The success of EMERSE at our institution illustrates that free-text EHR search engines can be a valuable tool to help practitioners and researchers retrieve information from EHRs more effectively and efficiently, enabling critical tasks such as patient case synthesis and research data abstraction.
-
-Conclusion
-EMERSE, available free of charge for academic use, represents a state-of-the-art medical IR tool with proven effectiveness and user acceptance.
-Electronic health records (E05.318.308.940.968.625.500), Search engine (L01.470.875), Information storage and retrieval (L01.470)
+Review on Motion Control of Autonomous Vehicles [Aa"A AAAA(C)A(C)A 3/4A(C)A(C)AAA 1/2AAA 3/4a AAazAAAAA AAA 1/2AAEAAAa~AAa cent AA 1/2AAA AAA>>A 1/4AAA]
+Xiong L., Yang X., Zhuo G., Leng B., Zhang R.
+2020
+The motion control problem of autonomous vehicles is reviewed. From the perspective of model, algorithm, and control structure, the domestic and foreign research progress is reviewed at three levels of longitudinal motion control, path following and trajectory tracking control, and the development prospect of motion control technology for autonomous vehicles is proposed. The current motion control research mainly focuses on normal conditions. In order to realize the potential of autonomous vehicles in handling critical scenarios that human drivers find challenging or lack the ability to navigate, it is necessary to extend the research to extreme working conditions. However, the properties of non-linearity and multi-dimensional coupled dynamics are significantly enhanced in extreme working conditions. The requirements of system modeling and adaptability and robustness of motion control algorithm are further increased. At the same time, in order to deal with the multi-objective coordination in complex scenarios, the integration of motion planning and control considering environmental uncertainty needs to be studied in depth. Adding actuators can increase the lateral response speed and control margin, but the research of control allocation of redundant and heterogeneous actuators is still to be broken through. The realization of motion control depends on road adhesion coefficient, sideslip angle, etc. Therefore, it is urgent to solve the problem of key state and parameter estimation under multi-source sensor information fusion. In addition, the application of machine learning to the field of vehicle motion control is also an important development direction. A,A(C) 2020 Journal of Mechanical Engineering.
+Autonomous vehicles; Longitudinal control; Motion control; Path following; Trajectory tracking

@@ -1,7 +1,0 @@
-Towards a Toolbox to Map Historical Text Collections
-Barbaresi, Adrien
-2017
-This article presents an effort to integrate spatial and textual data processing tools into a modular software package which features preprocessing, geocoding, disambiguation and visualization.
-
-
-Geocoding, Information extraction, Maps, Open Source Software

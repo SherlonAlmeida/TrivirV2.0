@@ -1,9 +1,0 @@
-Response of a human visual system to continuous color variation: An EEG-based approach
-Gleb V. Tcheslavski and Maryam Vasefi and Fahrettin F. Gonen
-2018
-Color is a powerful descriptor that considerably expands our ability to characterize and distinguish objects and facilitates interactions with dynamic environment. Although our understanding of neuronal mechanisms involved in color processing has significantly advanced over the past decades, a number of questions related to visual pathways engaged in color perception still remain unanswered.
-
-We propose a novel method of an EEG-based study of human color perception utilizing multivariate Temporal Response Functions (mTRFs) that quantify spatiotemporal brain responses to sensory stimuli. Such functions can be derived from the Electroencephalogram (EEG) recorded from a subject exposed to the screen of a color varying over time.
-
-The results of a pilot study that included nineteen subjects with normal color vision indicate that mTRFs may be instrumental in characterizing the dorsal stream of the visual pathway. We conclude that pronounced local extrema observed in mTRFs should be attributed to the colors perceived by the participant rather than to the post-stimulus latencies. No interhemispheric asymmetry in mTRFs may be an evidence of a similar processing of color information by both cerebral hemispheres. On the other hand, observed dorsal dependence of mTRFs may suggest that different areas of the same hemisphere show stronger response to specific colors (hues) of the stimuli. The latter may indicate, for instance, differences in the functional â€œcolor specializationâ€ between the occipital and frontal regions.
-Color perception, Visual pathways, Dorsal stream, Electroencephalogram, Multivariate temporal response functions

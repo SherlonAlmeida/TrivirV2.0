@@ -1,9 +1,5 @@
-An Intervention Program for Improving Writing and Information Retrieval among Students with Ambidexterity
-Yael Sender
-2015
-This research deals with 1% of the population who is defined as ambidextrous who characterized by slow writing pace, information retrieval and sequence memorizing and had a gap in their academic achievements.
-
-This study refers to a unique intervention program called ATP (ambidexterity training program) which examined the effect of it on ambidextrous students (7-16) through routine training
-
-A.T.P included drawing, meant to strengthen the middle-line crossing, writing sequences of the Hebrew alphabet (for older students also English alphabet) and number sequences in order to improve the verbal fluency, and copying a paragraph (30 words) in order to improve writing pace.
-Ambidexterity, Writing skill, Information Retrieval, Brain plasticity, Training
+Methodology for gender analysis in transport: Factors with influence in women's inclusion as professionals and users of transport infrastructures
+GarcA-a-JimA(C)nez E., Poveda-Reyes S., Molero G.D., Santarremigia F.E., Gorrini A., Hail Y., Ababio-Donkor A., Leva M.C., Mauriello F.
+2020
+This work analyzes gendered processes by a methodology based on clustering factors with influence in the decision-making process of women as users or employees of the transport system. Considering gender as a social construction which changes over time and space, this study is based on the concept of a woman as a person who adopts this role in society. This paper performs a deep analysis of those factors women consider as needs and barriers to use or work in the transport system in four scenarios: railway public transport infrastructures, automated vehicles, bicycle sharing, and jobholders. A literature review and focus group discussions were performed under the consideration that the definition of woman includes the addition of several personal characteristics (age, sexual orientation, family responsibilities, and culture). The data analysis allowed the identification of fairness characteristics (FCs) that affect the interaction of women with the transport system for each scenario. A methodology for clustering the fairness characteristics identified the main areas of action to improve the inclusion of women within each use case. Further studies will be focused on the quantification and prioritization of the FCs through mathematical methods and the suggestion of inclusive measures by an interdisciplinary panel. A,A(C) 2020 by the authors.
+Autonomous vehicles; Bike sharing; Clustering; Decision-making process; Employment; Fairness characteristics; Public transport

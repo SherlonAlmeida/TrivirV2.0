@@ -1,7 +1,0 @@
-Automatic Text Summarization Based on Betweenness Centrality
-De la PeÃ±a SarracÃ©n, Gretel Liz and Rosso, Paolo
-2018
-Automatic text summary plays an important role in information retrieval. With a large volume of information, presenting the user only a summary greatly facilitates the search work of the most relevant. Therefore, this task can provide a solution to the problem of information overload. Automatic text summary is a process of automatically creating a compressed version of a certain text that provides useful information for users. This article presents an unsupervised extractive approach based on graphs. The method constructs an indirected weighted graph from the original text by adding a vertex for each sentence, and calculates a weighted edge between each pair of sentences that is based on a similarity/dissimilarity criterion. The main contribution of the work is that we do a study of the impact of a known algorithm for the social network analysis, which allows to analyze large graphs efficiently. As a measure to select the most relevant sentences, we use betweenness centrality. The method was evaluated in an open reference data set of DUC2002 with Rouge scores.
-
-
-Automatic Text Summarization, Betweenness Centrality, Extractive Summary

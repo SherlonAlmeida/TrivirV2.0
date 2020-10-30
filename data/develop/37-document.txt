@@ -1,15 +1,5 @@
-A passage retrieval method based on probabilistic information retrieval model and UMLS concepts in biomedical question answering
-Mourad Sarrouti and Said Ouatik El Alaoui
-2017
-Background and Objective
-Passage retrieval, the identification of top-ranked passages that may contain the answer for a given biomedical question, is a crucial component for any biomedical question answering (QA) system. Passage retrieval in open-domain QA is a longstanding challenge widely studied over the last decades. However, it still requires further efforts in biomedical QA. In this paper, we present a new biomedical passage retrieval method based on Stanford CoreNLP sentence/passage length, probabilistic information retrieval (IR) model and UMLS concepts.
-
-Methods
-In the proposed method, we first use our document retrieval system based on PubMed search engine and UMLS similarity to retrieve relevant documents to a given biomedical question. We then take the abstracts from the retrieved documents and use Stanford CoreNLP for sentence splitter to make a set of sentences, i.e., candidate passages. Using stemmed words and UMLS concepts as features for the BM25 model, we finally compute the similarity scores between the biomedical question and each of the candidate passages and keep the N top-ranked ones.
-
-Results
-Experimental evaluations performed on large standard datasets, provided by the BioASQ challenge, show that the proposed method achieves good performances compared with the current state-of-the-art methods. The proposed method significantly outperforms the current state-of-the-art methods by an average of 6.84% in terms of mean average precision (MAP).
-
-Conclusion
-We have proposed an efficient passage retrieval method which can be used to retrieve relevant passages in biomedical QA systems with high mean average precision.
-Biomedical question answering system, Biomedical passage retieval, Probabilistic information retrieval model, Unified medical language system, Natural language processing, Biomedical informatics
+A repeated game freeway lane changing model
+Kang K., Rakha H.A.
+2020
+Lane changes are complex safety-and throughput-critical driver actions. Most lane-changing models deal with lane-changing maneuvers solely from the merging driverA cent a,a,, cent s standpoint and thus ignore driver interaction. To overcome this shortcoming, we develop a game-theoretical decision-making model and validate the model using empirical merging maneuver data at a freeway on-ramp. Specifically, this paper advances our repeated game model by using updated payoff functions. Validation results using the Next Generation SIMulation (NGSIM) empirical data show that the developed game-theoretical model provides better prediction accuracy compared to previous work, giving correct predictions approximately 86% of the time. In addition, a sensitivity analysis demonstrates the rationality of the model and its sensitivity to variations in various factors. To provide evidence of the benefits of the repeated game approach, which takes into account previous decision-making results, a case study is conducted using an agent-based simulation model. The proposed repeated game model produces superior performance to a one-shot game model when simulating actual freeway merging behaviors. Finally, this lane change model, which captures the collective decision-making between human drivers, can be used to develop automated vehicle driving strategies. A,A(C) 2020 by the authors. Licensee MDPI, Basel, Switzerland.
+Decision-making; Game theory; Intelligent vehicles; Lane-changing; Merging maneuvers

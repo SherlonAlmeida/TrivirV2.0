@@ -1,7 +1,0 @@
-User Profiling for University Recommender System Using Automatic Information Retrieval
-Sumitkumar Kanoje and Debajyoti Mukhopadhyay and Sheetal Girase
-2016
-User Profiling is the process of Extracting, Integrating and Identifying the keyword based information to generate a structured Profile and then visualizing the knowledge out of these findings. User profiling helps personalizing a system to work according to user. Therefore user profiling or personalization is one of the major concepts used for accessing the user relevant information, which can be used to solve the difficult problems of recommender system like classification and ranking of items in accordance with an individual's interest.
-
-In this paper we focus on the problem of user profiling in which we aim at finding, extracting and integrating keyword based information from various web sources to generate a structured profile. Further we do some experiments on the profiled information to generate knowledge out of it.
-User Profiling, Information Retrieval, Data Mining

@@ -1,5 +1,5 @@
-The Development of Knowledge about the Earth and the Day/Night Cycle in Blind and Sighted Children Using Acoustical Rendition of Documentsâ€™ Visual Elements
-Kalliopi Eikospentaki and Dimitrios Tsonos and Georgios Kouroupetroglou and Stella Vosniadou
-2015
-During this study we planned an alternative teaching process, designed and based on inclusion, for tutoring the basic concepts of Observational Astronomy (OA) in an elementary school, taking into consideration the difficulties faced by both congenitally blind and sighted students. Following basic design-for-all principles, during a forty-five minutes teaching process, in which ten congenitally blind and ten sighted students participated, the educational material was presented in both visual and acoustic modalities, using an interactive whiteboard. An interview was then followed with each student in order to investigate their understanding of the scientific concepts of OA. The results of this study showed that congenitally blind and sighted students, after this alternative teaching process, experienced less difficulty in understanding the concepts of OA.
-Blind children, understanding of scientific concepts, document accessibility, alternative teaching process
+Decision making in dynamic and interactive environments based on cognitive hierarchy theory, Bayesian inference, and predictive control
+Li S., Li N., Girard A., Kolmanovsky I.
+2019
+In this paper, we describe an integrated framework for autonomous decision making in a dynamic and interactive environment. We model the interactions between the ego agent and its operating environment as a two-player dynamic game, and integrate cognitive behavioral models, Bayesian inference, and receding-horizon optimal control to define a dynamically-evolving decision strategy for the ego agent. Simulation examples representing autonomous vehicle control in three traffic scenarios where the autonomous ego vehicle interacts with a human-driven vehicle are reported. A,A(C) 2019 IEEE.
+

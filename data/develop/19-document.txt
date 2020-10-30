@@ -1,5 +1,5 @@
-Music Information Retrieval for Polyphonic Signals Using Hidden Markov Model
-S. Chithra and M.S. Sinith and A. Gayathri
-2015
-Now-a-days, almost all music can be easily accessed via the Internet, but at the same time music can be hard to find. This has created the demand for intelligent music retrieval which allows the user to access the songs that he or she likes. The idea of music information retrieval is basically used in music search systems. In a music search system there will be a huge database of songs. For an efficient music search system, when a particular song in the database is requested, the song has to be correctly identified and retrieved from the database. Music information retrieval for polyphonic music is presented here.
-Hidden Markov Model, Music Information Retrieval.
+Motion planning approach considering localization uncertainty
+Artunedo A., Villagra J., Godoy J., Castillo M.D.D.
+2020
+Localization plays an important role in autonomous driving since a high level of accuracy in vehicle localization is indispensable for a safe navigation. Most of the motion planning approaches in the literature assume negligible uncertainty in vehicle localization. However, the accuracy of localization systems can be low by design or even can drop depending on the environment in some cases. In these situations, the localization uncertainty can be taken into consideration in motion planning to increase the system reliability. Accordingly, this work presents two main contributions: (i) a probabilistic occupancy grid-based approach for localization uncertainty propagation, and (ii) a motion planning strategy that relies on such occupancy grid. Thus, the proposed motion planning solution for automated driving is able to generate safe human-like trajectories in real time while considering the localization uncertainty, ego-vehicle constrains and obstacles. In order to validate the proposed algorithms, several experiments have been conducted in a real environment. A,A(C) 1967-2012 IEEE.
+Automated driving; localization uncertainty; motion planning

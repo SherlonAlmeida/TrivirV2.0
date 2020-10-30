@@ -1,7 +1,0 @@
-TEXTOMAP: Determining Geographical Window for Texts
-Brun, Geoffrey and DominguÃ¨s, Catherine and Van Damme, M.-D.
-2015
-In newspapers or scholar manuals, numerous texts are accompanied by maps. In these map/text couples, maps give a spatial portrayal of the text issues, thus they make the spatial issues easier to understand. TEXTOMAP aims to design the geographical window of the text, based on the notion of important toponyms according to text issues. The important toponym selection is based on indicators which may be spatial, linguistic or semantic. Examples of geographical window calculation are shown and compared with the corresponding CLAVIN geographical focus. The work is in progress and perspectives are offered.
-
-
-gazetteer, geographic tagging, geographical window, information retrieval, natural language processing

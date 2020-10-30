@@ -1,7 +1,0 @@
-Improved Query-Topic Models Using Pseudo-Relevant PÃ³Lya Document Models
-Cummins, Ronan
-2017
-Query-expansion via pseudo-relevance feedback is a popular method of overcoming the problem of vocabulary mismatch and of increasing average retrieval effectiveness. In this paper, we develop a new method that estimates a query-topic model from a set of pseudo-relevant documents using a new language modelling framework. We assume that documents are generated via a mixture of multivariate Polya distributions, and we show that by identifying the topical terms in each document, we can appropriately select terms that are likely to belong to the query-topic model. The results of experiments on several TREC collections show that the new approach compares favourably to current state-of-the-art expansion methods.
-
-
-pseudo-relevance feedback, query models, relevance models

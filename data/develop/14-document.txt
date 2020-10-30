@@ -1,5 +1,5 @@
-MOSS-IR: Multi-Ontology Based Search System for Information Retrieval in E-health Domain
-V. Viji Rajendran and S. Swamynathan
-2015
-With the development of the Semantic Web, ontology has become the crucial means for representing concepts in various domains of interest. Although the current search engines return results based on keyword search and page ranking, human intervention is still required to select the most relevant document. Hence to overcome the disadvantages with the current search scenario, this paper proposes search based on multiple ontologies to make information retrieval efficient. It rewrites the user query by adding semantic information, after consulting multiple ontologies.
-Ontology, Semantic Web, Query expansion, Reasoning.
+Combining Planning and Deep Reinforcement Learning in Tactical Decision Making for Autonomous Driving
+Hoel C.-J., Driggs-Campbell K., Wolff K., Laine L., Kochenderfer M.J.
+2020
+Tactical decision making for autonomous driving is challenging due to the diversity of environments, the uncertainty in the sensor information, and the complex interaction with other road users. This article introduces a general framework for tactical decision making, which combines the concepts of planning and learning, in the form of Monte Carlo tree search and deep reinforcement learning. The method is based on the AlphaGo Zero algorithm, which is extended to a domain with a continuous state space where self-play cannot be used. The framework is applied to two different highway driving cases in a simulated environment and it is shown to perform better than a commonly used baseline method. The strength of combining planning and learning is also illustrated by a comparison to using the Monte Carlo tree search or the neural network policy separately. A,A(C) 2016 IEEE.
+Autonomous driving; Monte Carlo tree search; reinforcement learning; tactical decision making

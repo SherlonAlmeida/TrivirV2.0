@@ -1,7 +1,0 @@
-Improving Similar Document Retrieval Using a Recursive Pseudo Relevance Feedback Strategy
-Williams, Kyle and Giles, C. Lee
-2016
-We present a recursive pseudo relevance feedback strategy for improving retrieval performance in similarity search. The strategy recursively searches on search results returned for a given query and produces a tree that is used for ranking. Experiments on the Reuters 21578 and WebKB datasets show how the strategy leads to a significant improvement in similarity search performance.
-
-
-relevance feedback, similarity search

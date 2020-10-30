@@ -1,7 +1,0 @@
-Cross-Modal Image-Text Retrieval with Semantic Consistency
-Chen, Hui and Ding, Guiguang and Lin, Zijin and Zhao, Sicheng and Han, Jungong
-2019
-Cross-modal image-text retrieval has been a long-standing challenge in the multimedia community. Existing methods explore various complicated embedding spaces to assess the semantic similarity between a given image-text pair, but consider no/little about the consistency across them. To remedy this situation, we introduce the idea of semantic consistency for learning various embedding spaces jointly. Specifically, similar to the previous works, we start by constructing two different embedding spaces, namely the image-grounded embedding space and the text-grounded embedding space. However, instead of learning these two embedding spaces separately, we incorporate a semantic consistency constraint in the common ranking objective function such that both embedding spaces can be learned simultaneously and benefit from each other to gain performance improvement. We conduct extensive experiments on three benchmark datasets, \ie Flickr8k, Flickr30k and MS COCO. Results show that our model outperforms the state-of-the-art models on all three datasets, which can well demonstrate the effectiveness and superiority of the introduction of semantic consistency. Our source code is released at: \urlhttps://github.com/HuiChen24/SemanticConsistency.
-
-
-cross-modal, image-text retrieval, semantic consistency

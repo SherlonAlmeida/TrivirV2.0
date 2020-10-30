@@ -13,8 +13,8 @@ var pathlib = require('path');
 //var corpus = "../../data/demo";
 //var username = 'test';
 
-//ARQUIVOS SHERLON SOBRE TEXT RETRIEVAL (Poucos dados para facilitar no desenvolvimento, apenas os primeiros 50)
-var base = "../../data/develop/0-document.txt";
+//ARQUIVOS SHERLON SOBRE TEXT RETRIEVAL (Poucos dados para facilitar no desenvolvimento, apenas os primeiros 100)
+var base = "../../data/develop/seed_0.txt";
 var corpus = "../../data/develop";
 var username = 'admin';
 
