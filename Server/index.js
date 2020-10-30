@@ -18,20 +18,8 @@ var base = "../../data/develop/0-document.txt";
 var corpus = "../../data/develop";
 var username = 'admin';
 
-//ARQUIVOS SHERLON SOBRE 3D OBJECT RETRIEVAL
-//var base = "../../data/Sherlon3DObjectRetrieval/1-document.txt";
-//var corpus = "../../data/Sherlon3DObjectRetrieval";
-//var username = 'sherlon';
 
-//ARQUIVOS SHERLON SOBRE TEXT RETRIEVAL
-//var base = "../../data/SherlonText/0-document.txt"; //Trivir como Seed
-//var corpus = "../../data/SherlonText";
-//var username = 'sherlon';
 
-//ARQUIVOS ISADORA SOBRE UAVs
-//var base = "../../data/IsadoraUAVs/0-document.txt"; //Trivir como Seed
-//var corpus = "../../data/IsadoraUAVs";
-//var username = 'isadora';
 
 var path_core = "../../core/"+pathlib.basename(corpus);
 var path_users = "../../file/"+pathlib.basename(corpus)+"/"+username;

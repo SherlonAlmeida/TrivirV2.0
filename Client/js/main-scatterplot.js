@@ -72,11 +72,11 @@ function LoadScatterplot() {
                  .attr("class", "scatterplot-svg")
                  .call(zoomBeh)
       
-        
+        var circle_radius = 6;
         svg.selectAll(".dot")
           .data(datascatterplot)
           .enter().append("circle")         
-          .attr("r", 6)
+          .attr("r", circle_radius)
           .attr("cx", xMap)
           .attr("cy", yMap)    
           .style("fill", function(d) {return ScatterplotColor(d.name)})  

@@ -17,6 +17,6 @@ Descrição:
 	Server:
 		-nodemodules: possui os arquivos de dependências.
 		-scripts: possui os scripts backend do sistema, na linguagem R.
-		index.js: possui a condiguração do servidor e de suas funcionalidades.
+		index.js: possui a configuração do servidor e de suas funcionalidades.
 			-Existem função de Callback que assim que identificarem a requisição pelo front-end executam os scripts R.
 				-Todas as funções de Callback chamam o arquivo main.R passando por parâmetro os scripts a serem executados.

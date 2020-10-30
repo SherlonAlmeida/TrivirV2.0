@@ -47,7 +47,7 @@ defaultPreprocess <-function(text, withoutstopwords){
   text <- tolower(text);             #Sherlon: Converte o texto em minusculo
   #text <- removePunctuation(text);	 #Sherlon: Remove pontuacao
   #text <- removeNumbers(text);	     #Sherlon: Remove numeros
-  #text <- stripWhitespace(text);	 #Sherlon: Remove espacos em excesso
+  #text <- stripWhitespace(text);	   #Sherlon: Remove espacos em excesso
   
   text <- gsub("<[^>]*>'`","", text)
   
