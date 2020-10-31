@@ -33,6 +33,7 @@ defaultPreprocess <-function(text, withoutstopwords){
   text <- str_squish(text);
   return(text)
 }
+
 textPreprocess <- function(text, withoutstopwords, corpus){
   #get basename of corpus if another preprocess is needed
   return(defaultPreprocess(text, withoutstopwords));
@@ -76,6 +77,7 @@ getSynonyms <- function(term, path_core){
   return(syn_nn);
   
 }
+
 addTerm <- function(term, path_core, path_users, corpus){
   terms <- strsplit(term, " ")[[1]];
   term_list <- c();
