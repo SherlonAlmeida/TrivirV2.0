@@ -169,7 +169,7 @@ function LoadSuggestionList(callback) {
  });
 
 
- /* Removi a funcionalidade de Retreinamento do botao na suggestion, pois coloquei o botao mais visivel na interface principal
+ /* Sherlon: Removi a funcionalidade de Retreinamento do botao na suggestion, pois coloquei o botao mais visivel na interface principal
  $("#retrainbutton").unbind().click(function(e){  
          RetrainClassifier();
  });

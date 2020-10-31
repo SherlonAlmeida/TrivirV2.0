@@ -85,8 +85,10 @@ function setRelevantDocumentsWithNgram(ngram){
     if (ngram.length > 2){
         $("#focustoggle")[0].disabled = true;
         $("#suggestiontoggle")[0].disabled = true;
+        /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
         $("#suggestioncontainer").css("visibility", "hidden")
         $("#focuscontainer").css("visibility", "hidden")
+        */
         $.get('http://127.0.0.1:3000/setasrelevantdocwithngram?ngram='+ngram,function(resp) {                 
                  
                 saveNotRelevantList();
@@ -105,8 +107,10 @@ function setNotRelevantDocumentsWithNgram(ngram){
     if (ngram.length > 2){
         $("#focustoggle")[0].disabled = true;
         $("#suggestiontoggle")[0].disabled = true;
+        /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
         $("#suggestioncontainer").css("visibility", "hidden")
         $("#focuscontainer").css("visibility", "hidden")
+        */
         $.get('http://127.0.0.1:3000/setasnotrelevantdocwithngram?ngram='+ngram,function(resp) {                 
            
             saveNotRelevantList();
@@ -124,7 +128,9 @@ function setNotRelevantDocumentsWithNgram(ngram){
 function RetrainClassifier(){
   
     $("#suggestiontoggle")[0].disabled = true;
+    /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
     $("#suggestioncontainer").css("visibility", "hidden")
+    */
     
     $.post('http://127.0.0.1:3000/retrainclassifier', function(resp){
         saveNotRelevantList();
@@ -170,8 +176,10 @@ function setSimilarDocumentsAsNotRelevant(document){
     if (document.length > 2){
         $("#focustoggle")[0].disabled = true;       
         $("#suggestiontoggle")[0].disabled = true;
+        /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
         $("#suggestioncontainer").css("visibility", "hidden")
         $("#focuscontainer").css("visibility", "hidden")
+        */
         $.get('http://127.0.0.1:3000/setsimilarasnotrelevant?document='+document,function(resp) {                 
        
             saveNotRelevantList();
@@ -189,8 +197,10 @@ function setSimilarDocumentsAsRelevant(document){
     if (document.length > 2){
         $("#focustoggle")[0].disabled = true;        
         $("#suggestiontoggle")[0].disabled = true;
+        /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
         $("#suggestioncontainer").css("visibility", "hidden")
         $("#focuscontainer").css("visibility", "hidden")
+        */
         $.get('http://127.0.0.1:3000/setsimilarasrelevant?document='+document,function(resp) {                 
           
             saveNotRelevantList();           
@@ -223,21 +233,25 @@ function SelectOnScatterplot(document){
     StrokeCircle(document.docname)
 }
 
+/* Sherlon: This function shows the content in Document View*/
 function OpenDocument(name){
     $.get('http://127.0.0.1:3000/getdocument?docname='+name,function(resp) {                           
-        document.getElementById("docview").value = resp;            
+        document.getElementById("docview").value = resp;
     });   
     
 }
 
 function SetDocumentAsRelevant(document, source){    
     $("#suggestiontoggle")[0].disabled = true;
-    $("#focustoggle")[0].disabled = true;   
+    $("#focustoggle")[0].disabled = true;
+    /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
     $("#suggestioncontainer").css("visibility", "hidden")
     $("#focuscontainer").css("visibility", "hidden")
-    
+    */
+
     if (document.docname){     
         var color = ScatterplotColor(document.docname);
+
         if (color == colorNotRelevant){
             source = 'notrelevant'
         }
@@ -300,12 +314,16 @@ function SetDocumentAsNotRelevant(document, origin){
     var uri = encodeURI('http://127.0.0.1:3000/setasnotrelevant?docname='+ document_name + '&origin='+origin);
     if (origin == 'suggestion'){
         $("#suggestiontoggle")[0].disabled = true;
+        /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
         $("#suggestioncontainer").css("visibility", "hidden")
+        */
     }else if (origin == 'focus'){
         $("#focustoggle")[0].disabled = true;
         $("#suggestiontoggle")[0].disabled = true;
+        /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
         $("#suggestioncontainer").css("visibility", "hidden")
-        $("#focuscontainer").css("visibility", "hidden")      
+        $("#focuscontainer").css("visibility", "hidden")
+        */
     }else{
         $("#focustoggle")[0].disabled = true;       
     }  

@@ -82,6 +82,8 @@ function LoadScatterplot() {
           .style("fill", function(d) {return ScatterplotColor(d.name)})  
           .style("stroke", "#000")
           .attr("class", "dot")
+          
+          /* Sherlon: Removi o nome do documento, pois, de acordo com o especialista em IHC, esta funcionalidade faz o usuario desviar sua atenção.
           .on("mouseover", function(d) {           
               d3.transition()
                    .duration(200)
@@ -98,6 +100,7 @@ function LoadScatterplot() {
                    .select('.tooltip') 
                    .style("opacity", 0); 
           })
+          */
           .on("click", function(d, i){ 
             d3.selectAll(".dot").style("stroke-width", "1px")
             if (d3.select(this).style("stroke-width") == "1px"){                
@@ -110,7 +113,7 @@ function LoadScatterplot() {
                 if (($("#focustoggle")[0].disabled == false) && ($("#signaturetoggle")[0].disabled == false) && ($("#suggestiontoggle")[0].disabled == false) && (selected_circle.style("fill") != hexToRgb(colorBase))){
                     //Creating a new menu
                     //Defining the div that will contain the menu                 
-                     var options_scatter = d3.select("div#menucontainer").append("svg")     
+                     var options_scatter = d3.select("div#menucontainer").append("svg")
                                         .attr("class", "barmenu")
                                         .attr("width", function(){
                                             return barWidth;
@@ -162,12 +165,11 @@ function LoadScatterplot() {
                                 .attr("width", "25px")
                                 .attr("y", 10)
                                 .attr("x", 10) 
-                                .on("click", function(){                       
+                                .on("click", function(){
                                     d3.selectAll(".barmenu")
                                         .remove() 
                                     selected_circle.style("fill", hexToRgb(colorNotRelevant))
-                                    SetDocumentAsNotRelevant(d, 'scatter')           
-
+                                    SetDocumentAsNotRelevant(d, 'scatter')
                                 })  
                      }
                      if (selected_circle.style("fill") != hexToRgb(colorFocus)){
@@ -189,7 +191,7 @@ function LoadScatterplot() {
                                 d3.selectAll(".barmenu")
                                     .remove()  
                                 selected_circle.style("fill", hexToRgb(colorFocus));
-                                SetDocumentAsRelevant(d, 'scatter');                            
+                                SetDocumentAsRelevant(d, 'scatter');
                             })     
                     }
                     if (selected_circle.style("fill") == hexToRgb(colorFocus)){
@@ -243,6 +245,7 @@ function transform(d) {
 
 /* Functions called from control.js */
 
+/*Sherlon: this function identify the selected circle creating a border*/
 function StrokeCircle(docname){
     var circles = d3.selectAll(".dot")._groups[0]; 
     d3.selectAll(".dot").style("stroke-width", "1px")
