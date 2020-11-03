@@ -20,7 +20,6 @@ var username = 'admin';
 
 
 
-
 var path_core = "../../core/"+pathlib.basename(corpus);
 var path_users = "../../file/"+pathlib.basename(corpus)+"/"+username;
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -221,6 +220,8 @@ app.get('/getsimilardocuments', function(req, res){
     
 })
 
+
+/*Sherlon: The code below will read the content of a document and send to Document View in Client*/
 app.get('/getdocument', function(req, res){
     console.log("Getting document: " + req.query.docname);
     
@@ -578,7 +579,6 @@ app.get('/setsimilarasnotrelevant', function(req, res){
     }else{
        res.send('success');   
     }
-    
 })
 
 app.get('/getnotrelevantlist', function(req, res){

@@ -16,7 +16,11 @@
         
         <!--Arquivo CSS adicionado para definir o estilo das novas funcionalidades-->
         <link rel="stylesheet" type="text/css" href="styles/update-trivir.css">
-    </head> 
+
+        <!--Arquivo CSS adicionado para definir o estilo da Wordcloud-->
+        <link rel="stylesheet" type="text/css" href="styles/main-wordcloud.css">
+    </head>
+
     <body>
         <div id="termscontainer">
             <div id="termsrectcontainer">
@@ -116,15 +120,26 @@
 					</div>
 				</div>
 				
-				<!--Define o cabeçalho do Document View-->
-				<div id="docviewheader" title="Document View: This functionality allows to read the document content">
-					<h2>Document View</h2>
-				</div>
-				
-				<!--Define a area textual onde aparecera o conteudo do documento-->
-				<div id="docviewdiv">
-					<textarea id = "docview" readonly></textarea>
-				</div>
+                <!--Define o cabeçalho do Document View-->
+                <div id="docviewheader" title="Document View: This functionality allows to read the document content">
+                    <h2>Document View</h2>
+                </div>
+                <!--Define a area textual onde aparecera o conteudo do documento-->
+                <div id="docviewdiv">
+                    <textarea id = "docview" readonly></textarea>
+                </div>
+
+                <!--Define o cabeçalho da Wordcloud View-->
+                <div id="wordcloudviewheader" title="Word Cloud View: This functionality allows to see the main terms in the content of a document">
+                    <h2>Word Cloud View</h2>
+                </div>
+                <!--Define a area da Wordcloud na interface do sistema-->
+                <div id="wordcloudview">
+                    <div id = "wordcloudviewdiv">
+
+                    </div>
+                </div>
+
 			</div>
         </div>
         
@@ -152,8 +167,13 @@
     <script src = "js/main-signature.js"></script>
     <script src = "js/control.js"></script>
     <script src = "js/togglecontrol.js"></script>
-	
-	<!--Gerencia as novas funcionalidades inseridas-->
-	<script src = "js/update-trivir.js"></script>
     
+    <!--Gerencia as novas funcionalidades inseridas-->
+    <script src = "js/update-trivir.js"></script>
+
+    <!-- Scripts da Wordcloud -->
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+    <script src = "js/main-wordcloud.js"></script>
+
+
 </html>

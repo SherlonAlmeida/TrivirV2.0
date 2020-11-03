@@ -69,8 +69,20 @@
     top: 4px;
 }
 
+#wordcloudviewheader {
+    margin: 0px 0px 0px 3px;
+    width: 100%;
+    background-color: #ebebe0;
+    border: #6b6b47 1px solid;
+    height: 30px;
+    margin-top: 1px;
+    position: relative;
+    top: 4px;
+}
+
 #docviewheader h2,
-#scatterplotheader h2 {
+#scatterplotheader h2,
+#wordcloudviewheader h2 {
     text-align: center;
     font-size: 12px;
     font-weight: bold;

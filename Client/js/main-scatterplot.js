@@ -2,10 +2,11 @@ var svg;
 var xScale;
 var yScale;
 var datascatterplot;
-var colorFocus = "#17a2b8";
-var colorSuggestion = "#ffc107";
-var colorNotRelevant = "#d75a4a";
-var colorBase = "#007527";
+var colorFocus = "#17a2b8";       //Relevant (Blue)
+var colorSuggestion = "#ffc107";  //Suggested (Yellow)
+var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
+var colorBase = "#007527";        //Seed (Green)
+var colorRead = "#000000"         //Document already Read (Black)
 
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -72,7 +73,7 @@ function LoadScatterplot() {
                  .attr("class", "scatterplot-svg")
                  .call(zoomBeh)
       
-        var circle_radius = 6;
+        var circle_radius = 8; //Sherlon: This variable defines the size of the circle
         svg.selectAll(".dot")
           .data(datascatterplot)
           .enter().append("circle")         
@@ -80,6 +81,7 @@ function LoadScatterplot() {
           .attr("cx", xMap)
           .attr("cy", yMap)    
           .style("fill", function(d) {return ScatterplotColor(d.name)})  
+          //.style("stroke", function(d) {return ScatterplotColor(d.name)})
           .style("stroke", "#000")
           .attr("class", "dot")
           
@@ -101,9 +103,9 @@ function LoadScatterplot() {
                    .style("opacity", 0); 
           })
           */
-          .on("click", function(d, i){ 
+          .on("click", function(d, i){
             d3.selectAll(".dot").style("stroke-width", "1px")
-            if (d3.select(this).style("stroke-width") == "1px"){                
+            if (d3.select(this).style("stroke-width") == "1px"){
                 d3.select(this).style("stroke-width", "3px")
                 OpenDocument(d.name);
                 var selected_circle = d3.select(this);
@@ -142,9 +144,10 @@ function LoadScatterplot() {
                         .attr("width", 100)
                         .attr("fill", "#a9a9a9")                        
                         .attr("y", 8)
-                        .attr("x", 0)                
-                    //Defining the close button      
-                     options_scatter.append("svg:image")
+                        .attr("x", 0)
+                    
+                    //Defining the close button
+                    options_scatter.append("svg:image")
                             .attr("class", "barmenu")
                             .attr("xlink:href", "images/close.png")
                             .attr("width", "20px")
@@ -154,26 +157,29 @@ function LoadScatterplot() {
                             }) 
                             .on("click", function(){                            
                                 d3.selectAll(".barmenu")
-                                    .remove() 
-
+                                    .remove()
                             })
-                    //Defining the delete buttton
+                    
+                    //Defining the delete button (Red -)
+                    //Sherlon: Se o documento atual for amarelo ou azul, define ele como vermelho.
                     if (selected_circle.style("fill") != hexToRgb(colorNotRelevant)){
                          options_scatter.append("svg:image")
                                 .attr("class", "barmenu")
                                 .attr("xlink:href", "images/error.png")
                                 .attr("width", "25px")
                                 .attr("y", 10)
-                                .attr("x", 10) 
+                                .attr("x", 10)
                                 .on("click", function(){
                                     d3.selectAll(".barmenu")
                                         .remove() 
                                     selected_circle.style("fill", hexToRgb(colorNotRelevant))
                                     SetDocumentAsNotRelevant(d, 'scatter')
-                                })  
+                                })
                      }
+
+                     //Defining the add button (Blue)
+                     //Sherlon: Se o documento atual for cinza, amarelo ou vermelho, define ele como azul.
                      if (selected_circle.style("fill") != hexToRgb(colorFocus)){
-                        //Defining the add button
                         options_scatter.append("svg:image")
                             .attr("class", "barmenu")
                             .attr("xlink:href", "images/navigation-1.png")
@@ -191,9 +197,14 @@ function LoadScatterplot() {
                                 d3.selectAll(".barmenu")
                                     .remove()  
                                 selected_circle.style("fill", hexToRgb(colorFocus));
+                                //selected_circle.style("stroke", hexToRgb("#FF0000"));
+                                //selected_circle.style("stroke-width", "3px");
                                 SetDocumentAsRelevant(d, 'scatter');
                             })     
                     }
+
+                    //Defining the add Button (Green)
+                    //Sherlon: Se o documento atual for azul, define ele como verde e seus similares como azuis.
                     if (selected_circle.style("fill") == hexToRgb(colorFocus)){
                         options_scatter.append("svg:image")
                             .attr("class", "barmenu")
@@ -205,10 +216,12 @@ function LoadScatterplot() {
                                 d3.selectAll(".barmenu")
                                     .remove()
                                 selected_circle.style("fill", hexToRgb(colorBase))
-                                setSimilarDocumentsAsRelevant(d.name)                            
+                                setSimilarDocumentsAsRelevant(d.name)
                             })
-                        
                     }
+
+                    //Defining the delete Button (Red +)
+                    //Sherlon: Se o documento atual for vermelho, define todos seus similares como vermelhos
                     if (selected_circle.style("fill") == hexToRgb(colorNotRelevant)){
                          options_scatter.append("svg:image")
                             .attr("class", "barmenu")
@@ -218,12 +231,11 @@ function LoadScatterplot() {
                             .attr("x", 50)                           
                             .on("click", function(){                        
                                 d3.selectAll(".barmenu")
-                                    .remove()  
-                                
+                                    .remove()
                                 setSimilarDocumentsAsNotRelevant(d.name)                            
                             })                        
-                    }              
-                }                         
+                    }
+                }                        
             }
          });          
           
@@ -245,7 +257,7 @@ function transform(d) {
 
 /* Functions called from control.js */
 
-/*Sherlon: this function identify the selected circle creating a border*/
+/*Sherlon: this function identifies the selected circle and create a border*/
 function StrokeCircle(docname){
     var circles = d3.selectAll(".dot")._groups[0]; 
     d3.selectAll(".dot").style("stroke-width", "1px")
@@ -261,22 +273,20 @@ function StrokeCircle(docname){
 function UpdateScatterplotColors(name){    
     if (name != "null"){
         var circles = d3.selectAll(".dot")._groups[0];
-    
         for (var i = 0; i < circles.length; i++){  
             if (circles[i].__data__.name == name){
-                circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: "+circles[i].style.visibility)
+                circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)
                 break;
             }       
-        }  
+        }
     }else{
         
         var circles = d3.selectAll(".dot")._groups[0];
     
         for (var i = 0; i < circles.length; i++){ 
-            circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: "+circles[i].style.visibility)      
+            circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)      
         }         
     }
-   
 }
 
 function FilterScatterplot(documents){

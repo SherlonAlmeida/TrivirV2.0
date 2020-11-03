@@ -29,3 +29,18 @@ Fluxo de Execução:
 	-A interface (trivir.html) utiliza os códigos javascript para identificar a interação do usuário com o sistema.
 		Quando uma ação for identificada:
 			-O arquivo javascript correspondente realiza a requisição para o servidor.
+
+Referências:
+	Visualizações:
+		Gerais: https://www.d3-graph-gallery.com/index.html
+		Wordcloud: https://www.d3-graph-gallery.com/wordcloud.html
+		Wordcloud Basica: https://www.d3-graph-gallery.com/graph/wordcloud_basic.html
+		Tutorial: https://www.youtube.com/watch?v=1KEiTIu0k44
+		Wordcloud Completa: https://www.jasondavies.com/wordcloud/
+	D3.js:
+		Site: https://d3js.org/
+		Galeria D3: https://github.com/d3/d3/wiki/Gallery
+	W3C Schools:
+		Site: https://www.w3schools.com/default.asp
+	Vis-KT:
+		Sistema: http://vis-kt.vicg.icmc.usp.br/IC3/

@@ -3,10 +3,11 @@ var suggestion_list;
 var notrelevant_list;
 var similardocuments_list;
 
-var colorFocus = "#17a2b8";
-var colorSuggestion = "#ffc107";
-var colorNotRelevant = "#d75a4a";
-var colorBase = "#007527";
+var colorFocus = "#17a2b8";       //Relevant (Blue)
+var colorSuggestion = "#ffc107";  //Suggested (Yellow)
+var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
+var colorBase = "#007527";        //Seed (Green)
+var colorRead = "#FFFFFF"         //Document already Read (White)
 
 /*$(window).one("load", function(){
     initialize();
@@ -23,8 +24,8 @@ function saveSuggestionList(sug){
 }
 
 function saveNotRelevantList(){
-     $.get('http://127.0.0.1:3000/getnotrelevantlist',function(resp) {                           
-        notrelevant_list = JSON.parse(resp);   
+     $.get('http://127.0.0.1:3000/getnotrelevantlist',function(resp) {
+        notrelevant_list = JSON.parse(resp);
     }); 
 }
 
@@ -167,7 +168,7 @@ function ScatterplotColor(name){
     if (isNotRelevant(name)){
         return colorNotRelevant;
     }
-    return '#BDBDBD';
+    return '#BDBDBD'; //Not Labeled (Grey)
    
 }
 
@@ -203,7 +204,7 @@ function setSimilarDocumentsAsRelevant(document){
         */
         $.get('http://127.0.0.1:3000/setsimilarasrelevant?document='+document,function(resp) {                 
           
-            saveNotRelevantList();           
+            saveNotRelevantList();
             LoadFocusList(function(){
                 LoadSuggestionList(function(){                   
                     UpdateScatterplotColors("null")
@@ -236,9 +237,10 @@ function SelectOnScatterplot(document){
 /* Sherlon: This function shows the content in Document View*/
 function OpenDocument(name){
     $.get('http://127.0.0.1:3000/getdocument?docname='+name,function(resp) {                           
-        document.getElementById("docview").value = resp;
+        var text = document.getElementById("docview")
+        text.value = resp;
+        text.style.color = "black";
     });   
-    
 }
 
 function SetDocumentAsRelevant(document, source){    
@@ -270,8 +272,6 @@ function SetDocumentAsRelevant(document, source){
                     LoadSuggestionList(function(){})
                 }
             });
-
-
         });
     }else{       
         var color = ScatterplotColor(document.name);

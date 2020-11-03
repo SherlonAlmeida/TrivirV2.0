@@ -69,13 +69,15 @@ fasttextClassifier <- function(corpus, path_users, path_core){
   jsondata <- iconv(jsondata, to = "utf8")
   notrelevant <- fromJSON(jsondata);
   
-  body_relevant1 <- c();
-  body_relevant2 <- c();
-  body_relevant3 <- c();
-  body_notrelevant <- c();
+  body_relevant1 <- c();   #Green
+  body_relevant2 <- c();   #Blue
+  body_relevant3 <- c();   #Yellow
+  body_notrelevant <- c(); #Red
+  #name_relevant1 <- c();   #name Green #Sherlon: Coloquei esta linha (1)
   a <- 1;
   b <- 1;
   c <- 1;
+  #Sherlon: Get the body_processed information to train/predict
   for (i in 1:length(relevant[,1])){
     doc <- coordinates[which(coordinates[,'name'] == toString(relevant[i,'docname'])), 'body_preprocessed'];
     if (relevant[i,'label'] == 0.5){
@@ -88,6 +90,7 @@ fasttextClassifier <- function(corpus, path_users, path_core){
       }else{
         if (relevant[i,'label'] == 2){
           body_relevant1[a] = doc;
+          #name_relevant1[a] = relevant[i, 'docname']; #Sherlon: Creates a vector containing all Seed Document (Green) #Sherlon: Coloquei esta linha (2)
           a <- a + 1;
         }
       }
@@ -140,9 +143,15 @@ fasttextClassifier <- function(corpus, path_users, path_core){
   prob <- c();
   label <- c();
   k <- 1;
+
+  #Sherlon: The system will analyse all documents and filter which ones can be suggested as relevant "Yellow"
   for (indexF in 1:length(coordinates[,1])){
+    #Sherlon: If the current document is not "Green", is not "Blue" and is not "Red", the suggestion will consider it. (Consider only Grey)
     if ((!(coordinates[indexF,'name'] %in% relevant[,'docname'])) && (!(coordinates[indexF,'name'] %in% notrelevant[,'docname']))){
-  
+    #Sherlon: But the "Yellow" is not so good, because the "Blues" taken by KNN are better. So we must consider it at the same time in the suggested list.
+    #         so..., if the current document is not Green, and is not Red, the suggestion will consider it. (Consider Grey + Blue)
+    #if ((!(coordinates[indexF,'name'] %in% name_relevant1)) && (!(coordinates[indexF,'name'] %in% notrelevant[,'docname']))){ #Sherlon: Coloquei esta linha (3)
+      
       p <- predict(modelClass, sentences = coordinates[indexF,'body_preprocessed'])
       
       if ((names(p[[1]]) == "relevant1")||(names(p[[1]]) == "relevant2")||(names(p[[1]]) == "relevant3")){
