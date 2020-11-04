@@ -108,6 +108,7 @@ function LoadScatterplot() {
             if (d3.select(this).style("stroke-width") == "1px"){
                 d3.select(this).style("stroke-width", "3px")
                 OpenDocument(d.name);
+                GetWordFrequency(d.name);
                 var selected_circle = d3.select(this);
                 //Removing any existing menu
                 d3.selectAll(".barmenu")

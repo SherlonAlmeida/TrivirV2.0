@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var R = require('r-script');
 var pathlib = require('path');
+var sortJsonArray = require('sort-json-array');
 
 
 //Definição do Usuário e do Dataset a ser carregado
@@ -65,7 +66,6 @@ app.post('/installpackages', function (req, res) {
     .callSync()
     console.log(out);
     res.send(out);   
-    
 }); 
 
 app.post('/scatterplot', function (req, res) {
@@ -229,6 +229,57 @@ app.get('/getdocument', function(req, res){
     fs.readFile(path, "utf8", function(err, data){
             if (err) console.log(err); 
             res.send(data);
+    })       
+});
+
+/*Sherlon: The code below will sum the Word Frequency of a document and send to Client*/
+app.get('/getwordfrequency', function(req, res){
+    console.log("Getting word frequency of document: " + req.query.docname);
+    
+    fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/coordinates.json", "utf8", function(err, data){
+            if (err) console.log(err);
+
+            //Sherlon: Get the "body_processed" attribute from coordinates.json, because it is pre-processed (Without Stop-Words, Lematization, ...)
+            var jsonParsedArray = JSON.parse(data);
+            var text;
+            for (key in jsonParsedArray) {
+              if (jsonParsedArray[key]["name"] == req.query.docname){
+                text = jsonParsedArray[key]["body_preprocessed"];
+              }
+            }
+
+            var wordArray = text.split(/[ .?!,*'"]/);
+            var newArray = [], wordObj;
+            wordArray.forEach(function (word) {
+              wordObj = newArray.filter(function (w){
+                return w.text == word;
+              });
+              if (wordObj.length) {
+                wordObj[0].size += 1;
+              } else {
+                newArray.push({text: word, size: 1});
+              }
+            });
+
+            //Sherlon: Sorting the Json by size in descending order
+            newArray = sortJsonArray(newArray, 'size', 'des');
+
+            //Sherlon: The max number of Frequent Terms
+            var N = 10;
+            var newData = [];
+            //Sherlon: Select only the N most frequent words
+            for (var i = 0; i < newArray.length; i++){
+                if (i < N){
+                  var obj = newArray[i];
+                  newData.push({text: obj["text"], size: obj["size"]});
+                } else {
+                  break;
+                }
+            }
+            //console.log(newData);
+            
+            json = JSON.stringify(newData, null, 2);
+            res.send(json);
     })       
 });
 

@@ -31,16 +31,36 @@ Fluxo de Execução:
 			-O arquivo javascript correspondente realiza a requisição para o servidor.
 
 Referências:
-	Visualizações:
-		Gerais: https://www.d3-graph-gallery.com/index.html
-		Wordcloud: https://www.d3-graph-gallery.com/wordcloud.html
-		Wordcloud Basica: https://www.d3-graph-gallery.com/graph/wordcloud_basic.html
-		Tutorial: https://www.youtube.com/watch?v=1KEiTIu0k44
-		Wordcloud Completa: https://www.jasondavies.com/wordcloud/
 	D3.js:
 		Site: https://d3js.org/
 		Galeria D3: https://github.com/d3/d3/wiki/Gallery
+		Curso Udemy: https://www.udemy.com/course/d3js-data-visualization-projects/
+	Visualizações:
+		Gerais: https://www.d3-graph-gallery.com/index.html
+		Wordcloud:
+			Diversas: https://www.d3-graph-gallery.com/wordcloud.html
+			Tutorial Basico 1: https://www.d3-graph-gallery.com/graph/wordcloud_basic.html
+			Tutorial Basico 2: https://www.d3-graph-gallery.com/graph/wordcloud_custom.html
+			Tutorial Basico 3: https://www.d3-graph-gallery.com/graph/wordcloud_size.html
+			Wordcloud Completa: https://www.jasondavies.com/wordcloud/
+				Github: https://github.com/jasondavies/d3-cloud
+				Tutorial: https://www.youtube.com/watch?v=1KEiTIu0k44
+		Force Layout:
+			Gerais: https://www.d3-graph-gallery.com/network.html
+
+		Sankey Graph:
+			Gerais: https://www.d3-graph-gallery.com/sankey.html
+			Force-Directed Graph: https://observablehq.com/@d3/force-directed-graph
+
 	W3C Schools:
 		Site: https://www.w3schools.com/default.asp
 	Vis-KT:
-		Sistema: http://vis-kt.vicg.icmc.usp.br/IC3/
+		Original:
+			Sistema: http://vis-kt.vicg.icmc.usp.br/IC3/ (sherlon)
+		Eric: 
+			Sistema: http://vis-kt.vicg.icmc.usp.br/IC5/ (Sherlon)
+			Sankey: http://vis-kt.vicg.icmc.usp.br/IC5/sankey.html
+	Javascript:
+		Sheet Cheat: https://websitesetup.org/javascript-cheat-sheet/
+	Instalação biblioteca de ordenação JSON:
+		Link: https://www.npmjs.com/package/sort-json-array

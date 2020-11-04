@@ -136,7 +136,8 @@ function RetrainClassifier(){
     $.post('http://127.0.0.1:3000/retrainclassifier', function(resp){
         saveNotRelevantList();
         LoadSuggestionList(function(){
-           LoadScatterplot(); 
+           LoadScatterplot();
+           LoadWordcloud();
         });    
         
     })  
@@ -240,6 +241,13 @@ function OpenDocument(name){
         var text = document.getElementById("docview")
         text.value = resp;
         text.style.color = "black";
+    });   
+}
+
+/* Sherlon: This function get the word frequency of a document*/
+function GetWordFrequency(name){
+    $.get('http://127.0.0.1:3000/getwordfrequency?docname='+name,function(resp) {                           
+        LoadWordcloud(resp);
     });   
 }
 

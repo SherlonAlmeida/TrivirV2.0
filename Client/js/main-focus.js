@@ -6,6 +6,7 @@ function FocusBarClick(d, bar, barWidth, barColor, barHeight){
           .style("fill-opacity", 1);    
           SelectOnScatterplot(d);
           OpenDocument(d.docname);
+          GetWordFrequency(d.docname);
         
         //Removing any existing menu
         d3.selectAll(".barmenu")
