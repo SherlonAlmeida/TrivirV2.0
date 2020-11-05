@@ -47,11 +47,9 @@ Referências:
 				Tutorial: https://www.youtube.com/watch?v=1KEiTIu0k44
 		Force Layout:
 			Gerais: https://www.d3-graph-gallery.com/network.html
-
 		Sankey Graph:
 			Gerais: https://www.d3-graph-gallery.com/sankey.html
 			Force-Directed Graph: https://observablehq.com/@d3/force-directed-graph
-
 	W3C Schools:
 		Site: https://www.w3schools.com/default.asp
 	Vis-KT:

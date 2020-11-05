@@ -3,6 +3,11 @@ needs("jsonlite");
 #When running the code from RStudio, you need to comment the lines above and uncomment the lines bellow
 # library(jsonlite);
 
+createReadDocumentsFile <-function(path_users){
+  file.create(file=sprintf("%s/ReadDocuments.txt", path_users));
+}
+
+
 getDocumentsWithNgram <-function(ngram, path_users){
   
   con <- file(sprintf("%s/coordinates.json", path_users), encoding = "latin1");

@@ -83,7 +83,7 @@ function LoadFocusList(callback) {
    
     //PARAMETERS AND VARIABLES      
     dataFocusList = JSON.parse(d.responseText);  
-    saveFocusList(dataFocusList);      
+    saveFocusList(dataFocusList);
     document.getElementById('focustotal').innerHTML = "total: "+dataFocusList.length;
         
     d3.select(".focus-svg").remove();

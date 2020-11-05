@@ -6,7 +6,6 @@ var colorFocus = "#17a2b8";       //Relevant (Blue)
 var colorSuggestion = "#ffc107";  //Suggested (Yellow)
 var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
 var colorBase = "#007527";        //Seed (Green)
-var colorRead = "#000000"         //Document already Read (Black)
 
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -30,7 +29,7 @@ function LoadScatterplot() {
    
         //PARAMETERS AND VARIABLES
         datascatterplot = JSON.parse(d.responseText);    
-       
+        
         d3.select(".scatterplot-svg").remove();
         
         // add the tooltip area to the webpage
@@ -80,9 +79,9 @@ function LoadScatterplot() {
           .attr("r", circle_radius)
           .attr("cx", xMap)
           .attr("cy", yMap)    
-          .style("fill", function(d) {return ScatterplotColor(d.name)})  
-          //.style("stroke", function(d) {return ScatterplotColor(d.name)})
-          .style("stroke", "#000")
+          .style("fill", function(d) {return ScatterplotColor(d.name)})
+          .style("stroke", function(d) {return ScatterplotStroke(d.name)})
+          //.style("stroke", "#000")
           .attr("class", "dot")
           
           /* Sherlon: Removi o nome do documento, pois, de acordo com o especialista em IHC, esta funcionalidade faz o usuario desviar sua atenção.
@@ -126,16 +125,17 @@ function LoadScatterplot() {
                                         })
                                         .attr("fill","#d8eaff")
                      //Positioning the div                 
-                     yPos = d3.event.pageY - 35;
+                     yPos = d3.event.pageY - 55;
 
                      d3.select("div#menucontainer")
                             .style("left", function(){
-                                if ((selected_circle.style("fill") != hexToRgb(colorFocus)) && (selected_circle.style("fill")) != hexToRgb(colorNotRelevant)){
+                                //Sherlon: Porque eh preciso retornar valores diferentes? Esta ficando sobreposto ao circulo!
+                                /*if ((selected_circle.style("fill") != hexToRgb(colorFocus)) && (selected_circle.style("fill")) != hexToRgb(colorNotRelevant)){
                                     return (d3.event.pageX - 110) + "px";
                                 }else{
                                     return (d3.event.pageX - 55) + "px";
-                                }       
-
+                                }*/
+                                return (d3.event.pageX - 55) + "px";
                             })
                             .style("top", function(){return yPos+ "px"})
                     //Defining the background (rect) for the buttons
@@ -174,6 +174,8 @@ function LoadScatterplot() {
                                     d3.selectAll(".barmenu")
                                         .remove() 
                                     selected_circle.style("fill", hexToRgb(colorNotRelevant))
+                                    selected_circle.style("stroke", getReadStroke('wasread'));
+                                    selected_circle.style("stroke-width", "1px");
                                     SetDocumentAsNotRelevant(d, 'scatter')
                                 })
                      }
@@ -198,8 +200,8 @@ function LoadScatterplot() {
                                 d3.selectAll(".barmenu")
                                     .remove()  
                                 selected_circle.style("fill", hexToRgb(colorFocus));
-                                //selected_circle.style("stroke", hexToRgb("#FF0000"));
-                                //selected_circle.style("stroke-width", "3px");
+                                selected_circle.style("stroke", getReadStroke('wasread'));
+                                selected_circle.style("stroke-width", "1px");
                                 SetDocumentAsRelevant(d, 'scatter');
                             })     
                     }
@@ -212,11 +214,13 @@ function LoadScatterplot() {
                             .attr("xlink:href", "images/add-1.png")
                             .attr("width", "25px")
                             .attr("y", 10)
-                            .attr("x", 50)                           
-                            .on("click", function(){                        
+                            .attr("x", 50)
+                            .on("click", function(){
                                 d3.selectAll(".barmenu")
                                     .remove()
                                 selected_circle.style("fill", hexToRgb(colorBase))
+                                selected_circle.style("stroke", getReadStroke('wasread'));
+                                selected_circle.style("stroke-width", "1px");
                                 setSimilarDocumentsAsRelevant(d.name)
                             })
                     }
@@ -233,15 +237,15 @@ function LoadScatterplot() {
                             .on("click", function(){                        
                                 d3.selectAll(".barmenu")
                                     .remove()
-                                setSimilarDocumentsAsNotRelevant(d.name)                            
+                                selected_circle.style("stroke", getReadStroke('wasread'));
+                                selected_circle.style("stroke-width", "1px");
+                                setSimilarDocumentsAsNotRelevant(d.name)
                             })                        
                     }
-                }                        
+                }
             }
-         });          
-          
+         });
     })
-
 }
 
 function zoom() {

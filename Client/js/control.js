@@ -2,12 +2,14 @@ var relevant_list;
 var suggestion_list;
 var notrelevant_list;
 var similardocuments_list;
+var readDocuments_list;
 
 var colorFocus = "#17a2b8";       //Relevant (Blue)
 var colorSuggestion = "#ffc107";  //Suggested (Yellow)
 var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
 var colorBase = "#007527";        //Seed (Green)
-var colorRead = "#FFFFFF"         //Document already Read (White)
+var colorRead = "#FFF"            //Document already Read (White)
+var colorNotRead = "#000"         //Document not already Read (Black)
 
 /*$(window).one("load", function(){
     initialize();
@@ -27,6 +29,13 @@ function saveNotRelevantList(){
      $.get('http://127.0.0.1:3000/getnotrelevantlist',function(resp) {
         notrelevant_list = JSON.parse(resp);
     }); 
+}
+
+function saveReadDocumentsList(){
+    $.get('http://127.0.0.1:3000/wasdocumentread',function(resp) {
+        readDocuments_list = resp.split("\n");
+        //console.log(readDocuments_list.length);
+    });
 }
 
 function isBaseDocument(name){    
@@ -93,6 +102,7 @@ function setRelevantDocumentsWithNgram(ngram){
         $.get('http://127.0.0.1:3000/setasrelevantdocwithngram?ngram='+ngram,function(resp) {                 
                  
                 saveNotRelevantList();
+                saveReadDocumentsList();
                 LoadFocusList(function(){
                     LoadSuggestionList(function(){
                         UpdateScatterplotColors("null")
@@ -115,6 +125,7 @@ function setNotRelevantDocumentsWithNgram(ngram){
         $.get('http://127.0.0.1:3000/setasnotrelevantdocwithngram?ngram='+ngram,function(resp) {                 
            
             saveNotRelevantList();
+            saveReadDocumentsList();
             LoadFocusList(function(){
                 LoadSuggestionList(function(){                   
                     UpdateScatterplotColors("null")
@@ -135,9 +146,9 @@ function RetrainClassifier(){
     
     $.post('http://127.0.0.1:3000/retrainclassifier', function(resp){
         saveNotRelevantList();
+        saveReadDocumentsList();
         LoadSuggestionList(function(){
            LoadScatterplot();
-           LoadWordcloud();
         });    
         
     })  
@@ -152,7 +163,7 @@ function getSimilarDocuments(){
           FilterScatterplot(similardocuments_list)
        }); 
    }else{
-      FilterScatterplot(similardocuments_list); 
+      FilterScatterplot(similardocuments_list);
    }   
 }
 
@@ -173,6 +184,26 @@ function ScatterplotColor(name){
    
 }
 
+//Sherlon: Update the current document with the color colorRead or colorNotRead
+function getReadStroke(status){
+    if (status == "wasread"){
+        return colorRead;
+    }
+    return colorNotRead;
+}
+
+//Sherlon: Given a name, if the document was read return the colorRead variable, otherwise return colorNotRead
+function ScatterplotStroke(name){
+    //console.log(readDocuments_list);
+    var size = readDocuments_list.length-1;
+    for (var i = 0; i < size; i++){
+        if (readDocuments_list[i] == name){
+            return colorRead;
+        }            
+    }
+    return colorNotRead;
+}
+
 function setSimilarDocumentsAsNotRelevant(document){
 
     if (document.length > 2){
@@ -185,6 +216,7 @@ function setSimilarDocumentsAsNotRelevant(document){
         $.get('http://127.0.0.1:3000/setsimilarasnotrelevant?document='+document,function(resp) {                 
        
             saveNotRelevantList();
+            saveReadDocumentsList();
             LoadFocusList(function(){
                 LoadSuggestionList(function(){                   
                     UpdateScatterplotColors("null")
@@ -206,6 +238,7 @@ function setSimilarDocumentsAsRelevant(document){
         $.get('http://127.0.0.1:3000/setsimilarasrelevant?document='+document,function(resp) {                 
           
             saveNotRelevantList();
+            saveReadDocumentsList();
             LoadFocusList(function(){
                 LoadSuggestionList(function(){                   
                     UpdateScatterplotColors("null")
@@ -270,7 +303,7 @@ function SetDocumentAsRelevant(document, source){
         }
         $.get('http://127.0.0.1:3000/setasrelevant?docname='+document.docname +'&source=' + source ,function(resp) {    
             
-            console.log(resp)   
+            console.log(resp)
             LoadFocusList(function(){               
                 if (source != 'scatter'){                    
                     LoadSuggestionList(function(){
@@ -291,7 +324,7 @@ function SetDocumentAsRelevant(document, source){
         }
          $.get('http://127.0.0.1:3000/setasrelevant?docname='+document.name+'&source=' + source ,function(resp) {    
              
-            console.log(resp)   
+            console.log(resp)
             LoadFocusList(function(){
                 if (source != 'scatter'){                    
                     LoadSuggestionList(function(){
@@ -335,10 +368,11 @@ function SetDocumentAsNotRelevant(document, origin){
     }else{
         $("#focustoggle")[0].disabled = true;       
     }  
-    $.get(uri,function(resp) {    
-        console.log(resp)      
+    $.get(uri,function(resp) {
+        console.log(resp);
         if (origin == 'suggestion'){
             saveNotRelevantList();
+            saveReadDocumentsList();
             LoadSuggestionList(function(){
                UpdateScatterplotColors(document.docname) 
             });                  
@@ -350,6 +384,7 @@ function SetDocumentAsNotRelevant(document, origin){
             });         
         }else{
             saveNotRelevantList();
+            saveReadDocumentsList();
             LoadFocusList(function(){ UpdateScatterplotColors(document.docname);   })
         }        
     });    

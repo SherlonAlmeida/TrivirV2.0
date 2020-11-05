@@ -229,7 +229,17 @@ app.get('/getdocument', function(req, res){
     fs.readFile(path, "utf8", function(err, data){
             if (err) console.log(err); 
             res.send(data);
-    })       
+    })
+});
+
+/*Sherlon: The code below will verify that the current document has already been read and respond to the Client*/
+app.get('/wasdocumentread', function(req, res){
+    console.log("Getting read documents");
+    
+    fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/ReadDocuments.txt", "utf8", function(err, data){
+        if(err) console.log(err);
+        res.send(data);
+    })
 });
 
 /*Sherlon: The code below will sum the Word Frequency of a document and send to Client*/
@@ -351,8 +361,28 @@ app.post('/retrainclassifier', function (req, res) {
     }); 
 });
 
+//Sherlon: This function appends a document to the Read Documents List
+function updateReadDocuments(name){
+  //Sherlon: Saving current document as read
+    fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/ReadDocuments.txt", "utf8", function(err, data){
+      if(err) console.log(err);
+      
+      var readDocument;
+      readDocument = name + "\n" + data;
+      
+      fs.writeFile("../file/"+pathlib.basename(corpus)+"/"+username+"/ReadDocuments.txt", readDocument, "utf8", (err) => {
+            if (err) console.log(err);
+            console.log("Setting document as read: " + name); 
+      });
+    });
+}
+
 app.get('/setasnotrelevant', function (req, res) {
     console.log("Setting a document as NOT relevant " + req.query.docname + " from: " + req.query.origin);
+    
+    //Sherlon: Saving current document as read
+    updateReadDocuments(req.query.docname);
+
     if (req.query.origin == 'suggestion'){
            fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/suggestionlist.json", "utf8", function(err, data){
                       if(err) console.log(err);   
@@ -435,6 +465,9 @@ app.get('/setasrelevant', function (req, res) {
                     + currentdate.getSeconds();
       console.log(datetime);
       
+      //Sherlon: Saving current document as read
+      updateReadDocuments(req.query.docname);
+
       if (req.query.source == 'suggestion'){          
           fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/suggestionlist.json", "utf8", function(err, data){
                   if(err) console.log(err);   
@@ -524,8 +557,8 @@ app.get('/setasrelevant', function (req, res) {
 });
 
 app.get('/setasrelevantdocwithngram', function(req, res){
-    console.log("Setting relevant documents with ngram "+ req.query.ngram ); 
-    var currentdate = new Date(); 
+    console.log("Setting relevant documents with ngram "+ req.query.ngram );
+    var currentdate = new Date();
     var datetime = "Last Sync: " + currentdate.getDate() + "/"
                     + (currentdate.getMonth()+1)  + "/" 
                     + currentdate.getFullYear() + " @ "  
@@ -585,7 +618,10 @@ app.get('/setasnotrelevantdocwithngram', function(req, res){
 })
 
 app.get('/setsimilarasrelevant', function(req, res){
-    console.log("Setting as relevant similar documents to: "+ req.query.document );  
+    console.log("Setting as relevant similar documents to: "+ req.query.document );
+    
+    //Sherlon: Saving current document as read
+    updateReadDocuments(req.query.document);
     
     if (req.query.document.length > 2){
            R("./scripts/main.R")
@@ -602,7 +638,11 @@ app.get('/setsimilarasrelevant', function(req, res){
 })
 
 app.get('/setsimilarasnotrelevant', function(req, res){
-    console.log("Setting as not relevant similar documents to: "+ req.query.document ); 
+    console.log("Setting as not relevant similar documents to: "+ req.query.document );
+
+    //Sherlon: Saving current document as read
+    updateReadDocuments(req.query.document);
+
     var currentdate = new Date(); 
     var datetime = "Last Sync: " + currentdate.getDate() + "/"
                     + (currentdate.getMonth()+1)  + "/" 

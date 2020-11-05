@@ -71,6 +71,12 @@ if (command == "init"){
     source("tfidf.R");
     saveMostImportantTerms(baseDocument, corpus, path_core, path_users);
   }
+
+  #Documents that have already been read
+  if (!file.exists(sprintf("%s/ReadDocuments.txt", path_users))){
+    source("labelDocuments.R");
+    createReadDocumentsFile(path_users); #Sherlon: Creates an empty file
+  }
  
   print("success");
 
