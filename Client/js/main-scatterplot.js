@@ -6,6 +6,7 @@ var colorFocus = "#17a2b8";       //Relevant (Blue)
 var colorSuggestion = "#ffc107";  //Suggested (Yellow)
 var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
 var colorBase = "#007527";        //Seed (Green)
+var circle_radius = 8;            //Sherlon: This variable defines the size of the circle
 
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -60,7 +61,7 @@ function LoadScatterplot() {
         yScale.domain([d3.min(datascatterplot, yValue)-1, d3.max(datascatterplot, yValue)+1]); 
              
        var zoomBeh = d3.zoom()
-        .scaleExtent([.5, 20])
+        .scaleExtent([.5, 20]) //Sherlon: Zoom [min, max]
         .extent([[0, 0], [width, height]])
        .on("zoom", zoom);
          
@@ -72,7 +73,6 @@ function LoadScatterplot() {
                  .attr("class", "scatterplot-svg")
                  .call(zoomBeh)
       
-        var circle_radius = 8; //Sherlon: This variable defines the size of the circle
         svg.selectAll(".dot")
           .data(datascatterplot)
           .enter().append("circle")         
@@ -253,7 +253,12 @@ function zoom() {
     var new_yScale = d3.event.transform.rescaleY(yScale);
     svg.selectAll(".dot")
         .attr('cx', function(d) {return new_xScale(d['X1'])})
-        .attr('cy', function(d) {return new_yScale(d['X2'])});
+        .attr('cy', function(d) {return new_yScale(d['X2'])})
+        //Sherlon: The attr below will set the radius of all circles dinamycally according to the Zoom
+        .attr('r', function(d) {
+            var zoom = d3.event.transform.k;
+            return circle_radius + zoom;
+        });
 }
 
 function transform(d) {
