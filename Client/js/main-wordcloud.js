@@ -15,10 +15,9 @@ function LoadWordcloud(words){
                 "#DEDB67", "#EE3E3E", "#F19D2B "]
 
   // set the dimensions and margins of the graph
-  var margin = {top: 10, right: 10, bottom: 10, left: 10},
-      width = $("#wordcloudviewdiv").width() - 10,
-      height = (window.innerHeight * 0.50) - $("#termscontainer").height() - $("#docviewmenu").height() - 90;  //- margin.top - margin.bottom;
-      //var font_size = window.innerHeight / 40;
+  var margin = {top: 0, right: 0, bottom: 0, left: 0},
+      width = $("#wordcloudviewdiv").width(),
+      height = (window.innerHeight * 0.40) - $("#termscontainer").height() - $("#docviewmenu").height() - 30;  //- margin.top - margin.bottom;
 
   //Sherlon: Removes the previous wordcloud by the Class Name
   d3.selectAll(".wordcloudlayout")

@@ -4,9 +4,6 @@
     width: 25%;
 }
 
-/*Sherlon: Wordcloud View*/
-
-
 /*Sherlon: Document View*/
 #docviewmenu{
     display:flex;
@@ -18,16 +15,33 @@
     float: right;
 }
 
+#DocumentView {
+    width: 100%;
+    height: 60%; 
+    position: relative;
+}
+
+#docviewheader {
+    margin: 0px 0px 0px 3px;
+    width: 100%;
+    background-color: #ebebe0;
+    border: #6b6b47 1px solid;
+    height: 30px;
+    margin-top: 1px;
+    position: relative;
+    top: 4px;
+}
+
 #docviewdiv{    
     display: flex;
     width: 100%;
-    height: 50%; /*Sherlon: Mudei de 95 para 50, para incorporar a Wordcloud view*/
+    height: 100%;
 }
 
 #docview{ 
     margin: 3px;
     margin-right: 0px;
-    margin-bottom: 13px;
+    margin-bottom: 20px;
     padding-bottom: 0px;
     background-color: #FFF;
     text-align: justify; /*Sherlon: This will justify the content in Document View*/

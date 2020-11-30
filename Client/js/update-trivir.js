@@ -52,6 +52,7 @@ $(document).ready(function(){
 	
 	/*Se o usuario clicar no botao de dicas iniciara o Tour pelas funcionalidades do sistema*/
 	$("#TipsButton").click(function(){
-		alert("Clicou no Tips");
+		//alert("Clicou no Tips");
+		guided_tour();
 	});
 });

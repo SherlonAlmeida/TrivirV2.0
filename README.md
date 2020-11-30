@@ -52,6 +52,14 @@ Referências:
 			Gerais: https://www.d3-graph-gallery.com/sankey.html
 		Zooming:
 			Tutorial: https://www.d3-graph-gallery.com/graph/interactivity_zoom.html
+		Tour Website Tools (Guided Tour):
+			Link: https://ourcodeworld.com/articles/read/328/top-10-best-tour-website-guide-javascript-and-jquery-plugins
+			EnjoyHint: 
+				Site: https://xbsoftware.com/products/enjoyhint/
+				Documentation: https://github.com/xbsoftware/enjoyhint
+				Tutorial: https://www.sitepoint.com/hints-creation-with-enjoyhint/
+				Example1: https://github.com/sitepoint-editors/enjoyhint-demo
+				Example2: https://www.codeseek.co/eanbowman/enjoyhint-demo-yVbgEP
 	W3C Schools:
 		Site: https://www.w3schools.com/default.asp
 	Vis-KT:

@@ -11,8 +11,19 @@
         <link rel="stylesheet" type="text/css" href="styles/main-docview.css">
         <link rel="stylesheet" type="text/css" href="styles/main.css">
         <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
-        <!--<link rel="stylesheet" type="text/css" href="styles/bootstrap-tour.min.css"> Habilita o tour guiado de primeiro acesso ao usuario-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!--Habilita icones com o Font Awesome-->
+
+
+
+        <!--Habilita o tour guiado de primeiro acesso ao usuario-->
+        <!--<link rel="stylesheet" type="text/css" href="styles/bootstrap-tour.min.css">-->
+        <!-- EnjoyHint JS and CSS files -->
+        <script src="plugins/enjoyhint/enjoyhint.min.js"></script>
+        <link href="plugins/enjoyhint/enjoyhint.css" rel="stylesheet">
+
+
+
+        <!--Habilita icones com o Font Awesome-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         
         <!--Arquivo CSS adicionado para definir o estilo das novas funcionalidades-->
         <link rel="stylesheet" type="text/css" href="styles/update-trivir.css">
@@ -71,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <div id = "middleviewcontainer">
+            <div id="middleviewcontainer">
                 <div id="scatterplotmenu">
                     <div id="searchdocument">
 						<input type="text" id="searchdocumentinput" placeholder="Filter by words..."/> 
@@ -79,32 +90,36 @@
 					</div>                
 					<div id="filterscatterplot">
 						<input type="number" id="filterscatterplotinput" placeholder="kNN" min="1"/> 
-						<input type="image" class = "search-image" src = "images/filter_knn.png" id = "filterscatterplotbutton" title="Visualize the K most relevant documents"/>
+						<input type="image" class = "search-image" src = "images/filter_knn.png" id = "filterscatterplotbutton" title="Visualize the K most relevant documents to the initial query"/>
 					</div>
                     <input type="image" class = "search-image" src = "images/filtercolor.png" id = "filterrelevantsbutton" title="Visualize documents on focus and suggestion lists only"/>
                     <input type="image" class = "scatterbutton" src="images/close.png" id = "resetscatterplotbutton" title="Reset Scatterplot"/>
                 </div>
 				
-				<!--Define o cabeçalho do Scatterplot View-->
-				<div id="scatterplotheader" title="Scatterplot View: Each circle is a document and its neighborhood is composed by similar documents">
-					<h2>Scatterplot View</h2>
-				</div>
-				<div id="scatterplotdescription">
-					<span class="fa fa-circle scatterplotSeed" title="Seed: The initial and the selected document queries. These are the documents most related to your needs."></span>
-					<p>Seed</p>
-					<span class="fa fa-circle scatterplotRelevant" title="Relevant: These are the relevant documents. They are shown based in a similarity calculated using your classification. When you set a document as relevant, its 10 most similar documents are defined as relevant too."></span>
-					<p>Relevant</p>
-					<span class="fa fa-circle scatterplotNotRelevant" title="Not Relevant: These are the not relevant documents. When you set a document as not relevant, its 10 most similar documents are defined as not relevant too."></span>
-					<p>Not Relevant</p>
-					<span class="fa fa-circle scatterplotSuggested" title="Suggested: These are the documents suggested as relevant by the machine learning algorithm. "></span>
-					<p>Suggested</p>
-					<span class="fa fa-circle scatterplotUnlabeled" title="Unlabeled: These are all the documents that haven't been classified yet."></span>
-					<p>Unlabeled</p>
-				</div>
-				
-                <div id="scatterplotcontainer">
-                    
-                </div>          
+                <!--Encapsula a regiao abaixo para o Guided Tour-->
+                <div id="ScatterplotView">
+    				<!--Define o cabeçalho do Scatterplot View-->
+    				<div id="scatterplotheader" title="Scatterplot View: Each circle is a document and its neighborhood is composed by similar documents">
+    					<h2>Scatterplot View</h2>
+    				</div>
+    				<div id="scatterplotdescription">
+    					<span class="fa fa-circle scatterplotSeed" title="Seed: The initial and the selected document queries. These are the documents most related to your needs."></span>
+    					<p>Seed</p>
+    					<span class="fa fa-circle scatterplotRelevant" title="Relevant: These are the relevant documents. They are shown based in a similarity calculated using your classification. When you set a document as relevant, its 10 most similar documents are defined as relevant too."></span>
+    					<p>Relevant</p>
+    					<span class="fa fa-circle scatterplotNotRelevant" title="Not Relevant: These are the not relevant documents. When you set a document as not relevant, its 10 most similar documents are defined as not relevant too."></span>
+    					<p>Not Relevant</p>
+    					<span class="fa fa-circle scatterplotSuggested" title="Suggested: These are the documents suggested as relevant by the machine learning algorithm. "></span>
+    					<p>Suggested</p>
+    					<span class="fa fa-circle scatterplotUnlabeled" title="Unlabeled: These are all the documents that haven't been classified yet."></span>
+    					<p>Unlabeled</p>
+    				</div>
+    				
+                    <!--Area do Scatterplot-->
+                    <div id="scatterplotcontainer">
+                        
+                    </div>
+                </div>
             </div>
 			
             <div id="docviewcontainer">
@@ -120,23 +135,27 @@
 					</div>
 				</div>
 				
-                <!--Define o cabeçalho do Document View-->
-                <div id="docviewheader" title="Document View: This functionality allows to read the document content">
-                    <h2>Document View</h2>
-                </div>
-                <!--Define a area textual onde aparecera o conteudo do documento-->
-                <div id="docviewdiv">
-                    <textarea id = "docview" readonly></textarea>
-                </div>
+                <div id="DocumentView">
+                    <!--Define o cabeçalho do Document View-->
+                    <div id="docviewheader" title="Document View: This functionality allows to read the document content">
+                        <h2>Document View</h2>
+                    </div>
+                    <!--Define a area textual onde aparecera o conteudo do documento-->
+                    <div id="docviewdiv">
+                        <textarea id = "docview" readonly></textarea>
+                    </div>
+                </div>  
 
-                <!--Define o cabeçalho da Wordcloud View-->
-                <div id="wordcloudviewheader" title="Word Cloud View: This functionality allows to see the main terms in the content of a document">
-                    <h2>Word Cloud View</h2>
-                </div>
-                <!--Define a area da Wordcloud na interface do sistema-->
-                <div id="wordcloudview">
-                    <div id = "wordcloudviewdiv">
-                        
+                <div id="WordCloudView">
+                    <!--Define o cabeçalho da Wordcloud View-->
+                    <div id="wordcloudviewheader" title="Word Cloud View: This functionality allows to see the main terms in the content of a document">
+                        <h2>Word Cloud View</h2>
+                    </div>
+                    <!--Define a area da Wordcloud na interface do sistema-->
+                    <div id="wordcloudview">
+                        <div id = "wordcloudviewdiv">
+                            
+                        </div>
                     </div>
                 </div>
 
@@ -175,5 +194,8 @@
     <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
     <script src = "js/main-wordcloud.js"></script>
 
+
+    <!--Gerencia do Tour Guiado com o EnjoyHint-->
+    <script src = "js/guided-tour.js"></script>
 
 </html>

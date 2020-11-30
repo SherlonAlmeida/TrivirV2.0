@@ -46,36 +46,22 @@
 	background-color: #cc0000;  /*Cor do fundo*/
 }
 
-/*Estilo dos cabeçalhos*/
-#docviewheader {
-	margin: 0px 0px 0px 3px;
+/*Estilo das divs que encapsulam as regioes dos Hints do Guided Tour*/
+#ScatterplotView {
     width: 100%;
-    background-color: #ebebe0;
-    border: #6b6b47 1px solid;
-    height: 30px;
-    margin-top: 1px;
+    height: 100%;
     position: relative;
-    top: 4px;
 }
 
+/*Estilo dos cabeçalhos*/
+
 #scatterplotheader {
-	margin: 0px -1px -2px 0px;
-    width: 98.1%;
+    margin: 0px 0px 0px 5px;
+    width: 98.5%;
     background-color: #ebebe0;
     border: #6b6b47 1px solid;
     height: 30px;
     margin-top: 0px;
-    position: relative;
-    top: 4px;
-}
-
-#wordcloudviewheader {
-    margin: 0px 0px 0px 3px;
-    width: 100%;
-    background-color: #ebebe0;
-    border: #6b6b47 1px solid;
-    height: 30px;
-    margin-top: 1px;
     position: relative;
     top: 4px;
 }
@@ -96,8 +82,8 @@
 
 /*Define o estilo da explicação das cores dos Circulos*/
 #scatterplotdescription {
-	margin: 0px -1px -2px 0px;
-    width: 98.1%;
+	margin: 0px 0px 0px 5px;
+    width: 98.5%;
     background-color: whitesmoke;
     border: #6b6b47 1px solid;
     height: 30px;
