@@ -62,8 +62,10 @@
                     <div id="signaturecontainer">
                         <div id="signaturemenucontainer">
                             <div id="signaturemenu">
-                                <input type="text" id="searchngraminput"/> 
-                                <input type="image" class = "search-image" src = "images/search.png" id = "searchngrambutton" title="Search for ngram with the input term"/> 
+                                <div id="signaturesearch">
+                                    <input type="text" id="searchngraminput"/> 
+                                    <input type="image" class = "search-image" src = "images/search.png" id = "searchngrambutton" title="Search for ngram with the input term"/> 
+                                </div>
                                 <input type="image" class = "search-image" src = "images/filter_ngrams.png" id = "filtersignaturebutton" title="Visualize the ngrams that contain the important terms"/> 
                                 <input type="image" class = "scatterbutton" src="images/close.png" id = "resetsignaturebutton" title="Reset Signature"/>
                             </div>
@@ -103,15 +105,15 @@
     					<h2>Scatterplot View</h2>
     				</div>
     				<div id="scatterplotdescription">
-    					<span class="fa fa-circle scatterplotSeed" title="Seed: The initial and the selected document queries. These are the documents most related to your needs."></span>
+    					<span class="fa fa-circle scatterplotSeed" id="SeedColor" title="Seed: The initial and the selected document queries. These are the documents most related to your needs."></span>
     					<p>Seed</p>
-    					<span class="fa fa-circle scatterplotRelevant" title="Relevant: These are the relevant documents. They are shown based in a similarity calculated using your classification. When you set a document as relevant, its 10 most similar documents are defined as relevant too."></span>
+    					<span class="fa fa-circle scatterplotRelevant" id="RelevantColor" title="Relevant: These are the relevant documents. They are shown based in a similarity calculated using your classification. When you set a document as relevant, its 10 most similar documents are defined as relevant too."></span>
     					<p>Relevant</p>
-    					<span class="fa fa-circle scatterplotNotRelevant" title="Not Relevant: These are the not relevant documents. When you set a document as not relevant, its 10 most similar documents are defined as not relevant too."></span>
+    					<span class="fa fa-circle scatterplotNotRelevant" id="NotRelevantColor" title="Not Relevant: These are the not relevant documents. When you set a document as not relevant, its 10 most similar documents are defined as not relevant too."></span>
     					<p>Not Relevant</p>
-    					<span class="fa fa-circle scatterplotSuggested" title="Suggested: These are the documents suggested as relevant by the machine learning algorithm. "></span>
+    					<span class="fa fa-circle scatterplotSuggested" id="SuggestedColor" title="Suggested: These are the documents suggested as relevant by the machine learning algorithm. "></span>
     					<p>Suggested</p>
-    					<span class="fa fa-circle scatterplotUnlabeled" title="Unlabeled: These are all the documents that haven't been classified yet."></span>
+    					<span class="fa fa-circle scatterplotUnlabeled" id="UnlabeledColor" title="Unlabeled: These are all the documents that haven't been classified yet."></span>
     					<p>Unlabeled</p>
     				</div>
     				

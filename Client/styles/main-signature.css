@@ -51,6 +51,14 @@
     width: 100%;    
 }
 
+#signaturesearch{
+  margin-top: 8px;
+}
+
+#searchngrambutton{
+  margin-top: -6px;
+}
+
 #searchngraminput{
     display:flex;
     height: 18px; 
