@@ -10,7 +10,7 @@
 }
 
 .node .selected {
-  stroke: black;
+  stroke: red;
 }
 
 .link {

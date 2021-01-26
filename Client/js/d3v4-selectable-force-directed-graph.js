@@ -74,12 +74,14 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         .data(graph.nodes)
         .enter().append("circle")
         .attr("r", 5)
-        .attr("fill", function(d) { 
+        /*.attr("fill", function(d) { 
             if ('color' in d)
                 return d.color;
             else
                 return color(d.group); 
-        })
+        })*/
+        .attr("fill", function(d) {return ScatterplotColor(d.id)})     //Sherlon: Adiciona a cor dos documentos
+        .attr("stroke", function(d) {return ScatterplotStroke(d.id)})  //Sherlon: Adiciona a borda (Read / Unread)
         .call(d3v4.drag()
         .on("start", dragstarted)
         .on("drag", dragged)

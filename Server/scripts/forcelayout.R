@@ -47,7 +47,7 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
       name <- names(doclist[new_link]);
       distanceCos <- doclist[new_link];
 
-      #Creates a connection 
+      #Creates a connection only if the similarity is over a threshold
       if (distanceCos > threshold) {
         source_link[iter] <- docnames[indexFile];
         target_link[iter] <- name;

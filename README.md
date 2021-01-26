@@ -92,3 +92,5 @@ Referências:
 		Link: https://www.npmjs.com/package/sort-json-array
 	Compilador R online (Realizar testes):
 		Link: https://www.tutorialspoint.com/execute_r_online.php
+	Cheat Sheets are extremely useful:
+		R: https://rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf
