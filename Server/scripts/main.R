@@ -80,13 +80,24 @@ if (command == "init"){
  
   print("success");
 
-
 }else if (command == "scatterplotdata"){
+  
   source("scatterplot.R")
   if (!file.exists(sprintf("%s/coordinates.json", path_users))){
     createScatterplotCoordinates(path_core, path_users, projtech, embtech);
   }
   print("success");
+
+}else if (command == "forcelayoutdata"){
+  
+  #Force Layout Data (Graph)
+  source("forcelayout.R")
+  if (!file.exists(sprintf("%s/force-directed-graph.json", path_users))){
+    createForceLayoutData(path_core, path_users, projtech, embtech);
+  }
+
+  print("success");
+
 }else if (command == "focuslist"){
 
   if (!file.exists(sprintf("%s/focuslist.json", path_users))){
@@ -116,20 +127,22 @@ if (command == "init"){
   
   source("textclassifier.R");
   retrainClassifier(path_users, corpus);
-  
   print("success");
   
 }else if (command == "setrelevantngrambatch"){
+  
   source("labelDocuments.R");
   setRelevantNgramBatch(ngram, path_users, corpus);
   print("success");
   
 }else if (command == "setnotrelevantngrambatch"){
+  
   source("labelDocuments.R");
   setNotRelevantNgramBatch(ngram, path_users, corpus);
   print("success");
   
 }else if (command == 'setsimilarasrelevantbatch'){
+  
   source("labelDocuments.R");
   doclist <- c();
   doclist <- setRelevantSimilarBatch(document, path_users, path_core, corpus, embtech);
@@ -137,6 +150,7 @@ if (command == "init"){
   return(doclist);
   
 }else if (command == 'setsimilarasnotrelevantbatch'){
+  
   source("labelDocuments.R");
   setNotRelevantSimilarBatch(document, path_users, path_core, corpus, embtech);
   

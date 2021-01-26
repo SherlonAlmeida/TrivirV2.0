@@ -23,13 +23,14 @@ function hexToRgb(hex) {
     ].join(', ') + ")" : null;
 }
 
+/*This Function controls the Point Cloud in Scatter Plot View (Original Visualization)*/
 function LoadScatterplot() {
      d3.request("http://127.0.0.1:3000/scatterplot")    
      .header("Content-Type", "application/json")
      .post(function(error, d){
    
         //PARAMETERS AND VARIABLES
-        datascatterplot = JSON.parse(d.responseText);    
+        datascatterplot = JSON.parse(d.responseText);
         
         d3.select(".scatterplot-svg").remove();
         
@@ -40,7 +41,7 @@ function LoadScatterplot() {
        
         svg = d3.select("#scatterplotcontainer").append("svg"),
             margin = {top: 20, right: 20, bottom: 30, left: 40},
-            width = $("#scatterplotcontainer").width() - 10, // - margin.left - margin.right,
+            width = $("#scatterplotheader").width(), // - margin.left - margin.right,
             height = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height(),
             g = svg.append("g").attr("transform", "translate(" + (margin.left) + "," + margin.top + ")");
          
@@ -265,6 +266,35 @@ function transform(d) {
     return "translate(" + xScale(d['X1']) + "," + yScale(d['X2']) + ")";
 }
 
+/*This Function controls the Force Layout in Scatter Plot View*/
+function LoadForceLayout() {
+    d3.request("http://127.0.0.1:3000/forcelayout")    
+        .header("Content-Type", "application/json")
+        .post(function(error, d){
+            
+            //PARAMETERS AND VARIABLES
+            datascatterplot = JSON.parse(d.responseText);
+
+            //alert(d.responseText); //Texto plano do JSON
+            
+            d3.select(".scatterplot-svg").remove();
+            
+            svg = d3.select("#scatterplotcontainer").append("svg"),
+                margin = {top: 20, right: 20, bottom: 30, left: 40},
+                width = $("#scatterplotheader").width(), // - margin.left - margin.right,
+                height = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height(),
+                g = svg.append("g").attr("transform", "translate(" + (margin.left) + "," + margin.top + ")");
+            d3.select("#scatterplotcontainer")        
+                .style("height", height+"px")
+                .style("width", width +"px")        
+            svg.attr("height", height)
+                .attr("width", width)         
+                .attr("class", "scatterplot-svg")
+
+            createV4SelectableForceDirectedGraph(svg, datascatterplot);
+    })
+}
+
 /* Functions called from control.js */
 
 /*Sherlon: this function identifies the selected circle and create a border*/
@@ -383,3 +413,22 @@ $("#filterscatterplotbutton").unbind().click(function(e){
          getSimilarDocuments();
     }
 })
+
+//Radio para selecao da Visualizacao no Scatterplot View
+$('.scatterplotVisualizations input').on('change', function() {
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    
+    //alert(option);
+    
+    if (option == "Point Cloud") {
+        LoadScatterplot(); //Carregar a visualizacao Original (Nuvem de Pontos)
+    }
+
+    if (option == "Force Layout") {
+        LoadForceLayout(); //Carregar a visualizacao do Force layout
+    }
+
+    if (option == "Sankey Graph") {
+        //Carregar a visualizacao do Sankey Graph
+    }
+});

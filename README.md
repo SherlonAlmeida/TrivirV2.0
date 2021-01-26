@@ -42,26 +42,44 @@ Referências:
 			Tutorial Basico 1: https://www.d3-graph-gallery.com/graph/wordcloud_basic.html
 			Tutorial Basico 2: https://www.d3-graph-gallery.com/graph/wordcloud_custom.html
 			Tutorial Basico 3: https://www.d3-graph-gallery.com/graph/wordcloud_size.html
-			Wordcloud Completa: https://www.jasondavies.com/wordcloud/
+			(Usado) Wordcloud Completa: https://www.jasondavies.com/wordcloud/
 				Github: https://github.com/jasondavies/d3-cloud
 				Tutorial: https://www.youtube.com/watch?v=1KEiTIu0k44
 		Force Layout:
+			Documentation: https://github.com/d3/d3-force
 			Gerais: https://www.d3-graph-gallery.com/network.html
 			Force-Directed Graph: https://observablehq.com/@d3/force-directed-graph
+			Force-Layout with labes: https://bl.ocks.org/heybignick/3faf257bbbbc7743bb72310d03b86ee8
+			Disjoint Force-Directed Graph: https://observablehq.com/@d3/disjoint-force-directed-graph
+			Force-Directed Graph 1: http://bl.ocks.org/jhb/5955887
+			Force-Directed Graph 2: https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03
+			Force-Directed Graph 3: https://bl.ocks.org/heybignick/3faf257bbbbc7743bb72310d03b86ee8
+			(Usado) Force Directed Graph:
+				Link 1: http://emptypipes.org/2017/04/29/d3v4-selectable-zoomable-force-directed-graph/
+				Link 2: https://bl.ocks.org/pkerpedjiev/f2e6ebb2532dae603de13f0606563f5b
+				Link 3: https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a
 		Sankey Graph:
 			Gerais: https://www.d3-graph-gallery.com/sankey.html
 		Zooming:
-			Tutorial: https://www.d3-graph-gallery.com/graph/interactivity_zoom.html
+			(Usado) Tutorial: https://www.d3-graph-gallery.com/graph/interactivity_zoom.html
+			Initial Zoom: https://stackoverflow.com/questions/49960250/set-initial-d3-zoom-based-on-boundary-dynamically-v4
 		Tour Website Tools (Guided Tour):
 			Link: https://ourcodeworld.com/articles/read/328/top-10-best-tour-website-guide-javascript-and-jquery-plugins
-			EnjoyHint: 
+			(Usado) EnjoyHint: 
 				Site: https://xbsoftware.com/products/enjoyhint/
 				Documentation: https://github.com/xbsoftware/enjoyhint
 				Tutorial: https://www.sitepoint.com/hints-creation-with-enjoyhint/
 				Example1: https://github.com/sitepoint-editors/enjoyhint-demo
 				Example2: https://www.codeseek.co/eanbowman/enjoyhint-demo-yVbgEP
 	W3C Schools:
+		-Apresenta exemplos e dicas úteis para o desenvolvimento web.
 		Site: https://www.w3schools.com/default.asp
+	Functionalities:
+		Check Radio (Select different visualizations):
+			Front-End: https://getbootstrap.com/docs/4.0/components/forms/#checkboxes-and-radios
+			Back-End: https://stackoverflow.com/questions/596351/how-can-i-know-which-radio-button-is-selected-via-jquery
+		Nested JSON for send data via POST: (Sherlon: Usei para criar o grafo do Force Layout)
+			Link: https://stackoverflow.com/questions/51658128/create-nested-json-obj-in-r-for-httrpost
 	Vis-KT:
 		Original:
 			Sistema: http://vis-kt.vicg.icmc.usp.br/IC3/ (sherlon)
@@ -72,3 +90,5 @@ Referências:
 		Sheet Cheat: https://websitesetup.org/javascript-cheat-sheet/
 	Instalação biblioteca de ordenação JSON:
 		Link: https://www.npmjs.com/package/sort-json-array
+	Compilador R online (Realizar testes):
+		Link: https://www.tutorialspoint.com/execute_r_online.php

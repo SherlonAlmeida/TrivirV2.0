@@ -52,6 +52,7 @@ saveDocumentRepresentation <- function(corpus, path_core){
   k <- 1;
   
   for (indexF in 1:length(fileList)){
+    #Read the document content
     conn <- file(fileList[indexF],open="rt")
     doc <- readLines(conn);
     close(conn);

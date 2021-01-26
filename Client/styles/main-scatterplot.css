@@ -1,10 +1,10 @@
 #scatterplotcontainer{
     background-color: #FFF;/*whitesmoke;*/
-    width: 99.7%;
-    margin-top: 40px;
-    margin: 5px;    
+    width: 98.5%;
+    /*margin-top: 40px;*/ /*Sherlon: esta sendo atualizado em tempo de execucao pelo LoadScatterplot()*/
+    margin: 5px;
     display: flex;
-	border: #6b6b47 1px solid;	
+	border: #6b6b47 1px solid;
 }
 
 .scatterplot-svg{
@@ -23,6 +23,14 @@
     width: 100%;
     background-color: #212121;
     margin: 0px;    
+}
+
+/*Scatterplot Visualization Techniques*/
+.scatterplotVisualizations {
+    margin: 8px 0px 0px 15px;
+}
+.form-check-label {
+    color: white;
 }
 
 .search-image{

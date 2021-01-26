@@ -98,6 +98,36 @@ app.post('/scatterplot', function (req, res) {
   });      
 });
 
+app.post('/forcelayout', function (req, res) {
+  console.log("Initializing Force Layout"); 
+  fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/force-directed-graph.json", "utf8", function(err, data){
+              if(err){
+                  var out = R("./scripts/main.R")
+                  .data({"command": "forcelayoutdata", "corpus": corpus, "path_core": path_core, "path_users":path_users, "projtech": projtech, "embtech": embtech, "workingdir": workingdir})
+                  .callSync()
+                              
+                  if (out == "success"){
+                       fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/force-directed-graph.json", "utf8", function(err, data){
+                              if(err) console.log(err);
+                              console.log(out);
+                              var currentdate = new Date(); 
+                              var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                                    + (currentdate.getMonth()+1)  + "/" 
+                                    + currentdate.getFullYear() + " @ "  
+                                    + currentdate.getHours() + ":"  
+                                    + currentdate.getMinutes() + ":" 
+                                    + currentdate.getSeconds();
+                              console.log(datetime);
+                              res.send(data);
+                       });      
+                  }     
+              }else{
+                console.log("success");
+                res.send(data);  
+              }                     
+  });      
+});
+
 app.post('/focuslist', function(req, res){
     console.log("Initializing focus list");
     fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/focuslist.json", "utf8", function(err, data){

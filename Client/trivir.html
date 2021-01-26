@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="styles/main-docview.css">
         <link rel="stylesheet" type="text/css" href="styles/main.css">
         <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
-
+        <link rel='stylesheet' type="text/css" href="styles/d3v4-selectable-zoomable-force-directed-graph.css">
 
 
         <!--Habilita o tour guiado de primeiro acesso ao usuario-->
@@ -96,6 +96,22 @@
 					</div>
                     <input type="image" class = "search-image" src = "images/filtercolor.png" id = "filterrelevantsbutton" title="Visualize documents on focus and suggestion lists only"/>
                     <input type="image" class = "scatterbutton" src="images/close.png" id = "resetscatterplotbutton" title="Reset Scatterplot"/>
+
+                    <!--Scatterplot Visualization Techniques-->
+                    <div class="scatterplotVisualizations">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Point Cloud" checked>
+                            <label class="form-check-label" for="inlineRadio1">Points</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Force Layout">
+                            <label class="form-check-label" for="inlineRadio2">Force</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Sankey Graph">
+                            <label class="form-check-label" for="inlineRadio3">Sankey</label>
+                        </div>
+                    </div>
                 </div>
 				
                 <!--Encapsula a regiao abaixo para o Guided Tour-->
@@ -177,7 +193,9 @@
     <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-    <script src="https://d3js.org/d3-selection.v1.min.js"></script>  
+    <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+    <script src="https://d3js.org/d3-brush.v1.min.js"></script>
+    <script src="js/d3v4-selectable-force-directed-graph.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<!--<script src="js/bootstrap-tour.min.js"></script>  Habilita o tour guiado de primeiro acesso ao usuario-->
     
