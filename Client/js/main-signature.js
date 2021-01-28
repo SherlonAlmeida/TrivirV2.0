@@ -7,7 +7,7 @@ function init(update, callback) {
      .header("Content-Type", "application/json")
      .post(function(error, d){
         console.log(d);
-        if (d!= undefined){
+        if (d != undefined){
            //PARAMETERS AND VARIABLES
             dataServer = JSON.parse(d.responseText);
             dataServer.forEach(function(d, index){
@@ -18,6 +18,7 @@ function init(update, callback) {
   
     });
 }
+
 function barClick(d, bar, barColor, barWidth, barHeight){
     //Changing style of bar
     d3.selectAll(".bar-rect")
@@ -136,11 +137,18 @@ function barClick(d, bar, barColor, barWidth, barHeight){
 
         }) 
 }
+
 function LoadSignature(update, callback){
  
     if (filter_list.length > 0){       
-       data = dataServer.filter(function(d){ if (filter_list.includes(d.ngram) == true) return true; else{ return false;}})        
-    }else{
+        data = dataServer.filter(function(d){
+            if (filter_list.includes(d.ngram) == true)
+                return true;
+            else {
+                return false;
+            }
+        })        
+    } else {
        data = dataServer; 
     }  
         
@@ -169,7 +177,7 @@ function LoadSignature(update, callback){
         max = barWidth;
     }
     var TitlesSignatureBarWidth = max;      
-     d3.select("#signaturecontainer")        
+    d3.select("#signaturecontainer")        
         .style("height", height+"px")
         .style("width", width + "px")
         .style("overflow", "auto") 
@@ -307,14 +315,18 @@ $("#searchngrambutton").unbind().click(function(e){
     }
 })
 
+//Sherlon: Aqui comeca a execucao do sistema
 init("all", function(){
-    LoadTerms(function(){
-        LoadFocusList(function(){
-            LoadSuggestionList(function(){                        
-                LoadNotRelevantList(function(){
-                    if (d3.select("#scatterplotcontainer")._groups[0][0].children.length == 0){
-                        LoadScatterplot();
-                    }
+    
+    LoadTerms( function(){
+        LoadFocusList( function(){
+            LoadSuggestionList( function(){
+                LoadNotRelevantList( function(){
+                    LoadReadDocuments( function(){
+                        if (d3.select("#scatterplotcontainer")._groups[0][0].children.length == 0){
+                            LoadScatterplot();
+                        }
+                    })
                 })                            
             })
         })

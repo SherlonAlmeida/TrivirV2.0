@@ -7,7 +7,6 @@ createReadDocumentsFile <-function(path_users){
   file.create(file=sprintf("%s/ReadDocuments.txt", path_users));
 }
 
-
 getDocumentsWithNgram <-function(ngram, path_users){
   
   con <- file(sprintf("%s/coordinates.json", path_users), encoding = "latin1");

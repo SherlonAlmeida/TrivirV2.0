@@ -25,13 +25,13 @@ function hexToRgb(hex) {
 
 /*This Function controls the Point Cloud in Scatter Plot View (Original Visualization)*/
 function LoadScatterplot() {
-     d3.request("http://127.0.0.1:3000/scatterplot")    
-     .header("Content-Type", "application/json")
-     .post(function(error, d){
+    d3.request("http://127.0.0.1:3000/scatterplot")    
+    .header("Content-Type", "application/json")
+    .post(function(error, d){
    
         //PARAMETERS AND VARIABLES
         datascatterplot = JSON.parse(d.responseText);
-        
+
         d3.select(".scatterplot-svg").remove();
         
         // add the tooltip area to the webpage
@@ -61,49 +61,49 @@ function LoadScatterplot() {
         xScale.domain([d3.min(datascatterplot, xValue)-1, d3.max(datascatterplot, xValue)+1]);
         yScale.domain([d3.min(datascatterplot, yValue)-1, d3.max(datascatterplot, yValue)+1]); 
              
-       var zoomBeh = d3.zoom()
-        .scaleExtent([.5, 20]) //Sherlon: Zoom [min, max]
-        .extent([[0, 0], [width, height]])
-       .on("zoom", zoom);
+        var zoomBeh = d3.zoom()
+            .scaleExtent([.5, 20]) //Sherlon: Zoom [min, max]
+            .extent([[0, 0], [width, height]])
+            .on("zoom", zoom);
          
         d3.select("#scatterplotcontainer")        
-              .style("height", height+"px")
-              .style("width", width +"px")        
+            .style("height", height+"px")
+            .style("width", width +"px")        
         svg.attr("height", height)
-                 .attr("width", width)         
-                 .attr("class", "scatterplot-svg")
-                 .call(zoomBeh)
+            .attr("width", width)         
+            .attr("class", "scatterplot-svg")
+            .call(zoomBeh)
       
         svg.selectAll(".dot")
-          .data(datascatterplot)
-          .enter().append("circle")         
-          .attr("r", circle_radius)
-          .attr("cx", xMap)
-          .attr("cy", yMap)    
-          .style("fill", function(d) {return ScatterplotColor(d.name)})
-          .style("stroke", function(d) {return ScatterplotStroke(d.name)})
-          //.style("stroke", "#000")
-          .attr("class", "dot")
+            .data(datascatterplot)
+            .enter().append("circle")         
+            .attr("r", circle_radius)
+            .attr("cx", xMap)
+            .attr("cy", yMap)    
+            .style("fill", function(d) {return ScatterplotColor(d.name)})
+            .style("stroke", function(d) {return ScatterplotStroke(d.name)})
+            //.style("stroke", "#000")
+            .attr("class", "dot")
           
-          /* Sherlon: Removi o nome do documento, pois, de acordo com o especialista em IHC, esta funcionalidade faz o usuario desviar sua atenção.
-          .on("mouseover", function(d) {           
-              d3.transition()
-                   .duration(200)
-                   .select('.tooltip')                   
-                   .style("opacity", .9)                   
-              tooltip.html("<tooltiptext>"+d.name+"</tooltiptext>")
-                   .style("width", (getTextWidth(d.name, "12px Arial") + 20) + "px")
-                   .style("left", svg.node().getBoundingClientRect().left + "px")
-                   .style("top", svg.node().getBoundingClientRect().top + "px") 
+        /* Sherlon: Removi o nome do documento, pois, de acordo com o especialista em IHC, esta funcionalidade faz o usuario desviar sua atenção.
+        .on("mouseover", function(d) {           
+            d3.transition()
+               .duration(200)
+               .select('.tooltip')                   
+               .style("opacity", .9)                   
+            tooltip.html("<tooltiptext>"+d.name+"</tooltiptext>")
+               .style("width", (getTextWidth(d.name, "12px Arial") + 20) + "px")
+               .style("left", svg.node().getBoundingClientRect().left + "px")
+               .style("top", svg.node().getBoundingClientRect().top + "px") 
+        })
+        .on("mouseout", function(d) {
+            d3.transition()
+               .duration(500)
+               .select('.tooltip') 
+               .style("opacity", 0); 
           })
-          .on("mouseout", function(d) {
-              d3.transition()
-                   .duration(500)
-                   .select('.tooltip') 
-                   .style("opacity", 0); 
-          })
-          */
-          .on("click", function(d, i){
+        */
+        .on("click", function(d, i){
             d3.selectAll(".dot").style("stroke-width", "1px")
             if (d3.select(this).style("stroke-width") == "1px"){
                 d3.select(this).style("stroke-width", "3px")
@@ -116,29 +116,30 @@ function LoadScatterplot() {
                 if (($("#focustoggle")[0].disabled == false) && ($("#signaturetoggle")[0].disabled == false) && ($("#suggestiontoggle")[0].disabled == false) && (selected_circle.style("fill") != hexToRgb(colorBase))){
                     //Creating a new menu
                     //Defining the div that will contain the menu                 
-                     var options_scatter = d3.select("div#menucontainer").append("svg")
-                                        .attr("class", "barmenu")
-                                        .attr("width", function(){
-                                            return barWidth;
-                                        })
-                                        .attr("height", function(){
-                                            return barHeight + 10                        
-                                        })
-                                        .attr("fill","#d8eaff")
-                     //Positioning the div                 
-                     yPos = d3.event.pageY - 55;
+                    var options_scatter = d3.select("div#menucontainer").append("svg")
+                                            .attr("class", "barmenu")
+                                            .attr("width", function(){
+                                                return barWidth;
+                                            })
+                                            .attr("height", function(){
+                                                return barHeight + 10                        
+                                            })
+                                            .attr("fill","#d8eaff")
+                    //Positioning the div                 
+                    yPos = d3.event.pageY - 55;
 
-                     d3.select("div#menucontainer")
-                            .style("left", function(){
-                                //Sherlon: Porque eh preciso retornar valores diferentes? Esta ficando sobreposto ao circulo!
-                                /*if ((selected_circle.style("fill") != hexToRgb(colorFocus)) && (selected_circle.style("fill")) != hexToRgb(colorNotRelevant)){
-                                    return (d3.event.pageX - 110) + "px";
-                                }else{
-                                    return (d3.event.pageX - 55) + "px";
-                                }*/
+                    d3.select("div#menucontainer")
+                        .style("left", function(){
+                            //Sherlon: Porque eh preciso retornar valores diferentes? Esta ficando sobreposto ao circulo!
+                            /*if ((selected_circle.style("fill") != hexToRgb(colorFocus)) && (selected_circle.style("fill")) != hexToRgb(colorNotRelevant)){
+                                return (d3.event.pageX - 110) + "px";
+                            }else{
                                 return (d3.event.pageX - 55) + "px";
-                            })
-                            .style("top", function(){return yPos+ "px"})
+                            }*/
+                            return (d3.event.pageX - 55) + "px";
+                        })
+                        .style("top", function(){return yPos+ "px"})
+                    
                     //Defining the background (rect) for the buttons
                     options_scatter.append("rect")
                         .attr("class","barmenu")
@@ -165,20 +166,20 @@ function LoadScatterplot() {
                     //Defining the delete button (Red -)
                     //Sherlon: Se o documento atual for amarelo ou azul, define ele como vermelho.
                     if (selected_circle.style("fill") != hexToRgb(colorNotRelevant)){
-                         options_scatter.append("svg:image")
-                                .attr("class", "barmenu")
-                                .attr("xlink:href", "images/error.png")
-                                .attr("width", "25px")
-                                .attr("y", 10)
-                                .attr("x", 10)
-                                .on("click", function(){
-                                    d3.selectAll(".barmenu")
-                                        .remove() 
-                                    selected_circle.style("fill", hexToRgb(colorNotRelevant))
-                                    selected_circle.style("stroke", getReadStroke('wasread'));
-                                    selected_circle.style("stroke-width", "1px");
-                                    SetDocumentAsNotRelevant(d, 'scatter')
-                                })
+                        options_scatter.append("svg:image")
+                            .attr("class", "barmenu")
+                            .attr("xlink:href", "images/error.png")
+                            .attr("width", "25px")
+                            .attr("y", 10)
+                            .attr("x", 10)
+                            .on("click", function(){
+                                d3.selectAll(".barmenu")
+                                    .remove() 
+                                selected_circle.style("fill", hexToRgb(colorNotRelevant))
+                                selected_circle.style("stroke", getReadStroke('wasread'));
+                                selected_circle.style("stroke-width", "1px");
+                                SetDocumentAsNotRelevant(d, 'scatter')
+                            })
                      }
 
                      //Defining the add button (Blue)
@@ -195,7 +196,6 @@ function LoadScatterplot() {
                                 }else{
                                   return 50;  
                                 }
-                                
                             }) 
                             .on("click", function(){                        
                                 d3.selectAll(".barmenu")
@@ -245,7 +245,7 @@ function LoadScatterplot() {
                     }
                 }
             }
-         });
+        });
     })
 }
 

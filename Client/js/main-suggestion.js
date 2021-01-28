@@ -90,6 +90,10 @@ function SuggestionBarClick(d, bar, barWidth, barColor, barHeight){
 
 function LoadNotRelevantList(callback){
     saveNotRelevantList();
+    callback();    
+}
+
+function LoadReadDocuments(callback){
     saveReadDocumentsList();
     callback();    
 }

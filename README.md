@@ -49,14 +49,14 @@ Referências:
 			Documentation: https://github.com/d3/d3-force
 			Gerais: https://www.d3-graph-gallery.com/network.html
 			Force-Directed Graph: https://observablehq.com/@d3/force-directed-graph
-			Force-Layout with labes: https://bl.ocks.org/heybignick/3faf257bbbbc7743bb72310d03b86ee8
+			Force-Layout with labels: https://bl.ocks.org/heybignick/3faf257bbbbc7743bb72310d03b86ee8
 			Disjoint Force-Directed Graph: https://observablehq.com/@d3/disjoint-force-directed-graph
 			Force-Directed Graph 1: http://bl.ocks.org/jhb/5955887
 			Force-Directed Graph 2: https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03
 			Force-Directed Graph 3: https://bl.ocks.org/heybignick/3faf257bbbbc7743bb72310d03b86ee8
-			(Usado) Force Directed Graph:
+			Force Directed Graph:
 				Link 1: http://emptypipes.org/2017/04/29/d3v4-selectable-zoomable-force-directed-graph/
-				Link 2: https://bl.ocks.org/pkerpedjiev/f2e6ebb2532dae603de13f0606563f5b
+				(Usado) Link 2: https://bl.ocks.org/pkerpedjiev/f2e6ebb2532dae603de13f0606563f5b
 				Link 3: https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a
 		Sankey Graph:
 			Gerais: https://www.d3-graph-gallery.com/sankey.html

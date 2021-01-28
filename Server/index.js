@@ -266,7 +266,8 @@ app.get('/getdocument', function(req, res){
 app.get('/wasdocumentread', function(req, res){
     console.log("Getting read documents");
     
-    fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/ReadDocuments.txt", "utf8", function(err, data){
+    var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/ReadDocuments.txt";
+    fs.readFile(path, "utf8", function(err, data){ //Assincrono
         if(err) console.log(err);
         res.send(data);
     })
@@ -276,7 +277,8 @@ app.get('/wasdocumentread', function(req, res){
 app.get('/getwordfrequency', function(req, res){
     console.log("Getting word frequency of document: " + req.query.docname);
     
-    fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/coordinates.json", "utf8", function(err, data){
+    var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/coordinates.json";
+    fs.readFile(path, "utf8", function(err, data){
             if (err) console.log(err);
 
             //Sherlon: Get the "body_processed" attribute from coordinates.json, because it is pre-processed (Without Stop-Words, Lematization, ...)
@@ -326,7 +328,8 @@ app.get('/getwordfrequency', function(req, res){
 app.get('/deleteterm', function(req, res){
    console.log("Deleting term: " + req.query.term);
    //Remove ngram from JSON file
-    fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/ImportantTerms.json", "utf8", function(err, data){
+   var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/ImportantTerms.json";
+    fs.readFile(path, "utf8", function(err, data){
                   if(err) console.log(err);   
                   file = JSON.parse(data);
                   var keys = Object.keys(file);
@@ -394,7 +397,8 @@ app.post('/retrainclassifier', function (req, res) {
 //Sherlon: This function appends a document to the Read Documents List
 function updateReadDocuments(name){
   //Sherlon: Saving current document as read
-    fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/ReadDocuments.txt", "utf8", function(err, data){
+    var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/ReadDocuments.txt";
+    fs.readFile(path, "utf8", function(err, data){
       if(err) console.log(err);
       
       var readDocument;
@@ -704,11 +708,12 @@ app.get('/setsimilarasnotrelevant', function(req, res){
 
 app.get('/getnotrelevantlist', function(req, res){
   console.log("Getting list of not relevant documents");
-  fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/notrelevant.json", "utf8", function(err, data){
+  var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/notrelevant.json";
+  fs.readFile(path, "utf8", function(err, data){ //Assincrono
         if(err) console.log(err);   
-        console.log("success")
+        console.log("success");
         res.send(data);
-  });  
+  });
     
 })
 

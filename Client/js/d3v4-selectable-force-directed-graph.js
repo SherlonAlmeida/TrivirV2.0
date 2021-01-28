@@ -104,7 +104,6 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
                     return 30;
                     //var dist = 20 / d.value;
                     //console.log('dist:', dist);
-
                     return dist; 
                 })
               )
@@ -229,10 +228,15 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
 
         if (!d.selected && !shiftKey) {
             // if this node isn't selected, then we have to unselect every other node
-            node.classed("selected", function(p) { return p.selected =  p.previouslySelected = false; });
+            node.classed("selected", function(p) {
+                return p.selected =  p.previouslySelected = false;
+            });
         }
 
-        d3v4.select(this).classed("selected", function(p) { d.previouslySelected = d.selected; return d.selected = true; });
+        d3v4.select(this).classed("selected", function(p) { 
+            d.previouslySelected = d.selected;
+            return d.selected = true;
+        });
 
         node.filter(function(d) { return d.selected; })
         .each(function(d) { //d.fixed |= 2; 
@@ -243,21 +247,23 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
     }
 
     function dragged(d) {
-      //d.fx = d3v4.event.x;
-      //d.fy = d3v4.event.y;
-            node.filter(function(d) { return d.selected; })
-            .each(function(d) { 
-                d.fx += d3v4.event.dx;
-                d.fy += d3v4.event.dy;
-            })
+        //d.fx = d3v4.event.x;
+        //d.fy = d3v4.event.y;
+        node.filter(function(d) {
+            return d.selected;
+        })
+        .each(function(d) { 
+            d.fx += d3v4.event.dx;
+            d.fy += d3v4.event.dy;
+        })
     }
 
     function dragended(d) {
-      if (!d3v4.event.active) simulation.alphaTarget(0);
-      d.fx = null;
-      d.fy = null;
-        node.filter(function(d) { return d.selected; })
-        .each(function(d) { //d.fixed &= ~6; 
+        if (!d3v4.event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+            node.filter(function(d) { return d.selected; })
+                .each(function(d) { //d.fixed &= ~6; 
             d.fx = null;
             d.fy = null;
         })
