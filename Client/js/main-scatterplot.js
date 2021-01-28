@@ -310,7 +310,15 @@ function StrokeCircle(docname){
     doc.setAttribute("style", "fill: "+doc.style.fill+"; stroke: "+doc.style.stroke +"; stroke-width: 3px;");  
 }
 
-function UpdateScatterplotColors(name){    
+function UpdateScatterplotColors(name){
+    /* // Sherlon: Identificar a visualizacao ativa
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        console.log("POINT CLOUD QUE ESTA ATIVO");
+    } else if (option == "Force Layout") {
+        console.log("FORCE LAYOUT QUE ESTA ATIVO");
+    }*/
+
     if (name != "null"){
         var circles = d3.selectAll(".dot")._groups[0];
         for (var i = 0; i < circles.length; i++){  
@@ -320,9 +328,7 @@ function UpdateScatterplotColors(name){
             }       
         }
     }else{
-        
         var circles = d3.selectAll(".dot")._groups[0];
-    
         for (var i = 0; i < circles.length; i++){ 
             circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)      
         }         
