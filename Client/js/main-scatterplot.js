@@ -353,17 +353,45 @@ function FilterScatterplot(documents){
     k = +document.getElementById('filterscatterplotinput').value;
     k = k +1;    
     documents = documents.slice(0, k)
-    
-    d3.selectAll(".dot").style("visibility", "hidden")
-    var circles = d3.selectAll(".dot")._groups[0]; 
-    for (var i = 0; i < circles.length; i++){ 
-        for (var j = 0 ; j < documents.length; j++){        
-            if (circles[i].__data__.name == documents[j].replace(/['"]+/g, '')){
-                
-                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
+
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        d3.selectAll(".dot").style("visibility", "hidden")
+        var circles = d3.selectAll(".dot")._groups[0]; 
+        for (var i = 0; i < circles.length; i++){ 
+            for (var j = 0 ; j < documents.length; j++){        
+                if (circles[i].__data__.name == documents[j].replace(/['"]+/g, '')){
+                    circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
+                }
+            }        
+        }
+    } else if (option == "Force Layout") {
+        var visible_documents = []
+
+        //Define a visibilidade dos pontos
+        d3.selectAll(".node .dot").style("visibility", "hidden") 
+        var nodes = d3.selectAll(".node .dot")._groups[0];
+        for (var i = 0; i < nodes.length; i++){
+            for (var j = 0 ; j < documents.length; j++){
+                if (d3.select(nodes[i]).attr("name") == documents[j].replace(/['"]+/g, '')){
+                    nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
+                    visible_documents.push(d3.select(nodes[i]).attr("name"));
+                }
             }
-            
-        }        
+        }
+        
+        //Define a visibilidade das arestas
+        d3.selectAll(".link .edge").style("visibility", "hidden")
+        var links = d3.selectAll(".link .edge")._groups[0];
+        for (var i = 0; i < links.length; i++){
+            //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
+            //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
+            var source = d3.select(links[i]).attr("source");
+            var target = d3.select(links[i]).attr("target");
+            if (visible_documents.includes(source) && visible_documents.includes(target)){
+                links[i].setAttribute("style", "visibility: visible");
+            }
+        }
     }
 }
 
