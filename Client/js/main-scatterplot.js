@@ -312,19 +312,39 @@ function StrokeCircle(docname){
 }
 
 function UpdateScatterplotColors(name){
-    if (name != "null"){
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
         var circles = d3.selectAll(".dot")._groups[0];
-        for (var i = 0; i < circles.length; i++){  
-            if (circles[i].__data__.name == name){
-                circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)
-                break;
-            }       
+        //Se um documento for passado como parametro, atualiza apenas este documento
+        if (name != "null"){
+            for (var i = 0; i < circles.length; i++){  
+                if (circles[i].__data__.name == name){
+                    circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)
+                    break;
+                }       
+            }
+        //Mas se nenhum documento for passado como parametro, atualiza todos os documentos
+        } else{
+            for (var i = 0; i < circles.length; i++){ 
+                circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)      
+            }         
         }
-    }else{
-        var circles = d3.selectAll(".dot")._groups[0];
-        for (var i = 0; i < circles.length; i++){ 
-            circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)      
-        }         
+    } else if (option == "Force Layout") {
+        var nodes = d3.selectAll(".node .dot")._groups[0];
+        //Se um documento for passado como parametro, atualiza apenas este documento
+        if (name != "null"){
+            for (var i = 0; i < nodes.length; i++){  
+                if (d3.select(nodes[i]).attr("name") == name){
+                    nodes[i].setAttribute("style", "fill: "+ ScatterplotColor(d3.select(nodes[i]).attr("name"))+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+nodes[i].style.visibility)
+                    break;
+                }       
+            }
+        //Mas se nenhum documento for passado como parametro, atualiza todos os documentos
+        } else{
+            for (var i = 0; i < nodes.length; i++){ 
+                nodes[i].setAttribute("style", "fill: "+ ScatterplotColor(d3.select(nodes[i]).attr("name"))+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+nodes[i].style.visibility)      
+            }         
+        }
     }
 }
 
@@ -340,7 +360,7 @@ function FilterScatterplot(documents){
         for (var j = 0 ; j < documents.length; j++){        
             if (circles[i].__data__.name == documents[j].replace(/['"]+/g, '')){
                 
-                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible"); 
+                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
             }
             
         }        
@@ -357,7 +377,7 @@ function showDocumentsWithNgram(text){
             circle_name = circles[i].__data__.body_preprocessed.toLowerCase();
             text = text.toLowerCase();
             if(circle_name.includes(text)){
-                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible");                         
+                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");                         
             }        
         }   
     }  
@@ -393,7 +413,7 @@ $("#searchdocumentbutton").unbind().click(function(e){
             circle_name = circles[i].__data__.body.toLowerCase();
             text = text.toLowerCase();
             if(circle_name.includes(text)){
-                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible");                         
+                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");                         
             }        
         }   
     }
@@ -408,7 +428,7 @@ $("#filterrelevantsbutton").unbind().click(function(e){
         var circles = d3.selectAll(".dot")._groups[0];
         for (var i = 0; i < circles.length; i++){ 
             if ((circles[i].style.fill == hexToRgb(colorFocus))||(circles[i].style.fill == hexToRgb(colorBase))||(circles[i].style.fill == hexToRgb(colorSuggestion))){
-                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible"); 
+                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
             }
         }
     } else if (option == "Force Layout") {
@@ -420,7 +440,7 @@ $("#filterrelevantsbutton").unbind().click(function(e){
         for (var i = 0; i < nodes.length; i++){
             //console.log(d3.select(nodes[i]).attr("name"));
             if ((nodes[i].style.fill == hexToRgb(colorFocus))||(nodes[i].style.fill == hexToRgb(colorBase))||(nodes[i].style.fill == hexToRgb(colorSuggestion))){
-                nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible");
+                nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
                 visible_documents.push(d3.select(nodes[i]).attr("name"));
             }
         }
