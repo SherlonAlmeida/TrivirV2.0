@@ -295,6 +295,7 @@ function LoadForceLayout() {
     })
 }
 
+
 /* Functions called from control.js */
 
 /*Sherlon: this function identifies the selected circle and create a border*/
@@ -311,14 +312,6 @@ function StrokeCircle(docname){
 }
 
 function UpdateScatterplotColors(name){
-    /* // Sherlon: Identificar a visualizacao ativa
-    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
-    if (option == "Point Cloud") {
-        console.log("POINT CLOUD QUE ESTA ATIVO");
-    } else if (option == "Force Layout") {
-        console.log("FORCE LAYOUT QUE ESTA ATIVO");
-    }*/
-
     if (name != "null"){
         var circles = d3.selectAll(".dot")._groups[0];
         for (var i = 0; i < circles.length; i++){  
@@ -374,10 +367,16 @@ function showDocumentsWithNgram(text){
 /* Scatterplot Menu Buttons*/
 
 //Botão de reset do Scatterplot (Xis vermelho)
-$("#resetscatterplotbutton").unbind().click(function(e){  
+$("#resetscatterplotbutton").unbind().click(function(e){
     $("#resetscatterplotbutton").css("visibility", "hidden");
-    d3.selectAll(".dot").style("visibility", "visible")
-    d3.selectAll(".dot").style("opacity", "1.0")
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        d3.selectAll(".dot").style("visibility", "visible")
+        d3.selectAll(".dot").style("opacity", "1.0")
+    } else if (option == "Force Layout") {
+        d3.selectAll(".node .dot").style("visibility", "visible")
+        d3.selectAll(".link .edge").style("visibility", "visible")
+    }
     document.getElementById('searchdocumentinput').value = "";
     document.getElementById('filterscatterplotinput').value = "";
 })
@@ -402,13 +401,42 @@ $("#searchdocumentbutton").unbind().click(function(e){
 
 //Botão de filtrar por relevantes, ou seja, o Point Clutter Reduction (Gotas)
 $("#filterrelevantsbutton").unbind().click(function(e){
-   $("#resetscatterplotbutton").css("visibility", "visible");
-   d3.selectAll(".dot").style("visibility", "hidden") 
-   var circles = d3.selectAll(".dot")._groups[0]; 
-   for (var i = 0; i < circles.length; i++){ 
-       if ((circles[i].style.fill == hexToRgb(colorFocus))||(circles[i].style.fill == hexToRgb(colorBase))||(circles[i].style.fill == hexToRgb(colorSuggestion))){
-           circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible"); 
-       }  
+    $("#resetscatterplotbutton").css("visibility", "visible");
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        d3.selectAll(".dot").style("visibility", "hidden") 
+        var circles = d3.selectAll(".dot")._groups[0];
+        for (var i = 0; i < circles.length; i++){ 
+            if ((circles[i].style.fill == hexToRgb(colorFocus))||(circles[i].style.fill == hexToRgb(colorBase))||(circles[i].style.fill == hexToRgb(colorSuggestion))){
+                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible"); 
+            }
+        }
+    } else if (option == "Force Layout") {
+        var visible_documents = []
+
+        //Define a visibilidade dos pontos
+        d3.selectAll(".node .dot").style("visibility", "hidden") 
+        var nodes = d3.selectAll(".node .dot")._groups[0];
+        for (var i = 0; i < nodes.length; i++){
+            //console.log(d3.select(nodes[i]).attr("name"));
+            if ((nodes[i].style.fill == hexToRgb(colorFocus))||(nodes[i].style.fill == hexToRgb(colorBase))||(nodes[i].style.fill == hexToRgb(colorSuggestion))){
+                nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opactity: 1.0; visibility: visible");
+                visible_documents.push(d3.select(nodes[i]).attr("name"));
+            }
+        }
+        
+        //Define a visibilidade das arestas
+        d3.selectAll(".link .edge").style("visibility", "hidden")
+        var links = d3.selectAll(".link .edge")._groups[0];
+        for (var i = 0; i < links.length; i++){
+            //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
+            //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
+            var source = d3.select(links[i]).attr("source");
+            var target = d3.select(links[i]).attr("target");
+            if (visible_documents.includes(source) && visible_documents.includes(target)){
+                links[i].setAttribute("style", "visibility: visible");
+            }
+        }
     }   
 });
 

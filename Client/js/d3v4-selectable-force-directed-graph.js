@@ -75,7 +75,9 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         .selectAll("line")
         .data(graph.links)
         .enter().append("line")
-        .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+        .attr("stroke-width", function(d) { return Math.sqrt(d.value); })
+        .attr("class", "edge") //-------------------->Sherlon: Adicionei para definir a visibilidade das arestas
+        .style("visibility", "visible"); //---------->Sherlon: Adicionei para definir a visibilidade das arestas
 
     var node = gDraw.append("g")
         .attr("class", "node")
@@ -83,14 +85,17 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         .data(graph.nodes)
         .enter().append("circle")
         .attr("r", 5)
+        .attr("class", "dot") //-------------------->Sherlon: Adicionei para definir a visibilidade dos pontos
         /*.attr("fill", function(d) { 
             if ('color' in d)
                 return d.color;
             else
                 return color(d.group); 
         })*/
-        .attr("fill", function(d) {return ScatterplotColor(d.id)})     //Sherlon: Adiciona a cor dos documentos
-        .attr("stroke", function(d) {return ScatterplotStroke(d.id)})  //Sherlon: Adiciona a borda (Read / Unread)
+        .style("fill", function(d) {return ScatterplotColor(d.id)})     //Sherlon: Adiciona a cor dos documentos (Mudei de .attr para .style)
+        .style("stroke", function(d) {return ScatterplotStroke(d.id)})  //Sherlon: Adiciona a borda (Read / Unread) (Mudei de .attr para .style)
+        .style("visibility", "visible") //-------------------->Sherlon: Adicionei para definir a visibilidade dos pontos
+
         .call(d3v4.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
@@ -134,10 +139,13 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         link.attr("x1", function(d) { return d.source.x; })
             .attr("y1", function(d) { return d.source.y; })
             .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
+            .attr("y2", function(d) { return d.target.y; })
+            .attr("source", function(d) { return d.source.id; })    //Sherlon: Adicionei para poder verificar a visibilidade das arestas
+            .attr("target", function(d) { return d.target.id; });   //Sherlon: Adicionei para poder verificar a visibilidade das arestas
 
         node.attr("cx", function(d) { return d.x; })
-            .attr("cy", function(d) { return d.y; });
+            .attr("cy", function(d) { return d.y; })
+            .attr("name", function(d) { return d.id; });    //Sherlon: Adicionei para poder verificar a visibilidade das arestas
     }
 
     var brushMode = false;
