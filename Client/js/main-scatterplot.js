@@ -300,15 +300,29 @@ function LoadForceLayout() {
 
 /*Sherlon: this function identifies the selected circle and create a border*/
 function StrokeCircle(docname){
-    var circles = d3.selectAll(".dot")._groups[0]; 
-    d3.selectAll(".dot").style("stroke-width", "1px")
-    for (var i = 0; i < circles.length; i++){      
-         if(circles[i].__data__.name == docname){
-             var doc = circles[i];
-             break;
-         }       
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        var circles = d3.selectAll(".dot")._groups[0]; 
+        d3.selectAll(".dot").style("stroke-width", "1px")
+        for (var i = 0; i < circles.length; i++){      
+             if(circles[i].__data__.name == docname){
+                 var doc = circles[i];
+                 break;
+             }       
+        }
+        doc.setAttribute("style", "fill: "+doc.style.fill+"; stroke: "+doc.style.stroke +"; stroke-width: 3px;");
+    } else if (option == "Force Layout") {
+        var nodes = d3.selectAll(".node .dot")._groups[0];
+        d3.selectAll(".node .dot").style("stroke-width", "1px")
+        for (var i = 0; i < nodes.length; i++){
+            if (d3.select(nodes[i]).attr("name") == docname){
+                var doc = nodes[i];
+                console.log(d3.select(nodes[i]).attr("name"));
+                break;
+            }
+        }
+        doc.setAttribute("style", "fill: "+doc.style.fill+"; stroke: "+doc.style.stroke +"; stroke-width: 2px;");
     }
-    doc.setAttribute("style", "fill: "+doc.style.fill+"; stroke: "+doc.style.stroke +"; stroke-width: 3px;");  
 }
 
 function UpdateScatterplotColors(name){

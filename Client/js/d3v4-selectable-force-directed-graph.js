@@ -2,6 +2,7 @@ var colorFocus = "#17a2b8";       //Relevant (Blue)
 var colorSuggestion = "#ffc107";  //Suggested (Yellow)
 var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
 var colorBase = "#007527";        //Seed (Green)
+var circle_radius_force = 6;      //Sherlon: This variable defines the size of the circle
 
 function createV4SelectableForceDirectedGraph(svg, graph) {
     // if both d3v3 and d3v4 are loaded, we'll assume
@@ -84,7 +85,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         .selectAll("circle")
         .data(graph.nodes)
         .enter().append("circle")
-        .attr("r", 5)
+        .attr("r", circle_radius_force)
         .attr("class", "dot") //-------------------->Sherlon: Adicionei para definir a visibilidade dos pontos
         /*.attr("fill", function(d) { 
             if ('color' in d)
@@ -94,6 +95,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         })*/
         .style("fill", function(d) {return ScatterplotColor(d.id)})     //Sherlon: Adiciona a cor dos documentos (Mudei de .attr para .style)
         .style("stroke", function(d) {return ScatterplotStroke(d.id)})  //Sherlon: Adiciona a borda (Read / Unread) (Mudei de .attr para .style)
+        .style("stroke-width", "1px")  //Sherlon: Adiciona a espessura da borda
         .style("visibility", "visible") //------------------------------->Sherlon: Adicionei para definir a visibilidade dos pontos
         .attr("content", function(d) {return d.body}) //----------------->Sherlon: Adicionei para definir o conteudo dos pontos
 
@@ -114,10 +116,9 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
     var simulation = d3v4.forceSimulation()
         .force("link", d3v4.forceLink()
                 .id(function(d) { return d.id; })
-                .distance(function(d) { 
-                    return 30;
-                    //var dist = 20 / d.value;
-                    //console.log('dist:', dist);
+                .distance(function(d) {
+                    var dist = 20/d.value; //Garante que a menor distancia sera 20, pois o d.value esta entre 0 e 1
+                    console.log('dist:', dist);
                     return dist; 
                 })
               )
@@ -241,7 +242,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
     }
 
     function dragstarted(d) {
-      if (!d3v4.event.active) simulation.alphaTarget(0.9).restart();
+        if (!d3v4.event.active) simulation.alphaTarget(0.9).restart();
         //console.log(d.id); //Sherlon: Select the document in force layout
 
         OpenDocument(d.id);      //Sherlon: Retrieve and Show in the System the Document Content
@@ -275,146 +276,149 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         //d3.selectAll(".circle")
         //d3.select(this).style("stroke-width", "3px")
         var selected_circle = d3.select(this);
-        d.name = d.id; //Sherlon: Criar compatibilidade com as funcoes ja implementadas
 
-        //Sherlon: Access circles information:
-        //console.log(selected_circle.attr("cx"));
-        //console.log(selected_circle.attr("cy"));
-        //console.log(selected_circle.style("fill"));
+        d3.selectAll(".node .dot").style("stroke-width", "1px")
+        if (selected_circle.style("stroke-width") == "1px"){
+            selected_circle.style("stroke-width", "2px")
 
-        //Removing any existing menu
-        d3.selectAll(".barmenu")
-            .remove()    
+            d.name = d.id; //Sherlon: Criar compatibilidade com as funcoes ja implementadas
 
-        if (($("#focustoggle")[0].disabled == false) && ($("#signaturetoggle")[0].disabled == false) && ($("#suggestiontoggle")[0].disabled == false) && (selected_circle.style("fill") != hexToRgb(colorBase))){
-            //Creating a new menu
-            //Defining the div that will contain the menu                 
-            var options_scatter = d3.select("div#menucontainer").append("svg")
-                                    .attr("class", "barmenu")
-                                    .attr("width", function(){
-                                        return barWidth;
-                                    })
-                                    .attr("height", function(){
-                                        return barHeight + 10                        
-                                    })
-                                    .attr("fill","#d8eaff")
-            //Positioning the div                 
-            yPos = event.pageY - 55;
+            //Sherlon: Access circles information:
+            //console.log(selected_circle.attr("cx"));
+            //console.log(selected_circle.attr("cy"));
+            //console.log(selected_circle.style("fill"));
 
-            d3.select("div#menucontainer")
-                .style("left", function(){
-                    return (event.pageX - 55) + "px";
-                })
-                .style("top", function(){return yPos+ "px"})
-            
-            //Defining the background (rect) for the buttons
-            options_scatter.append("rect")
-                .attr("class","barmenu")
-                .attr("height", barHeight)
-                .attr("width", 100)
-                .attr("fill", "#a9a9a9")                        
-                .attr("y", 8)
-                .attr("x", 0)
-            
-            //Defining the close button
-            options_scatter.append("svg:image")
-                .attr("class", "barmenu")
-                .attr("xlink:href", "images/close.png")
-                .attr("width", "20px")
-                .attr("y", 0)
-                .attr("x", function(){
-                    return 90;
-                }) 
-                .on("click", function(){                            
-                    d3.selectAll(".barmenu")
-                        .remove()
-                })
-            
-            //Defining the delete button (Red -)
-            //Sherlon: Se o documento atual for amarelo ou azul, define ele como vermelho.
-            if (selected_circle.style("fill") != hexToRgb(colorNotRelevant)){
-                options_scatter.append("svg:image")
-                    .attr("class", "barmenu")
-                    .attr("xlink:href", "images/error.png")
-                    .attr("width", "25px")
-                    .attr("y", 10)
-                    .attr("x", 10)
-                    .on("click", function(){
-                        d3.selectAll(".barmenu")
-                            .remove() 
-                        selected_circle.style("fill", hexToRgb(colorNotRelevant))
-                        selected_circle.style("stroke", getReadStroke('wasread'));
-                        selected_circle.style("stroke-width", "1px");
-                        SetDocumentAsNotRelevant(d, 'scatter')
+            //Removing any existing menu
+            d3.selectAll(".barmenu")
+                .remove()    
+
+            if (($("#focustoggle")[0].disabled == false) && ($("#signaturetoggle")[0].disabled == false) && ($("#suggestiontoggle")[0].disabled == false) && (selected_circle.style("fill") != hexToRgb(colorBase))){
+                //Creating a new menu
+                //Defining the div that will contain the menu                 
+                var options_scatter = d3.select("div#menucontainer").append("svg")
+                                        .attr("class", "barmenu")
+                                        .attr("width", function(){
+                                            return barWidth;
+                                        })
+                                        .attr("height", function(){
+                                            return barHeight + 10                        
+                                        })
+                                        .attr("fill","#d8eaff")
+                //Positioning the div                 
+                yPos = event.pageY - 55;
+
+                d3.select("div#menucontainer")
+                    .style("left", function(){
+                        return (event.pageX - 55) + "px";
                     })
-             }
-
-             //Defining the add button (Blue)
-             //Sherlon: Se o documento atual for cinza, amarelo ou vermelho, define ele como azul.
-             if (selected_circle.style("fill") != hexToRgb(colorFocus)){
+                    .style("top", function(){return yPos+ "px"})
+                
+                //Defining the background (rect) for the buttons
+                options_scatter.append("rect")
+                    .attr("class","barmenu")
+                    .attr("height", barHeight)
+                    .attr("width", 100)
+                    .attr("fill", "#a9a9a9")                        
+                    .attr("y", 8)
+                    .attr("x", 0)
+                
+                //Defining the close button
                 options_scatter.append("svg:image")
                     .attr("class", "barmenu")
-                    .attr("xlink:href", "images/navigation-1.png")
-                    .attr("width", "25px")
-                    .attr("y", 10)
+                    .attr("xlink:href", "images/close.png")
+                    .attr("width", "20px")
+                    .attr("y", 0)
                     .attr("x", function(){
-                        if (selected_circle.style("fill") == hexToRgb(colorNotRelevant)){
-                            return 10;
-                        }else{
-                          return 50;  
-                        }
+                        return 90;
                     }) 
-                    .on("click", function(){                        
-                        d3.selectAll(".barmenu")
-                            .remove()  
-                        selected_circle.style("fill", hexToRgb(colorFocus));
-                        selected_circle.style("stroke", getReadStroke('wasread'));
-                        selected_circle.style("stroke-width", "1px");
-                        SetDocumentAsRelevant(d, 'scatter');
-                    })     
-            }
-
-            //Defining the add Button (Green)
-            //Sherlon: Se o documento atual for azul, define ele como verde e seus similares como azuis.
-            if (selected_circle.style("fill") == hexToRgb(colorFocus)){
-                options_scatter.append("svg:image")
-                    .attr("class", "barmenu")
-                    .attr("xlink:href", "images/add-1.png")
-                    .attr("width", "25px")
-                    .attr("y", 10)
-                    .attr("x", 50)
-                    .on("click", function(){
+                    .on("click", function(){                            
                         d3.selectAll(".barmenu")
                             .remove()
-                        selected_circle.style("fill", hexToRgb(colorBase))
-                        selected_circle.style("stroke", getReadStroke('wasread'));
-                        selected_circle.style("stroke-width", "1px");
-                        setSimilarDocumentsAsRelevant(d.id)
                     })
-            }
+                
+                //Defining the delete button (Red -)
+                //Sherlon: Se o documento atual for amarelo ou azul, define ele como vermelho.
+                if (selected_circle.style("fill") != hexToRgb(colorNotRelevant)){
+                    options_scatter.append("svg:image")
+                        .attr("class", "barmenu")
+                        .attr("xlink:href", "images/error.png")
+                        .attr("width", "25px")
+                        .attr("y", 10)
+                        .attr("x", 10)
+                        .on("click", function(){
+                            d3.selectAll(".barmenu")
+                                .remove() 
+                            selected_circle.style("fill", hexToRgb(colorNotRelevant))
+                            selected_circle.style("stroke", getReadStroke('wasread'));
+                            selected_circle.style("stroke-width", "1px");
+                            SetDocumentAsNotRelevant(d, 'scatter')
+                        })
+                }
 
-            //Defining the delete Button (Red +)
-            //Sherlon: Se o documento atual for vermelho, define todos seus similares como vermelhos
-            if (selected_circle.style("fill") == hexToRgb(colorNotRelevant)){
-                 options_scatter.append("svg:image")
-                    .attr("class", "barmenu")
-                    .attr("xlink:href", "images/addred.png")
-                    .attr("width", "25px")
-                    .attr("y", 10)
-                    .attr("x", 50)                           
-                    .on("click", function(){                        
-                        d3.selectAll(".barmenu")
-                            .remove()
-                        selected_circle.style("stroke", getReadStroke('wasread'));
-                        selected_circle.style("stroke-width", "1px");
-                        setSimilarDocumentsAsNotRelevant(d.id)
-                    })
+                //Defining the add button (Blue)
+                //Sherlon: Se o documento atual for cinza, amarelo ou vermelho, define ele como azul.
+                if (selected_circle.style("fill") != hexToRgb(colorFocus)){
+                    options_scatter.append("svg:image")
+                        .attr("class", "barmenu")
+                        .attr("xlink:href", "images/navigation-1.png")
+                        .attr("width", "25px")
+                        .attr("y", 10)
+                        .attr("x", function(){
+                            if (selected_circle.style("fill") == hexToRgb(colorNotRelevant)){
+                                return 10;
+                            }else{
+                              return 50;  
+                            }
+                        }) 
+                        .on("click", function(){                        
+                            d3.selectAll(".barmenu")
+                                .remove()  
+                            selected_circle.style("fill", hexToRgb(colorFocus));
+                            selected_circle.style("stroke", getReadStroke('wasread'));
+                            selected_circle.style("stroke-width", "1px");
+                            SetDocumentAsRelevant(d, 'scatter');
+                        })     
+                }
+
+                //Defining the add Button (Green)
+                //Sherlon: Se o documento atual for azul, define ele como verde e seus similares como azuis.
+                if (selected_circle.style("fill") == hexToRgb(colorFocus)){
+                    options_scatter.append("svg:image")
+                        .attr("class", "barmenu")
+                        .attr("xlink:href", "images/add-1.png")
+                        .attr("width", "25px")
+                        .attr("y", 10)
+                        .attr("x", 50)
+                        .on("click", function(){
+                            d3.selectAll(".barmenu")
+                                .remove()
+                            selected_circle.style("fill", hexToRgb(colorBase))
+                            selected_circle.style("stroke", getReadStroke('wasread'));
+                            selected_circle.style("stroke-width", "1px");
+                            setSimilarDocumentsAsRelevant(d.id)
+                        })
+                }
+
+                //Defining the delete Button (Red +)
+                //Sherlon: Se o documento atual for vermelho, define todos seus similares como vermelhos
+                if (selected_circle.style("fill") == hexToRgb(colorNotRelevant)){
+                     options_scatter.append("svg:image")
+                        .attr("class", "barmenu")
+                        .attr("xlink:href", "images/addred.png")
+                        .attr("width", "25px")
+                        .attr("y", 10)
+                        .attr("x", 50)                           
+                        .on("click", function(){                        
+                            d3.selectAll(".barmenu")
+                                .remove()
+                            selected_circle.style("stroke", getReadStroke('wasread'));
+                            selected_circle.style("stroke-width", "1px");
+                            setSimilarDocumentsAsNotRelevant(d.id)
+                        })
+                }
             }
         }
-
-
         /*********************************************************************************************/
-
     }
 
     function dragged(d) {
