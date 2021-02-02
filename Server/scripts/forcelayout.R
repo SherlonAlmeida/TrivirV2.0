@@ -25,6 +25,7 @@ needs(lsa)
 
 
 createForceLayoutData <- function(path_core, path_users, projtech, embtech){
+  coord_body <- c(); #Store the document content (text)
 
   #Data structures to store all the graph information
   fileList <- list.files(path = corpus, full.names = TRUE, recursive = TRUE)
@@ -38,6 +39,13 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
 
   #Retrieve the document files from the corpus
   for (indexFile in 1:length(fileList)){
+    #Read the document content
+    conn <- file(fileList[indexFile],open="rt")
+    doc <- readLines(conn);
+    close(conn);
+    doc <- concatenate(doc);
+    coord_body[indexFile] <- doc;
+
     docnames[indexFile] = basename(fileList[indexFile]);
 
     #Retrieve the similar documents of each document
@@ -60,7 +68,7 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
 
   #Sherlon: Generates the Nested JSON to the Force Layout Visualization
   graph <- list()
-    nodes <- data.frame('id' = docnames, 'group' = 1);
+    nodes <- data.frame('id' = docnames, 'group' = 1, 'body' = coord_body);
     links <- data.frame('source' = source_link, 'target' = target_link, 'value' = distanceCos_link);
   graph$nodes <- nodes
   graph$links <- links

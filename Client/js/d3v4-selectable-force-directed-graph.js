@@ -94,13 +94,13 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         })*/
         .style("fill", function(d) {return ScatterplotColor(d.id)})     //Sherlon: Adiciona a cor dos documentos (Mudei de .attr para .style)
         .style("stroke", function(d) {return ScatterplotStroke(d.id)})  //Sherlon: Adiciona a borda (Read / Unread) (Mudei de .attr para .style)
-        .style("visibility", "visible") //-------------------->Sherlon: Adicionei para definir a visibilidade dos pontos
+        .style("visibility", "visible") //------------------------------->Sherlon: Adicionei para definir a visibilidade dos pontos
+        .attr("content", function(d) {return d.body}) //----------------->Sherlon: Adicionei para definir o conteudo dos pontos
 
         .call(d3v4.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended));
-
       
     // add titles for mouseover blurbs
     node.append("title")
