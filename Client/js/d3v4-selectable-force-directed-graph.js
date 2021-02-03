@@ -98,6 +98,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         .style("stroke-width", "1px")  //Sherlon: Adiciona a espessura da borda
         .style("visibility", "visible") //------------------------------->Sherlon: Adicionei para definir a visibilidade dos pontos
         .attr("content", function(d) {return d.body}) //----------------->Sherlon: Adicionei para definir o conteudo dos pontos
+        .attr("content_preprocessed", function(d) {return d.body_preprocessed}) //----------------->Sherlon: Adicionei para definir o conteudo dos pontos
 
         .call(d3v4.drag()
         .on("start", dragstarted)

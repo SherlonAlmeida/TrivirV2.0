@@ -8,7 +8,7 @@ needs(corpus)
 needs(textstem);
 needs(ngram)
 needs(openNLP)
-needs(qdap)
+suppressMessages(needs(qdap))
 needs(tm)
 needs(fastrtext);
 

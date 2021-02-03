@@ -14,7 +14,7 @@ library(corpus)
 library(textstem)
 library(ngram)
 library("bibliometrix")
-library(textclean) #Sherlon: Adicionei esta biblioteca para remover os caracteres NON-ASCII
+suppressMessages(library(textclean)) #Sherlon: Adicionei esta biblioteca para remover os caracteres NON-ASCII
 
 extractCorpus <- function(input, dirName, source){
   if (source == "ieee"){

@@ -187,7 +187,12 @@ function RetrainClassifier(){
         LoadNotRelevantList( function(){
             LoadReadDocuments( function(){
                 LoadSuggestionList( function(){
-                    LoadScatterplot();
+                    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+                    if (option == "Point Cloud") {
+                        LoadScatterplot();
+                    } else if (option == "Force Layout") {
+                        LoadForceLayout();
+                    }
                 })
             })
         });    
