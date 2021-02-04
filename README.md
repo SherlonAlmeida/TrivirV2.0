@@ -52,12 +52,16 @@ Referências:
 			Force-Layout with labels: https://bl.ocks.org/heybignick/3faf257bbbbc7743bb72310d03b86ee8
 			Disjoint Force-Directed Graph: https://observablehq.com/@d3/disjoint-force-directed-graph
 			Force-Directed Graph 1: http://bl.ocks.org/jhb/5955887
-			Force-Directed Graph 2: https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03
+			(Interação com Parametros) Force-Directed Graph 2: https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03
 			Force-Directed Graph 3: https://bl.ocks.org/heybignick/3faf257bbbbc7743bb72310d03b86ee8
 			Force Directed Graph:
 				Link 1: http://emptypipes.org/2017/04/29/d3v4-selectable-zoomable-force-directed-graph/
 				(Usado) Link 2: https://bl.ocks.org/pkerpedjiev/f2e6ebb2532dae603de13f0606563f5b
 				Link 3: https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a
+			Input Buttons:
+				(Usado) Slider: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+				Script Dinâmico: https://pt.stackoverflow.com/questions/138489/como-fa%C3%A7o-para-mostrar-o-value-do-input-type-range
+				(Usado) Script Dinâmico: https://pt.stackoverflow.com/questions/15529/valores-em-tempo-real-na-classe-input-type-range
 		Sankey Graph:
 			Gerais: https://www.d3-graph-gallery.com/sankey.html
 		Zooming:
@@ -88,6 +92,7 @@ Referências:
 			Sankey: http://vis-kt.vicg.icmc.usp.br/IC5/sankey.html
 	Javascript:
 		Sheet Cheat: https://websitesetup.org/javascript-cheat-sheet/
+		Remove elements from Json: https://stackoverflow.com/questions/13394653/json-remove-element-by-value
 	Instalação biblioteca de ordenação JSON:
 		Link: https://www.npmjs.com/package/sort-json-array
 	Compilador R online (Realizar testes):

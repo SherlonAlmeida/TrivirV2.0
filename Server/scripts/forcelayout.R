@@ -33,9 +33,10 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
   docnames <- c();       #Store the filenames
   source_link <- c();    #Store the source documents
   target_link <- c();    #Store the target documents
-  distanceCos_link <- c();  #Store the distance between the documents
+  distanceCos_link <- c();  #Store the cosine distance between the documents (1 is similar)
+  similarity_link <- c();   #Store the distance between the documents (0 is similar)
   iter <- 0;             #Sum the number of connections in the graph
-  threshold <- 0.30;     #Set a threshold number for the cosine distance (0 <= distCos <= 1)
+  #threshold <- 0.30;    #Set a threshold number for the cosine distance (0 <= distCos <= 1)
   max_neighbors <- 10;   #Set a max number of neighbors to each node
 
   #Retrieve the document files from the corpus
@@ -60,12 +61,13 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
       distanceCos <- doclist[new_link];
 
       #Creates a connection only if the similarity is over a threshold
-      if (distanceCos > threshold) {
+      #if (distanceCos > threshold) {
         source_link[iter] <- docnames[indexFile];
         target_link[iter] <- name;
-        distanceCos_link[iter] <- (1 - distanceCos); #Sherlon: Converts similarity into distance (The closer the more similar)
+        distanceCos_link[iter] <- distanceCos; #Sherlon: Cosine distance (The further the more similar)
+        similarity_link[iter] <- (1 - distanceCos); #Sherlon: Converts similarity (cosine distance between 0 and 1) into distance (The closer the more similar)
         iter <- iter + 1;
-      }
+      #}
     }
 
   }
@@ -73,7 +75,7 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
   #Sherlon: Generates the Nested JSON to the Force Layout Visualization
   graph <- list()
     nodes <- data.frame('id' = docnames, 'group' = 1, 'body' = coord_body, 'body_preprocessed' = coord_bodypreprocessed);
-    links <- data.frame('source' = source_link, 'target' = target_link, 'value' = distanceCos_link);
+    links <- data.frame('source' = source_link, 'target' = target_link, 'value' = similarity_link, 'cosdist' = distanceCos_link);
   graph$nodes <- nodes
   graph$links <- links
   write(toJSON(graph, pretty = TRUE), sprintf("%s/force-directed-graph.json", path_users))

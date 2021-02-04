@@ -291,10 +291,22 @@ function LoadForceLayout() {
                 .attr("width", width)         
                 .attr("class", "scatterplot-svg")
 
+            datascatterplot = filterEdgesByDistance(datascatterplot);
+
             createV4SelectableForceDirectedGraph(svg, datascatterplot);
     })
 }
 
+/*Sherlon: This function returns the filtered data by a threshold defined dinamically by the user*/
+function filterEdgesByDistance(data) {
+    var threshold = document.getElementById('sliderCosineDistance').value / 100;
+    data.links = data.links.filter(function(jsonObject) {
+        //return jsonObject.cosdist > threshold; //Diminui os links ao aumentar o threshold, pois menos links possuem alta similaridade (Isso sim eh distancia do cosseno).
+        return jsonObject.value < threshold; //Aumenta os links ao aumentar o threshold, pois cada vez mais links estarão abaixo de 1 (Isso nao eh distancia do cosseno (Vis-KT)).
+    });
+    console.log(data);
+    return data;
+}
 
 /* Functions called from control.js */
 
@@ -588,5 +600,34 @@ $('.scatterplotVisualizations input').on('change', function() {
 
     if (option == "Sankey Graph") {
         //Carregar a visualizacao do Sankey Graph
+    }
+});
+
+//Slider para modificacao da distancia do cosseno
+//$('#sliderCosineDistance').on('input', function() { //Versao em tempo real (Precisaria fazer update no force para evitar muitas requisições ao servidor)
+$('#sliderCosineDistance').on('change', function() { //Versao ao soltar o mouse
+    var cosDistance = document.getElementById('sliderCosineDistance').value;
+    var cosText = document.getElementById('cosinedistancevalue');
+    cosText.value = cosDistance;
+
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        
+    } else if (option == "Force Layout") {
+        LoadForceLayout();
+    }
+});
+
+//Slider para modificacao da distancia das arestas
+$('#sliderEdgesDistance').on('change', function() { //Versao ao soltar o mouse
+    var distance = document.getElementById('sliderEdgesDistance').value;
+    var distText = document.getElementById('distancevalue');
+    distText.value = distance;
+
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        
+    } else if (option == "Force Layout") {
+        LoadForceLayout();
     }
 });

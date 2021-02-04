@@ -132,11 +132,32 @@
     					<span class="fa fa-circle scatterplotUnlabeled" id="UnlabeledColor" title="Unlabeled: These are all the documents that haven't been classified yet."></span>
     					<p>Unlabeled</p>
     				</div>
+
+                    <!--Define a regiao para os parametros-->
+                    <div id="scatterplotparameters">
+                        <div class="slidecontainer">
+                            <!--Range Slider para Distancia do Cosseno-->
+                            <span id="cosinetext">Cosine Distance (%):</span>
+                            <input type="text" id="cosinedistancevalue" value="30" readonly>
+                            <input type="range" class="slider" id="sliderCosineDistance"  min="0" max="100" value="30" step="1">
+                            <span id="cosinemin">0</span>
+                            <span id="cosinemax">100</span>
+                        
+                            <!--Range Slider para Distancia das Arestas-->
+                            <span id="disttext">Link Distance (x):</span>
+                            <input type="text" id="distancevalue" value="1" readonly>
+                            <input type="range" class="slider" id="sliderEdgesDistance"  min="1" max="100" value="1" step="1">
+                            <span id="distmin">0</span>
+                            <span id="distmax">100</span>
+                        </div>
+                    </div>
     				
                     <!--Area do Scatterplot-->
                     <div id="scatterplotcontainer">
                         
                     </div>
+
+
                 </div>
             </div>
 			

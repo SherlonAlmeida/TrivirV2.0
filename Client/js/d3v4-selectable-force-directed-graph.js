@@ -118,9 +118,11 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
         .force("link", d3v4.forceLink()
                 .id(function(d) { return d.id; })
                 .distance(function(d) {
-                    var dist = 20/d.value; //Garante que a menor distancia sera 20, pois o d.value esta entre 0 e 1
-                    console.log('dist:', dist);
-                    return dist; 
+                    //var dist = 20/d.value; //Garante que a menor distancia sera 20, pois o d.value esta entre 0 e 1
+                    var dist = d.value;
+                    var new_dist = document.getElementById('sliderEdgesDistance').value;
+                    var result = ( (10/dist) + (new_dist/2) );
+                    return result;
                 })
               )
         .force("charge", d3v4.forceManyBody())
