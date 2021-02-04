@@ -488,6 +488,7 @@ $("#resetscatterplotbutton").unbind().click(function(e){
         d3.selectAll(".dot").style("opacity", "1.0")
     } else if (option == "Force Layout") {
         d3.selectAll(".node .dot").style("visibility", "visible")
+        d3.selectAll(".node .dot").style("opacity", "1.0")
         d3.selectAll(".link .edge").style("visibility", "visible")
     }
     document.getElementById('searchdocumentinput').value = "";
@@ -607,9 +608,6 @@ $('.scatterplotVisualizations input').on('change', function() {
         LoadForceLayout(); //Carregar a visualizacao do Force layout
     }
 
-    if (option == "Sankey Graph") {
-        //Carregar a visualizacao do Sankey Graph
-    }
 });
 
 //Slider para modificacao da distancia do cosseno (Atualizar Scatterplot)
@@ -666,3 +664,21 @@ $('#distancevalue').on('change', function() {
     }
     updateScatterplotVisualization();
 });
+
+
+//Checkbox para definicao da vizinhanca de um documento
+/*$('#checkboxneighborhood').on('click', function() {
+    var checkbox = document.getElementById('checkboxneighborhood');
+    if (checkbox.checked == true) {
+        console.log("Marcou");
+    } else {
+        console.log("Desmarcou");
+    }
+
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        LoadScatterplot();
+    } else if (option == "Force Layout") {
+        LoadForceLayout();
+    }
+});*/

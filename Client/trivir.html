@@ -107,10 +107,6 @@
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Force Layout">
                             <label class="form-check-label" for="inlineRadio2">Force</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Sankey Graph">
-                            <label class="form-check-label" for="inlineRadio3">Sankey</label>
-                        </div>
                     </div>
                 </div>
 				
@@ -138,17 +134,21 @@
                         <div class="slidecontainer">
                             <!--Range Slider para Distancia do Cosseno-->
                             <span id="cosinetext">Cosine Distance (%):</span>
-                            <input type="text" id="cosinedistancevalue" value="30">
-                            <input type="range" class="slider" id="sliderCosineDistance"  min="0" max="100" value="30" step="1">
+                            <input type="text" id="cosinedistancevalue" value="60">
+                            <input type="range" class="slider" id="sliderCosineDistance"  min="0" max="100" value="60" step="1">
                             <span id="cosinemin">0</span>
                             <span id="cosinemax">100</span>
                         
                             <!--Range Slider para Distancia das Arestas-->
                             <span id="disttext">Link Distance (x):</span>
-                            <input type="text" id="distancevalue" value="1">
-                            <input type="range" class="slider" id="sliderEdgesDistance"  min="1" max="100" value="1" step="1">
+                            <input type="text" id="distancevalue" value="20">
+                            <input type="range" class="slider" id="sliderEdgesDistance"  min="1" max="100" value="20" step="1">
                             <span id="distmin">1</span>
                             <span id="distmax">100</span>
+
+                            <!--Checkbox para definir vizinhança-->
+                            <input type="checkbox" class="checkbox" id="checkboxneighborhood" value="">
+                            <span id="neighborhoodtext">Neighborhood</span>
                         </div>
                     </div>
     				

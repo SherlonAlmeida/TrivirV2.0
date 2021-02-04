@@ -120,8 +120,8 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
                 .distance(function(d) {
                     //var dist = 20/d.value; //Garante que a menor distancia sera 20, pois o d.value esta entre 0 e 1
                     var dist = d.value;
-                    var new_dist = document.getElementById('sliderEdgesDistance').value;
-                    var result = ( (10/dist) + (new_dist/2) );
+                    var new_dist = parseInt(document.getElementById('sliderEdgesDistance').value);
+                    var result = ( (dist*10) + new_dist );
                     return result;
                 })
               )
@@ -250,6 +250,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
 
         OpenDocument(d.id);      //Sherlon: Retrieve and Show in the System the Document Content
         GetWordFrequency(d.id);  //Sherlon: Retrieve and Show in the System the Document Word Cloud
+        ShowNeighborhood(d.id);  //Sherlon: If active, shows only the neighbors of a document
 
         if (!d.selected && !shiftKey) {
             // if this node isn't selected, then we have to unselect every other node
@@ -461,3 +462,47 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
 
     return graph;
 };
+
+/*This function shows on the screen only the neighbors of a given document*/
+function ShowNeighborhood(docname){
+    var checkbox = document.getElementById('checkboxneighborhood');
+    if (checkbox.checked == true) {
+
+        $("#resetscatterplotbutton").css("visibility", "visible");
+        var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+        if (option == "Point Cloud") {
+            /*d3.selectAll(".dot").style("visibility", "hidden") 
+            var circles = d3.selectAll(".dot")._groups[0];
+            for (var i = 0; i < circles.length; i++){ 
+                if ((circles[i].style.fill == hexToRgb(colorFocus))||(circles[i].style.fill == hexToRgb(colorBase))||(circles[i].style.fill == hexToRgb(colorSuggestion))){
+                    circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
+                }
+            }*/
+        } else if (option == "Force Layout") {
+            var neighbors = []
+            neighbors.push(docname);
+            
+            //Define a visibilidade das arestas
+            d3.selectAll(".link .edge").style("visibility", "hidden")
+            var links = d3.selectAll(".link .edge")._groups[0];
+            for (var i = 0; i < links.length; i++){
+                var source = d3.select(links[i]).attr("source");
+                var target = d3.select(links[i]).attr("target");
+                if (source == docname){
+                    links[i].setAttribute("style", "visibility: visible");
+                    neighbors.push(target);
+                }
+            }
+
+            //Define a visibilidade dos pontos
+            d3.selectAll(".node .dot").style("opacity", "0.1") 
+            var nodes = d3.selectAll(".node .dot")._groups[0];
+            for (var i = 0; i < nodes.length; i++){
+                var curr_doc = d3.select(nodes[i]).attr("name");
+                if (neighbors.includes(curr_doc)){
+                    nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
+                }
+            }
+        }
+    }
+}
