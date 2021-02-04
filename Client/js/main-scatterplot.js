@@ -297,6 +297,15 @@ function LoadForceLayout() {
     })
 }
 
+function updateScatterplotVisualization(){
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        
+    } else if (option == "Force Layout") {
+        LoadForceLayout();
+    }
+}
+
 /*Sherlon: This function returns the filtered data by a threshold defined dinamically by the user*/
 function filterEdgesByDistance(data) {
     var threshold = document.getElementById('sliderCosineDistance').value / 100;
@@ -603,31 +612,57 @@ $('.scatterplotVisualizations input').on('change', function() {
     }
 });
 
-//Slider para modificacao da distancia do cosseno
-//$('#sliderCosineDistance').on('input', function() { //Versao em tempo real (Precisaria fazer update no force para evitar muitas requisições ao servidor)
+//Slider para modificacao da distancia do cosseno (Atualizar Scatterplot)
 $('#sliderCosineDistance').on('change', function() { //Versao ao soltar o mouse
+    updateScatterplotVisualization();
+});
+//Slider para modificacao da distancia do cosseno (Atualizar Texto na Tela em tempo real)
+$('#sliderCosineDistance').on('input', function() { //Versao em tempo real (Precisaria fazer update no force para evitar muitas requisições ao servidor)
     var cosDistance = document.getElementById('sliderCosineDistance').value;
     var cosText = document.getElementById('cosinedistancevalue');
     cosText.value = cosDistance;
-
-    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
-    if (option == "Point Cloud") {
-        
-    } else if (option == "Force Layout") {
-        LoadForceLayout();
+});
+//Input Text para modificacao da distancia do cosseno (Atualizar Texto na Tela Digitando)
+$('#cosinedistancevalue').on('change', function() {
+    var cosDistance = document.getElementById('sliderCosineDistance');
+    var cosText = document.getElementById('cosinedistancevalue');
+    //Verificacao de limites inseridos
+    if (parseInt(cosText.value) > parseInt(cosDistance.max)){
+        cosDistance.value = cosDistance.max;
+        cosText.value = cosDistance.max;
+    } else if (parseInt(cosText.value) < parseInt(cosDistance.min)){
+        cosDistance.value = cosDistance.min;
+        cosText.value = cosDistance.min;
+    } else {
+        cosDistance.value = cosText.value;
     }
+    updateScatterplotVisualization();
 });
 
-//Slider para modificacao da distancia das arestas
+
+//Slider para modificacao da distancia das arestas (Atualizar Scatterplot)
 $('#sliderEdgesDistance').on('change', function() { //Versao ao soltar o mouse
+    updateScatterplotVisualization();
+});
+//Slider para modificacao da distancia das arestas (Atualizar Texto na Tela em tempo real)
+$('#sliderEdgesDistance').on('input', function() { //Versao ao soltar o mouse
     var distance = document.getElementById('sliderEdgesDistance').value;
     var distText = document.getElementById('distancevalue');
     distText.value = distance;
-
-    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
-    if (option == "Point Cloud") {
-        
-    } else if (option == "Force Layout") {
-        LoadForceLayout();
+});
+//Input Text para modificacao da distancia das arestas (Atualizar Texto na Tela Digitando)
+$('#distancevalue').on('change', function() {
+    var distance = document.getElementById('sliderEdgesDistance');
+    var distText = document.getElementById('distancevalue');
+    //Verificacao de limites inseridos
+    if (parseInt(distText.value) > parseInt(distance.max)){
+        distance.value = distance.max;
+        distText.value = distance.max;
+    } else if (parseInt(distText.value) < parseInt(distance.min)){
+        distance.value = distance.min;
+        distText.value = distance.min;
+    } else {
+        distance.value = distText.value;
     }
+    updateScatterplotVisualization();
 });
