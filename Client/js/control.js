@@ -8,6 +8,7 @@ var colorFocus = "#17a2b8";       //Relevant (Blue)
 var colorSuggestion = "#ffc107";  //Suggested (Yellow)
 var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
 var colorBase = "#007527";        //Seed (Green)
+var colorUnlabeled = "#BDBDBD";   //Unlabeled (Gray)
 var colorRead = "#FFF"            //Document already Read (White)
 var colorNotRead = "#000"         //Document not already Read (Black)
 
@@ -226,7 +227,7 @@ function ScatterplotColor(name){
     if (isNotRelevant(name)){
         return colorNotRelevant;
     }
-    return '#BDBDBD'; //Not Labeled (Grey)
+    return colorUnlabeled; //Unlabeled (Grey)
    
 }
 
@@ -334,7 +335,7 @@ function SetDocumentAsRelevant(document, source){
     $("#focuscontainer").css("visibility", "hidden")
     */
 
-    if (document.docname){     
+    if (document.docname){
         var color = ScatterplotColor(document.docname);
 
         if (color == colorNotRelevant){
@@ -356,7 +357,9 @@ function SetDocumentAsRelevant(document, source){
                         })
                     })                  
                 } else {
-                    LoadSuggestionList(function(){})
+                    LoadSuggestionList(function(){
+                        UpdateScatterplotColors(document.docname); //Sherlon: Adicionei esta linha para atualizar o Session Data ao classificar os cinzas tambem
+                    })
                 }
             });
         });
@@ -381,7 +384,9 @@ function SetDocumentAsRelevant(document, source){
                         })
                     })                   
                 }else{
-                    LoadSuggestionList(function(){})
+                    LoadSuggestionList(function(){
+                        UpdateScatterplotColors(document.docname); //Sherlon: Adicionei esta linha para atualizar o Session Data ao classificar os cinzas tambem
+                    })
                 }             
             });
 

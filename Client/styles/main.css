@@ -65,6 +65,7 @@ body{
 .barmenu{
     fill: "#a9a9a9";  
     position: absolute;
+    z-index: 40; /*Sherlon: Adicionei para que o botao fique em frente ao Session Data, o qual possui z-index: 30*/
 }
 
 .bartitles-rect{

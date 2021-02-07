@@ -19,6 +19,11 @@ var base = "../../data/develop/seed_0.txt";
 var corpus = "../../data/develop";
 var username = 'admin';
 
+//ERIC SOBRE TEXT RETRIEVAL
+//var base = "../../data/EricText/seed_0.txt"; //Seed: TopicSifter
+//var corpus = "../../data/EricText";
+//var username = 'eric';
+
 
 
 var path_core = "../../core/"+pathlib.basename(corpus);

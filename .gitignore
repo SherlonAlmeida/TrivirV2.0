@@ -4,9 +4,17 @@ core/demo
 
 core/develop
 
+core/EricText
+
 file/demo
 
 file/develop
+
+file/EricText
+
+data/EricText
+
+Datasets/corpus_text_eric.bib
 
 Server/node_modules/
 

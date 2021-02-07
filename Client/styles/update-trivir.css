@@ -92,19 +92,19 @@
     top: 4px;
 	text-align: center;
 }
-#scatterplotdescription .scatterplotSeed {
+.scatterplotSeed {
 	color: rgb(0, 117, 39);
 }
-#scatterplotdescription .scatterplotRelevant {
+.scatterplotRelevant {
 	color: rgb(23, 162, 184);
 }
-#scatterplotdescription .scatterplotNotRelevant {
+.scatterplotNotRelevant {
 	color: rgb(215, 90, 74);
 }
-#scatterplotdescription .scatterplotSuggested {
+.scatterplotSuggested {
 	color: rgb(255, 193, 7);
 }
-#scatterplotdescription .scatterplotUnlabeled {
+.scatterplotUnlabeled {
 	color: rgb(189, 189, 189);
 }
 #scatterplotdescription span {

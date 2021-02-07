@@ -133,14 +133,14 @@
                     <div id="scatterplotparameters">
                         <div class="slidecontainer">
                             <!--Range Slider para Distancia do Cosseno-->
-                            <span id="cosinetext">Cosine Distance (%):</span>
+                            <span id="cosinetext">Cosine Distance:</span>
                             <input type="text" id="cosinedistancevalue" value="60">
                             <input type="range" class="slider" id="sliderCosineDistance"  min="0" max="100" value="60" step="1">
                             <span id="cosinemin">0</span>
                             <span id="cosinemax">100</span>
                         
                             <!--Range Slider para Distancia das Arestas-->
-                            <span id="disttext">Link Distance (x):</span>
+                            <span id="disttext">Link Distance:</span>
                             <input type="text" id="distancevalue" value="20">
                             <input type="range" class="slider" id="sliderEdgesDistance"  min="1" max="100" value="20" step="1">
                             <span id="distmin">1</span>
@@ -149,6 +149,46 @@
                             <!--Checkbox para definir vizinhança-->
                             <input type="checkbox" class="checkbox" id="checkboxneighborhood" value="">
                             <span id="neighborhoodtext">Neighborhood</span>
+
+                            <!--Checkbox para habilitar os Dados da Sessao-->
+                            <input type="checkbox" class="checkbox" id="checkboxsessiondata" value="" checked>
+                            <span id="sessiondatatext">Session Data</span>
+                        </div>
+                    </div>
+
+                    <!--Dados da sessao-->
+                    <div id="sessiondata">
+                        <div id="sessiondatacontainer">
+                            <div id="data">
+                                <span class="fa fa-circle scatterplotSeed" id="SeedColor">
+                                    <p>Seed</p>
+                                    <input type="text" id="seedlength" value="" readonly>
+                                </span>
+                            </div>
+                            <div id="data">
+                                <span class="fa fa-circle scatterplotRelevant" id="RelevantColor">
+                                    <p>Relevant</p>
+                                    <input type="text" id="relevantlength" value="" readonly>
+                                </span>
+                            </div>
+                            <div id="data">
+                                <span class="fa fa-circle scatterplotNotRelevant" id="NotRelevantColor">
+                                    <p>Not Relevant</p>
+                                    <input type="text" id="notrelevantlength" value="" readonly>
+                                </span>
+                            </div>
+                            <div id="data">
+                                <span class="fa fa-circle scatterplotSuggested" id="SuggestedColor">
+                                    <p>Suggested</p>
+                                    <input type="text" id="suggestedlength" value="" readonly>
+                                </span>
+                            </div>
+                            <div id="data">
+                                <span class="fa fa-circle scatterplotUnlabeled" id="UnlabeledColor">
+                                    <p>Unlabeled</p>
+                                    <input type="text" id="unlabeledlength" value="" readonly>
+                                </span>
+                            </div>
                         </div>
                     </div>
     				

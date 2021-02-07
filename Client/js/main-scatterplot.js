@@ -6,6 +6,7 @@ var colorFocus = "#17a2b8";       //Relevant (Blue)
 var colorSuggestion = "#ffc107";  //Suggested (Yellow)
 var colorNotRelevant = "#d75a4a"; //Not Relevant (Red)
 var colorBase = "#007527";        //Seed (Green)
+var colorUnlabeled = "#BDBDBD";   //Unlabeled (Gray)
 var circle_radius = 8;            //Sherlon: This variable defines the size of the circle
 
 function hexToRgb(hex) {
@@ -28,7 +29,7 @@ function LoadScatterplot() {
     d3.request("http://127.0.0.1:3000/scatterplot")    
     .header("Content-Type", "application/json")
     .post(function(error, d){
-   
+
         //PARAMETERS AND VARIABLES
         datascatterplot = JSON.parse(d.responseText);
 
@@ -194,7 +195,7 @@ function LoadScatterplot() {
                                 if (selected_circle.style("fill") == hexToRgb(colorNotRelevant)){
                                     return 10;
                                 }else{
-                                  return 50;  
+                                    return 50;  
                                 }
                             }) 
                             .on("click", function(){                        
@@ -246,6 +247,9 @@ function LoadScatterplot() {
                 }
             }
         });
+
+        //Update Session Data
+        updateSessionData();
     })
 }
 
@@ -294,6 +298,9 @@ function LoadForceLayout() {
             datascatterplot = filterEdgesByDistance(datascatterplot);
 
             createV4SelectableForceDirectedGraph(svg, datascatterplot);
+
+            //Update Session Data
+            updateSessionData();
     })
 }
 
@@ -381,6 +388,9 @@ function UpdateScatterplotColors(name){
             }         
         }
     }
+
+    //Update Session Data
+    updateSessionData();
 }
 
 function FilterScatterplot(documents){
@@ -476,6 +486,55 @@ function showDocumentsWithNgram(text){
     }  
 }
 
+/*This funtion updates the session data in the screen*/
+function updateSessionData(){
+    var totalSeed = 0;
+    var totalRelevant = 0;
+    var totalNotRelevant = 0;
+    var totalSuggested = 0;
+    var totalUnlabeled = 0;
+    
+    var circles = d3.selectAll(".dot")._groups[0]; 
+    for (var i = 0; i < circles.length; i++){ 
+        if (circles[i].style.fill == hexToRgb(colorBase)) totalSeed += 1; //Seed (Green)
+        if (circles[i].style.fill == hexToRgb(colorFocus)) totalRelevant += 1; //Relevant (Blue)
+        if (circles[i].style.fill == hexToRgb(colorNotRelevant)) totalNotRelevant += 1; //Not Relevant (Red)
+        if (circles[i].style.fill == hexToRgb(colorSuggestion)) totalSuggested += 1; //Suggested (Yellow)
+        if (circles[i].style.fill == hexToRgb(colorUnlabeled)) totalUnlabeled += 1;  //Unlabeled (Gray)
+    }
+
+    document.getElementById('seedlength').value = totalSeed;
+    document.getElementById('relevantlength').value = totalRelevant;
+    document.getElementById('notrelevantlength').value = totalNotRelevant;
+    document.getElementById('suggestedlength').value = totalSuggested;
+    document.getElementById('unlabeledlength').value = totalUnlabeled;
+
+    /*var visible_documents = []
+
+    //Define a visibilidade dos pontos
+    d3.selectAll(".node .dot").style("visibility", "hidden") 
+    var nodes = d3.selectAll(".node .dot")._groups[0];
+    for (var i = 0; i < nodes.length; i++){
+        //console.log(d3.select(nodes[i]).attr("name"));
+        if ((nodes[i].style.fill == hexToRgb(colorFocus))||(nodes[i].style.fill == hexToRgb(colorBase))||(nodes[i].style.fill == hexToRgb(colorSuggestion))){
+            nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
+            visible_documents.push(d3.select(nodes[i]).attr("name"));
+        }
+    }
+    
+    //Define a visibilidade das arestas
+    d3.selectAll(".link .edge").style("visibility", "hidden")
+    var links = d3.selectAll(".link .edge")._groups[0];
+    for (var i = 0; i < links.length; i++){
+        //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
+        //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
+        var source = d3.select(links[i]).attr("source");
+        var target = d3.select(links[i]).attr("target");
+        if (visible_documents.includes(source) && visible_documents.includes(target)){
+            links[i].setAttribute("style", "visibility: visible");
+        }
+    }*/
+}
 
 /* Scatterplot Menu Buttons*/
 
@@ -682,3 +741,14 @@ $('#distancevalue').on('change', function() {
         LoadForceLayout();
     }
 });*/
+
+//Checkbox para habilitar os Dados da Sessao
+$('#checkboxsessiondata').on('click', function() {
+    var checkbox = document.getElementById('checkboxsessiondata');
+    var data_session = document.getElementById('sessiondata');
+    if (checkbox.checked == true) {
+        data_session.setAttribute("style", "visibility: visible")
+    } else {
+        data_session.setAttribute("style", "visibility: hidden")
+    }
+});

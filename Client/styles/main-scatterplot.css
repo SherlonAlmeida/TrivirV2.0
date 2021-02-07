@@ -101,10 +101,10 @@
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
-#cosinetext, #disttext, #neighborhoodtext {
+#cosinetext, #disttext, #neighborhoodtext, #sessiondatatext {
   margin-right: 5px;
   color: #000;
   display: inline-block;
@@ -125,7 +125,7 @@
 #cosinemin, #distmin {
   position: relative;
   top: 8px;
-  right: 105px;
+  right: 80px;
   font-size: 60%;
 }
 
@@ -138,7 +138,7 @@
 
 .slider {
   -webkit-appearance: none;
-  width: 100px;
+  width: 75px;
   height: 6px;
   /*border-radius: 5px;  */
   background: #d3d3d3;
@@ -169,7 +169,51 @@
 }
 
 /*Checkbox Style*/
-#checkboxneighborhood {
+#checkboxneighborhood, #checkboxsessiondata {
+  position: relative;
+  top: 2px;
+}
+
+/*Session Data Style*/
+#sessiondata {
+  position: absolute;
+  margin-top: 12px;
+  margin-left: 12px;
+  width: 150px;
+  height: 180px;
+  border: #6b6b47 1px solid;
+  background: #FFF;
+  z-index: 30;
+}
+
+#data {
+  font-size: 9px;
+  margin-left: 5px;
+}
+
+#sessiondatacontainer {
+  margin-top: 10px;
+}
+
+#sessiondata span {
+  font-size: 14px; /*Define o tamanho do circulo no cabecalho*/
+  position: relative;
+  top: 0px;
+}
+
+#sessiondata p {
+  margin-right: 10px;
+  color: #000;
+  display: inline-block;
+  position: relative;
+  top: 0px;
+}
+
+#sessiondata input {
+  width: 30px;
+  height: 20px;
+  color: #000;
+  font-size: 12px;
   position: relative;
   top: 2px;
 }

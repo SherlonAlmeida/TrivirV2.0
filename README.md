@@ -84,6 +84,8 @@ Referências:
 			Back-End: https://stackoverflow.com/questions/596351/how-can-i-know-which-radio-button-is-selected-via-jquery
 		Nested JSON for send data via POST: (Sherlon: Usei para criar o grafo do Force Layout)
 			Link: https://stackoverflow.com/questions/51658128/create-nested-json-obj-in-r-for-httrpost
+		Floating divs (In front of another div):
+			Link: https://stackoverflow.com/questions/7320945/make-one-div-float-over-another
 	Vis-KT:
 		Original:
 			Sistema: http://vis-kt.vicg.icmc.usp.br/IC3/ (sherlon)
