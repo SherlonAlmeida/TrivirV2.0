@@ -35,8 +35,14 @@ Referências:
 		Site: https://d3js.org/
 		Galeria D3: https://github.com/d3/d3/wiki/Gallery
 		Curso Udemy: https://www.udemy.com/course/d3js-data-visualization-projects/
+		Tutoriais: https://www.tutorialspoint.com/d3js/d3js_graphs.htm
+		Tutoriais: https://www.tutorialsteacher.com/d3js/data-binding-in-d3js
+		D3 Request: https://www.tutorialspoint.com/d3js/d3js_requests_api.htm
 	Visualizações:
-		Gerais: https://www.d3-graph-gallery.com/index.html
+		Gerais (D3): https://www.d3-graph-gallery.com/index.html
+		Scatterplot (Point Cloud):
+			Draw Lines 1: https://stackoverflow.com/questions/43945356/drawing-line-between-two-projected-points-on-map-no-line-showing-d3-js
+			Draw Lines 2: https://webdva.github.io/how-to-draw-a-line-in-d3js/
 		Wordcloud:
 			Diversas: https://www.d3-graph-gallery.com/wordcloud.html
 			Tutorial Basico 1: https://www.d3-graph-gallery.com/graph/wordcloud_basic.html
@@ -95,6 +101,8 @@ Referências:
 	Javascript:
 		Sheet Cheat: https://websitesetup.org/javascript-cheat-sheet/
 		Remove elements from Json: https://stackoverflow.com/questions/13394653/json-remove-element-by-value
+		Local and Global Variables: https://www.w3schools.com/js/js_scope.asp
+		Promises: https://raccoon.ninja/pt/dev-pt/encadeando-acoes-utilizando-promises-javascript/
 	Instalação biblioteca de ordenação JSON:
 		Link: https://www.npmjs.com/package/sort-json-array
 	Compilador R online (Realizar testes):

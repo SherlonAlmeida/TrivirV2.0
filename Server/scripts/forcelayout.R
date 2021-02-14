@@ -23,6 +23,29 @@ needs(lsa)
 # library(ngram);
 # library(lsa);
 
+#Sherlon: This function concatenates the Scatterplot and Graph Data
+concatenateScatterAndGraphData <- function(path_core, path_users, projtech, embtech){
+  conn <- file(sprintf("%s/coordinates.json", path_users), encoding = "latin1");
+  jsondata <- as.character(readLines(conn, warn = FALSE));
+  jsondata <- iconv(jsondata, to = "utf8")
+  df_coord <- fromJSON(jsondata);
+  close(conn)
+
+  conn <- file(sprintf("%s/force-directed-graph.json", path_users), encoding = "latin1");
+  jsondata <- as.character(readLines(conn, warn = FALSE));
+  jsondata <- iconv(jsondata, to = "utf8")
+  df_graph <- fromJSON(jsondata);
+  close(conn)
+
+  #Sherlon: Generates the Nested JSON to the Force Layout Visualization
+  new_data <- list()
+    scatterdata <- df_coord
+    graphdata <- df_graph
+  new_data$scatterdata <- scatterdata
+  new_data$graphdata <- graphdata
+  write(toJSON(new_data, pretty = TRUE), sprintf("%s/concatenateScatterAndGraphData.json", path_users))
+}
+
 
 createForceLayoutData <- function(path_core, path_users, projtech, embtech){
   coord_body <- c(); #Store the document content (text)

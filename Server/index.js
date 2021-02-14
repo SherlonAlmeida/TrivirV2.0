@@ -19,11 +19,6 @@ var base = "../../data/develop/seed_0.txt";
 var corpus = "../../data/develop";
 var username = 'admin';
 
-//ERIC SOBRE TEXT RETRIEVAL
-//var base = "../../data/EricText/seed_0.txt"; //Seed: TopicSifter
-//var corpus = "../../data/EricText";
-//var username = 'eric';
-
 
 
 var path_core = "../../core/"+pathlib.basename(corpus);
@@ -65,45 +60,47 @@ app.post('/saveparameters', function (req, res) {
 });
 
 app.post('/installpackages', function (req, res) {
-    console.log("Installing Packages");
-    var out = R("./scripts/installpackages.R")
-    .data({})
-    .callSync()
-    console.log(out);
-    res.send(out);   
+  console.log("Installing Packages");
+  var out = R("./scripts/installpackages.R")
+  .data({})
+  .callSync()
+  console.log(out);
+  res.send(out);   
 }); 
 
 app.post('/scatterplot', function (req, res) {
   console.log("Initializing scatterplot"); 
-  fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/coordinates.json", "utf8", function(err, data){
-              if(err){
-                  var out = R("./scripts/main.R")
-                  .data({"command": "scatterplotdata", "corpus": corpus, "path_core": path_core, "path_users":path_users, "projtech": projtech, "embtech": embtech, "workingdir": workingdir})
-                  .callSync()
-                              
-                  if (out == "success"){
-                       fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/coordinates.json", "utf8", function(err, data){
-                              if(err) console.log(err);
-                              console.log(out);
-                              var currentdate = new Date(); 
-                              var datetime = "Last Sync: " + currentdate.getDate() + "/"
-                                    + (currentdate.getMonth()+1)  + "/" 
-                                    + currentdate.getFullYear() + " @ "  
-                                    + currentdate.getHours() + ":"  
-                                    + currentdate.getMinutes() + ":" 
-                                    + currentdate.getSeconds();
-                              console.log(datetime);
-                              res.send(data);
-                       });      
-                  }     
-              }else{
-                console.log("success");
-                res.send(data);  
-              }                     
+  //fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/coordinates.json", "utf8", function(err, data){
+  fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/concatenateScatterAndGraphData.json", "utf8", function(err, data){
+    if(err){
+      var out = R("./scripts/main.R")
+      .data({"command": "scatterplotdata", "corpus": corpus, "path_core": path_core, "path_users":path_users, "projtech": projtech, "embtech": embtech, "workingdir": workingdir})
+      .callSync()
+                  
+      if (out == "success"){
+        //fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/coordinates.json", "utf8", function(err, data){
+        fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/concatenateScatterAndGraphData.json", "utf8", function(err, data){
+          if(err) console.log(err);
+          console.log(out);
+          var currentdate = new Date(); 
+          var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+          console.log(datetime);
+          res.send(data);
+        });
+      }
+    }else{
+      console.log("success");
+      res.send(data);  
+    }                     
   });      
 });
 
-app.post('/forcelayout', function (req, res) {
+/*app.post('/forcelayout', function (req, res) {
   console.log("Initializing Force Layout"); 
   fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/force-directed-graph.json", "utf8", function(err, data){
               if(err){
@@ -131,6 +128,27 @@ app.post('/forcelayout', function (req, res) {
                 res.send(data);  
               }                     
   });      
+});*/
+
+/*Sherlon: A versão acima do /forcelayout estava verificando a existencia do arquivo, e entao
+realizava os calculos caso ele nao existisse. No entanto, o arquivo do grafo deve ser calculado
+anteriormente. Logo, simplifiquei a funcao abaixo para apenas ler o arquivo e enviar, uma vez
+que sabe-se que o grafo ja foi calculado anteriormente (Pode apagar a funcao comentada acima)*/
+app.post('/forcelayout', function (req, res) {
+  console.log("Initializing Force Layout"); 
+  //fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/force-directed-graph.json", "utf8", function(err, data){
+  fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/concatenateScatterAndGraphData.json", "utf8", function(err, data){
+    if(err) console.log(err);
+    var currentdate = new Date(); 
+    var datetime = "Last Sync: " + currentdate.getDate() + "/"
+          + (currentdate.getMonth()+1)  + "/" 
+          + currentdate.getFullYear() + " @ "  
+          + currentdate.getHours() + ":"  
+          + currentdate.getMinutes() + ":" 
+          + currentdate.getSeconds();
+    console.log(datetime);
+    res.send(data);
+  });
 });
 
 app.post('/focuslist', function(req, res){
@@ -151,7 +169,7 @@ app.post('/focuslist', function(req, res){
           }else{
              console.log("success");
              res.send(data);
-          }           
+          }
     }); 
 });
 
