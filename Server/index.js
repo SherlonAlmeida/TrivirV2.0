@@ -100,40 +100,10 @@ app.post('/scatterplot', function (req, res) {
   });      
 });
 
-/*app.post('/forcelayout', function (req, res) {
-  console.log("Initializing Force Layout"); 
-  fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/force-directed-graph.json", "utf8", function(err, data){
-              if(err){
-                  var out = R("./scripts/main.R")
-                  .data({"command": "forcelayoutdata", "corpus": corpus, "path_core": path_core, "path_users":path_users, "projtech": projtech, "embtech": embtech, "workingdir": workingdir})
-                  .callSync()
-                              
-                  if (out == "success"){
-                       fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/force-directed-graph.json", "utf8", function(err, data){
-                              if(err) console.log(err);
-                              console.log(out);
-                              var currentdate = new Date(); 
-                              var datetime = "Last Sync: " + currentdate.getDate() + "/"
-                                    + (currentdate.getMonth()+1)  + "/" 
-                                    + currentdate.getFullYear() + " @ "  
-                                    + currentdate.getHours() + ":"  
-                                    + currentdate.getMinutes() + ":" 
-                                    + currentdate.getSeconds();
-                              console.log(datetime);
-                              res.send(data);
-                       });      
-                  }     
-              }else{
-                console.log("success");
-                res.send(data);  
-              }                     
-  });      
-});*/
-
-/*Sherlon: A versão acima do /forcelayout estava verificando a existencia do arquivo, e entao
+/*Sherlon: A versão anterior do /forcelayout estava verificando a existencia do arquivo, e entao
 realizava os calculos caso ele nao existisse. No entanto, o arquivo do grafo deve ser calculado
 anteriormente. Logo, simplifiquei a funcao abaixo para apenas ler o arquivo e enviar, uma vez
-que sabe-se que o grafo ja foi calculado anteriormente (Pode apagar a funcao comentada acima)*/
+que sabe-se que o grafo ja foi calculado anteriormente*/
 app.post('/forcelayout', function (req, res) {
   console.log("Initializing Force Layout"); 
   //fs.readFile("../file/"+pathlib.basename(corpus)+"/"+username+"/force-directed-graph.json", "utf8", function(err, data){

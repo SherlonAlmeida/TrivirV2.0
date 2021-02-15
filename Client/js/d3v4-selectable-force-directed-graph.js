@@ -468,20 +468,34 @@ function ShowNeighborhood(docname){
     var checkbox = document.getElementById('checkboxneighborhood');
     if (checkbox.checked == true) {
 
+        var neighbors = []
+        neighbors.push(docname);
+
         $("#resetscatterplotbutton").css("visibility", "visible");
         var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
         if (option == "Point Cloud") {
-            /*d3.selectAll(".dot").style("visibility", "hidden") 
-            var circles = d3.selectAll(".dot")._groups[0];
-            for (var i = 0; i < circles.length; i++){ 
-                if ((circles[i].style.fill == hexToRgb(colorFocus))||(circles[i].style.fill == hexToRgb(colorBase))||(circles[i].style.fill == hexToRgb(colorSuggestion))){
-                    circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
+            //Define a visibilidade das arestas
+            d3.selectAll(".link").style("visibility", "hidden")
+            var links = d3.selectAll(".link")._groups[0];
+            for (var i = 0; i < links.length; i++){
+                var source = d3.select(links[i]).attr("source");
+                var target = d3.select(links[i]).attr("target");
+                if (source == docname){
+                    links[i].setAttribute("style", "visibility: visible");
+                    neighbors.push(target);
                 }
-            }*/
+            }
+
+            //Define a visibilidade dos pontos
+            d3.selectAll(".dot").style("opacity", "0.1")
+            var circles = d3.selectAll(".dot")._groups[0];
+            for (var i = 0; i < circles.length; i++){
+                var curr_doc = d3.select(circles[i]).attr("name");
+                if (neighbors.includes(curr_doc)){
+                    circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
+                }
+            }
         } else if (option == "Force Layout") {
-            var neighbors = []
-            neighbors.push(docname);
-            
             //Define a visibilidade das arestas
             d3.selectAll(".link .edge").style("visibility", "hidden")
             var links = d3.selectAll(".link .edge")._groups[0];

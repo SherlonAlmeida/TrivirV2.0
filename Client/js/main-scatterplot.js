@@ -59,14 +59,6 @@ function LoadScatterplot() {
         datascatterplot = allData.scatterdata;
         datagraph = filterEdgesByDistance(allData.graphdata);
 
-        //datascatterplot = JSON.parse(d.responseText);
-
-        //console.log("allData: " + allData);
-        //console.log("Datascatterplot: " + datascatterplot);
-        console.log("Datagraph: " + datagraph);
-        console.log("Datagraph.nodes: " + datagraph.nodes);
-        console.log("Datagraph.links: " + datagraph.links);
-
         d3.select(".scatterplot-svg").remove();
         
         // add the tooltip area to the webpage
@@ -142,8 +134,8 @@ function LoadScatterplot() {
             .attr("y1", y1LineMap)
             .attr("x2", x2LineMap)
             .attr("y2", y2LineMap)
-            .attr("source", function(d) { return d.source.id; })    //Sherlon: Adicionei para poder verificar a visibilidade das arestas
-            .attr("target", function(d) { return d.target.id; })    //Sherlon: Adicionei para poder verificar a visibilidade das arestas
+            .attr("source", function(d) { return d.source; })    //Sherlon: Adicionei para poder verificar a visibilidade das arestas
+            .attr("target", function(d) { return d.target; })    //Sherlon: Adicionei para poder verificar a visibilidade das arestas
             .attr("class", "link") ;
         
 
@@ -153,7 +145,8 @@ function LoadScatterplot() {
             .enter().append("circle")         
             .attr("r", circle_radius)
             .attr("cx", xMap)
-            .attr("cy", yMap)    
+            .attr("cy", yMap)
+            .attr("name", function(d) {return d.name})
             .style("fill", function(d) {return ScatterplotColor(d.name)})
             .style("stroke", function(d) {return ScatterplotStroke(d.name)})
             //.style("stroke", "#000")
@@ -183,6 +176,7 @@ function LoadScatterplot() {
                     d3.select(this).style("stroke-width", "3px")
                     OpenDocument(d.name);
                     GetWordFrequency(d.name);
+                    ShowNeighborhood(d.name);
                     var selected_circle = d3.select(this);
                     //Removing any existing menu
                     d3.selectAll(".barmenu")
@@ -343,7 +337,6 @@ function zoom() {
     //Atualiza as posicoes das arestas
     svg.selectAll(".link")
         .attr('transform', d3.event.transform);
-
 }
 
 function transform(d) {
@@ -360,10 +353,6 @@ function LoadForceLayout() {
             allData = JSON.parse(d.responseText);
             datascatterplot = allData.scatterdata;
             datagraph = allData.graphdata;
-
-            //datagraph = JSON.parse(d.responseText);
-
-            //alert(d.responseText); //Texto plano do JSON
             
             d3.select(".scatterplot-svg").remove();
             
@@ -388,53 +377,12 @@ function LoadForceLayout() {
         })
 }
 
-
-
-
-
-
-
-
-
-
-
-/*Sherlon: This Function creates the links in the Projection*/
-function LoadGraph() {
-    return new Promise(function(resolve, reject) {
-        d3.request("http://127.0.0.1:3000/forcelayout")    
-            .header("Content-Type", "application/json")
-            .post( function(error, d){
-                if (!error) {
-                    //PARAMETERS AND VARIABLES
-                    datagraph = JSON.parse(d.responseText);
-
-                    datagraph = filterEdgesByDistance(datagraph);
-                    resolve('Sem Erros');
-                } else {
-                    console.log(error);
-                    reject('Com Erros');
-                }
-            })
-    });
-}
-
-
+/*Sherlon: This function updates the visualization*/
 function updateScatterplotVisualization(){
     var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
     if (option == "Point Cloud") {
-        
-        //Sherlon: Antes de atualizar o scatterplot preciso atualizar o arquivo do grafo
-        //---Aqui (Como garantir a ordem de execucao? )
         LoadScatterplot();
-
-        //Sherlon: Porque usando promises nao esta garantindo a ordem de execucao???
-        /*LoadGraph().then(function(msg){
-            return LoadScatterplot();
-        });*/
-
-    }
-
-    else if (option == "Force Layout") {
+    } else if (option == "Force Layout") {
         LoadForceLayout();
     }
 }
@@ -525,20 +473,21 @@ function FilterScatterplot(documents){
     k = k +1;    
     documents = documents.slice(0, k)
 
+    var visible_documents = [];
     var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
     if (option == "Point Cloud") {
+        //Define a visibilidade dos pontos
         d3.selectAll(".dot").style("visibility", "hidden")
         var circles = d3.selectAll(".dot")._groups[0]; 
         for (var i = 0; i < circles.length; i++){ 
             for (var j = 0 ; j < documents.length; j++){        
                 if (circles[i].__data__.name == documents[j].replace(/['"]+/g, '')){
                     circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
+                    visible_documents.push(d3.select(circles[i]).attr("name"));
                 }
             }        
         }
     } else if (option == "Force Layout") {
-        var visible_documents = []
-
         //Define a visibilidade dos pontos
         d3.selectAll(".node .dot").style("visibility", "hidden") 
         var nodes = d3.selectAll(".node .dot")._groups[0];
@@ -550,27 +499,19 @@ function FilterScatterplot(documents){
                 }
             }
         }
-        
-        //Define a visibilidade das arestas
-        d3.selectAll(".link .edge").style("visibility", "hidden")
-        var links = d3.selectAll(".link .edge")._groups[0];
-        for (var i = 0; i < links.length; i++){
-            //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
-            //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
-            var source = d3.select(links[i]).attr("source");
-            var target = d3.select(links[i]).attr("target");
-            if (visible_documents.includes(source) && visible_documents.includes(target)){
-                links[i].setAttribute("style", "visibility: visible");
-            }
-        }
     }
+
+    //Define a visibilidade das arestas
+    setEdgesVisibility(visible_documents, option);
 }
 
 function showDocumentsWithNgram(text){ 
     if ((text != undefined)&&(text != "")){
         $("#resetscatterplotbutton").css("visibility", "visible");
+        var visible_documents = [];
         var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
         if (option == "Point Cloud") {
+            //Define a visibilidade dos pontos
             d3.selectAll(".dot").style("visibility", "hidden")
             var circles = d3.selectAll(".dot")._groups[0]; 
             for (var i = 0; i < circles.length; i++){   
@@ -578,11 +519,10 @@ function showDocumentsWithNgram(text){
                 text = text.toLowerCase();
                 if(circle_name.includes(text)){
                     circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");                         
+                    visible_documents.push(d3.select(circles[i]).attr("name"));
                 }        
             }
         } else if (option == "Force Layout") {
-            var visible_documents = []
-
             //Define a visibilidade dos pontos
             d3.selectAll(".node .dot").style("visibility", "hidden") 
             var nodes = d3.selectAll(".node .dot")._groups[0];
@@ -595,20 +535,10 @@ function showDocumentsWithNgram(text){
                     visible_documents.push(d3.select(nodes[i]).attr("name"));
                 }
             }
-            
-            //Define a visibilidade das arestas
-            d3.selectAll(".link .edge").style("visibility", "hidden")
-            var links = d3.selectAll(".link .edge")._groups[0];
-            for (var i = 0; i < links.length; i++){
-                //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
-                //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
-                var source = d3.select(links[i]).attr("source");
-                var target = d3.select(links[i]).attr("target");
-                if (visible_documents.includes(source) && visible_documents.includes(target)){
-                    links[i].setAttribute("style", "visibility: visible");
-                }
-            }
         }
+
+        //Define a visibilidade das arestas
+        setEdgesVisibility(visible_documents, option);
     }  
 }
 
@@ -621,7 +551,8 @@ function updateSessionData(){
     var totalUnlabeled = 0;
     
     var circles = d3.selectAll(".dot")._groups[0]; 
-    for (var i = 0; i < circles.length; i++){ 
+    var totalDocuments = circles.length;
+    for (var i = 0; i < totalDocuments; i++){ 
         if (circles[i].style.fill == hexToRgb(colorBase)) totalSeed += 1; //Seed (Green)
         if (circles[i].style.fill == hexToRgb(colorFocus)) totalRelevant += 1; //Relevant (Blue)
         if (circles[i].style.fill == hexToRgb(colorNotRelevant)) totalNotRelevant += 1; //Not Relevant (Red)
@@ -634,32 +565,25 @@ function updateSessionData(){
     document.getElementById('notrelevantlength').value = totalNotRelevant;
     document.getElementById('suggestedlength').value = totalSuggested;
     document.getElementById('unlabeledlength').value = totalUnlabeled;
+}
 
-    /*var visible_documents = []
-
-    //Define a visibilidade dos pontos
-    d3.selectAll(".node .dot").style("visibility", "hidden") 
-    var nodes = d3.selectAll(".node .dot")._groups[0];
-    for (var i = 0; i < nodes.length; i++){
-        //console.log(d3.select(nodes[i]).attr("name"));
-        if ((nodes[i].style.fill == hexToRgb(colorFocus))||(nodes[i].style.fill == hexToRgb(colorBase))||(nodes[i].style.fill == hexToRgb(colorSuggestion))){
-            nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
-            visible_documents.push(d3.select(nodes[i]).attr("name"));
-        }
+function setEdgesVisibility(visible_documents, opt){
+    var links;
+    if (opt == "Point Cloud") {
+        d3.selectAll(".link").style("visibility", "hidden")
+        links = d3.selectAll(".link")._groups[0];
+    } else if (opt == "Force Layout"){
+        d3.selectAll(".link .edge").style("visibility", "hidden")
+        links = d3.selectAll(".link .edge")._groups[0];
     }
     
-    //Define a visibilidade das arestas
-    d3.selectAll(".link .edge").style("visibility", "hidden")
-    var links = d3.selectAll(".link .edge")._groups[0];
     for (var i = 0; i < links.length; i++){
-        //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
-        //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
         var source = d3.select(links[i]).attr("source");
         var target = d3.select(links[i]).attr("target");
         if (visible_documents.includes(source) && visible_documents.includes(target)){
             links[i].setAttribute("style", "visibility: visible");
         }
-    }*/
+    }
 }
 
 /* Scatterplot Menu Buttons*/
@@ -671,6 +595,7 @@ $("#resetscatterplotbutton").unbind().click(function(e){
     if (option == "Point Cloud") {
         d3.selectAll(".dot").style("visibility", "visible")
         d3.selectAll(".dot").style("opacity", "1.0")
+        d3.selectAll(".link").style("visibility", "visible")
     } else if (option == "Force Layout") {
         d3.selectAll(".node .dot").style("visibility", "visible")
         d3.selectAll(".node .dot").style("opacity", "1.0")
@@ -685,8 +610,10 @@ $("#searchdocumentbutton").unbind().click(function(e){
     var text = document.getElementById('searchdocumentinput').value;
     if ((text != undefined)&&(text != "")){
         $("#resetscatterplotbutton").css("visibility", "visible");
+        var visible_documents = [];
         var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
         if (option == "Point Cloud") {
+            //Define a visibilidade dos pontos
             d3.selectAll(".dot").style("visibility", "hidden")
             var circles = d3.selectAll(".dot")._groups[0]; 
             for (var i = 0; i < circles.length; i++){   
@@ -694,11 +621,10 @@ $("#searchdocumentbutton").unbind().click(function(e){
                 text = text.toLowerCase();
                 if(circle_name.includes(text)){
                     circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");                         
+                    visible_documents.push(d3.select(circles[i]).attr("name"));
                 }        
             }
         } else if (option == "Force Layout") {
-            var visible_documents = []
-
             //Define a visibilidade dos pontos
             d3.selectAll(".node .dot").style("visibility", "hidden") 
             var nodes = d3.selectAll(".node .dot")._groups[0];
@@ -706,45 +632,34 @@ $("#searchdocumentbutton").unbind().click(function(e){
                 //console.log(d3.select(nodes[i]).attr("name"));
                 var circle_name = d3.select(nodes[i]).attr("content").toLowerCase(); //Colocar aqui o conteudo do body
                 text = text.toLowerCase();
-                console.log(circle_name);
-                console.log(text);
                 if (circle_name.includes(text)){
                     nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
                     visible_documents.push(d3.select(nodes[i]).attr("name"));
                 }
             }
-            
-            //Define a visibilidade das arestas
-            d3.selectAll(".link .edge").style("visibility", "hidden")
-            var links = d3.selectAll(".link .edge")._groups[0];
-            for (var i = 0; i < links.length; i++){
-                //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
-                //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
-                var source = d3.select(links[i]).attr("source");
-                var target = d3.select(links[i]).attr("target");
-                if (visible_documents.includes(source) && visible_documents.includes(target)){
-                    links[i].setAttribute("style", "visibility: visible");
-                }
-            }
         }
+
+        //Define a visibilidade das arestas
+        setEdgesVisibility(visible_documents, option);
     }
 })
 
 //Botão de filtrar por interessantes, ou seja, o Point Clutter Reduction (Gotas)
 $("#filterrelevantsbutton").unbind().click(function(e){
     $("#resetscatterplotbutton").css("visibility", "visible");
+    var visible_documents = [];
     var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
     if (option == "Point Cloud") {
+        //Define a visibilidade dos pontos
         d3.selectAll(".dot").style("visibility", "hidden") 
         var circles = d3.selectAll(".dot")._groups[0];
         for (var i = 0; i < circles.length; i++){ 
             if ((circles[i].style.fill == hexToRgb(colorFocus))||(circles[i].style.fill == hexToRgb(colorBase))||(circles[i].style.fill == hexToRgb(colorSuggestion))){
                 circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
+                visible_documents.push(d3.select(circles[i]).attr("name"));
             }
         }
     } else if (option == "Force Layout") {
-        var visible_documents = []
-
         //Define a visibilidade dos pontos
         d3.selectAll(".node .dot").style("visibility", "hidden") 
         var nodes = d3.selectAll(".node .dot")._groups[0];
@@ -755,20 +670,10 @@ $("#filterrelevantsbutton").unbind().click(function(e){
                 visible_documents.push(d3.select(nodes[i]).attr("name"));
             }
         }
-        
-        //Define a visibilidade das arestas
-        d3.selectAll(".link .edge").style("visibility", "hidden")
-        var links = d3.selectAll(".link .edge")._groups[0];
-        for (var i = 0; i < links.length; i++){
-            //console.log( d3.select(links[i]).attr("source") + " -> " + d3.select(links[i]).attr("target") );
-            //var n = d3.select("[name=" + "\"" + d3.select(links[i]).attr("source") + "\"" + "]")._groups[0];
-            var source = d3.select(links[i]).attr("source");
-            var target = d3.select(links[i]).attr("target");
-            if (visible_documents.includes(source) && visible_documents.includes(target)){
-                links[i].setAttribute("style", "visibility: visible");
-            }
-        }
-    }   
+    }
+
+    //Define a visibilidade das arestas
+    setEdgesVisibility(visible_documents, option);
 });
 
 //Botão do KNN (Filtro)

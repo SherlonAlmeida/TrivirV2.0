@@ -82,6 +82,7 @@ if (command == "init"){
 
 }else if (command == "scatterplotdata"){
   
+  #Scatterplot Data (Projection)
   source("scatterplot.R")
   if (!file.exists(sprintf("%s/coordinates.json", path_users))){
     createScatterplotCoordinates(path_core, path_users, projtech, embtech);
@@ -101,21 +102,6 @@ if (command == "init"){
   if (!file.exists(sprintf("%s/concatenateScatterAndGraphData.json", path_users))){
     concatenateScatterAndGraphData(path_core, path_users, projtech, embtech);
   }
-
-  print("success");
-
-}else if (command == "forcelayoutdata"){
-  
-  #Force Layout Data (Graph)
-  #source("forcelayout.R")
-  #if (!file.exists(sprintf("%s/force-directed-graph.json", path_users))){
-  #  createForceLayoutData(path_core, path_users, projtech, embtech);
-  #}
-
-  #Scatterplot and Graph Data (coordinates.json + force-directed-graph.json)
-  #if (!file.exists(sprintf("%s/concatenateScatterAndGraphData.json", path_users))){
-  #  concatenateScatterAndGraphData(path_core, path_users, projtech, embtech);
-  #}
 
   print("success");
 
