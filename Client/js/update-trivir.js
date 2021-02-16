@@ -47,7 +47,9 @@ $(document).ready(function(){
 	});
 	
 	$("#ExportButton").click(function(){
-		alert("Clicou no Export");
+		//alert("Clicou no Export");
+		var downloadButton = document.getElementById("exportDataDownload");
+		downloadButton.href = "http://127.0.0.1:3000/exportsessiondata";
 	});
 	
 	/*Se o usuario clicar no botao de dicas iniciara o Tour pelas funcionalidades do sistema*/

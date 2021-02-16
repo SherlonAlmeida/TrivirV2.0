@@ -45,6 +45,10 @@
 #docviewmenu .btn-export-session.effect {
 	background-color: #cc0000;  /*Cor do fundo*/
 }
+#docviewmenu a {
+  text-decoration: none; /* Remove o underline */
+}
+
 
 /*Estilo das divs que encapsulam as regioes dos Hints do Guided Tour*/
 #ScatterplotView {

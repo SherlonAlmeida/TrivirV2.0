@@ -707,7 +707,104 @@ app.get('/getnotrelevantlist', function(req, res){
         console.log("success");
         res.send(data);
   });
-    
+})
+
+
+/*Sherlon: Functions related to the Export Data Session*/
+
+function readFocusList(callback){
+  var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/";
+  var focuslist = path + "focuslist.json";
+  fs.readFile(focuslist, "utf8", function(err, data){ //Assincrono
+    if(err) console.log(err);
+    var file = JSON.parse(data);
+    var keys = Object.keys(file);
+    var output = "";
+
+    //Sherlon: Save SEED Documents
+    output += "SEED DOCUMENTS:\n";
+    for (var i = 0; i < keys.length; i++){
+      if (file[keys[i]].label == 2)
+        output += "\t" + file[keys[i]].title + "\n";
+    }
+
+    //Sherlon: Save RELEVANT Documents
+    output += "\nRELEVANT DOCUMENTS:\n";
+    for (var i = 0; i < keys.length; i++){
+      if (file[keys[i]].label != 2)
+        output += "\t" + file[keys[i]].title + "\n";
+    }
+    callback(output);
+  });
+}
+
+function readSuggestionList(previousdata, callback){
+  var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/";
+  var suggestionlist = path + "suggestionlist.json";
+  fs.readFile(suggestionlist, "utf8", function(err, data){ //Assincrono
+    if(err) console.log(err);
+    var file = JSON.parse(data);
+    var keys = Object.keys(file);
+    var output = previousdata;
+
+    //Sherlon: Save SUGGESTED Documents
+    output += "\nSUGGESTED DOCUMENTS:\n";
+    for (var i = 0; i < keys.length; i++){
+      output += "\t" + file[keys[i]].title + "\n";
+    }
+    callback(output);
+  });
+}
+
+function readNotRelevantList(previousdata, callback){
+  var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/";
+  var notrelevantlist = path + "notrelevant.json";
+  fs.readFile(notrelevantlist, "utf8", function(err, data){ //Assincrono
+    if(err) console.log(err);
+    var file = JSON.parse(data);
+    var keys = Object.keys(file);
+    var output = previousdata;
+
+    //Sherlon: Save SUGGESTED Documents
+    output += "\nNOT RELEVANT DOCUMENTS:\n";
+    for (var i = 0; i < keys.length; i++){
+      output += "\t" + file[keys[i]].title + "\n";
+    }
+    callback(output);
+  });
+}
+
+/*Download File in Client Side*/
+app.get('/exportsessiondata', function(req, res){
+  console.log("Exporting Session Data");  
+  var path = "../file/"+pathlib.basename(corpus)+"/"+username+"/";
+  
+  readFocusList( function(output){
+    var dataFocus = output; //Somente os dados da Focuslist
+    readSuggestionList( dataFocus, function(output){
+      var dataSuggestion = output; //Os dados da Focuslist + Suggestionlist
+      readNotRelevantList( dataSuggestion, function(output){
+
+        var currentdate = new Date(); 
+        var datetime = "-" + currentdate.getDate() + "-"
+                    + (currentdate.getMonth()+1)  + "-" 
+                    + currentdate.getFullYear() + "-"  
+                    + currentdate.getHours() + "h"  
+                    + currentdate.getMinutes() + "m" 
+                    + currentdate.getSeconds() + "s";
+
+        var sessiondata = path + "SessionDataTrivir.txt"; //Nome do arquivo no servidor
+        var dataNotRelevant = output; //Os dados da Focuslist + Suggestionlist + NotRelevantlist
+        fs.writeFile(sessiondata, dataNotRelevant, "utf8", (err) => {
+          if (err) console.log(err);
+          console.log("Session data file was created");
+          var renamesessiondata = path + "SessionDataTrivir" + datetime + ".txt"; //Nome do arquivo no cliente
+          res.download(sessiondata, renamesessiondata);
+        });
+
+      });
+    });
+  });
 })
 
 //Seta o servidor para a porta 3000
