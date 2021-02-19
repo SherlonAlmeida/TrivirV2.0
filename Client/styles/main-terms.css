@@ -49,7 +49,7 @@
 
 .termslist{
   position: relative;
-  z-index: 1;
+  z-index: 50; /*Sherlon: Must be in front of Data Session*/
 }
 
 #addterm{

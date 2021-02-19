@@ -217,3 +217,25 @@
   position: relative;
   top: 2px;
 }
+
+/*Loading Animation*/
+#loadingcompleted {
+  position: absolute;
+  margin-top: 12px;
+  margin-left: 165px;
+  z-index: 35;
+  border: #6b6b47 1px solid;
+  background: #FFF;
+}
+
+#loadingcompleted p {
+  position: absolute;
+  font-size: 10px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+#checkanimation {
+  width: 30px;
+  height: 30px;
+}

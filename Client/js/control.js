@@ -126,6 +126,8 @@ function initialize(){
 
 /* Signature */
 function setRelevantDocumentsWithNgram(ngram){
+    executesLoadingGif();
+
     if (ngram.length > 2){
         $("#focustoggle")[0].disabled = true;
         $("#suggestiontoggle")[0].disabled = true;
@@ -150,7 +152,9 @@ function setRelevantDocumentsWithNgram(ngram){
     
 }
 
-function setNotRelevantDocumentsWithNgram(ngram){ 
+function setNotRelevantDocumentsWithNgram(ngram){
+    executesLoadingGif();
+
     if (ngram.length > 2){
         $("#focustoggle")[0].disabled = true;
         $("#suggestiontoggle")[0].disabled = true;
@@ -176,6 +180,7 @@ function setNotRelevantDocumentsWithNgram(ngram){
 
 /* Suggestion List */
 function RetrainClassifier(){
+    executesLoadingGif();
   
     $("#suggestiontoggle")[0].disabled = true;
     /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
@@ -240,6 +245,7 @@ function getReadStroke(status){
 }
 
 function setSimilarDocumentsAsNotRelevant(document){
+    executesLoadingGif();
 
     if (document.length > 2){
         $("#focustoggle")[0].disabled = true;       
@@ -266,7 +272,9 @@ function setSimilarDocumentsAsNotRelevant(document){
     }
 }
 
-function setSimilarDocumentsAsRelevant(document){ 
+function setSimilarDocumentsAsRelevant(document){
+    executesLoadingGif();
+
     if (document.length > 2){
         $("#focustoggle")[0].disabled = true;        
         $("#suggestiontoggle")[0].disabled = true;
@@ -327,7 +335,9 @@ function GetWordFrequency(name){
     });   
 }
 
-function SetDocumentAsRelevant(document, source){    
+function SetDocumentAsRelevant(document, source){
+    executesLoadingGif();
+
     $("#suggestiontoggle")[0].disabled = true;
     $("#focustoggle")[0].disabled = true;
     /* Sherlon: Comentar esta linha remove o "bug" da aba sumir.
@@ -394,7 +404,9 @@ function SetDocumentAsRelevant(document, source){
     }    
 }
 
-function SetDocumentAsNotRelevant(document, origin){   
+function SetDocumentAsNotRelevant(document, origin){
+    executesLoadingGif();
+
     var document_name;
     if (origin == 'scatter'){
         document_name = document.name;

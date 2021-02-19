@@ -565,6 +565,8 @@ function updateSessionData(){
     document.getElementById('notrelevantlength').value = totalNotRelevant;
     document.getElementById('suggestedlength').value = totalSuggested;
     document.getElementById('unlabeledlength').value = totalUnlabeled;
+
+    executesCompleteGif();
 }
 
 function setEdgesVisibility(visible_documents, opt){
@@ -773,13 +775,26 @@ $('#distancevalue').on('change', function() {
     }
 });*/
 
+//Sherlon: Update the Status Image
+function executesLoadingGif(){
+    var status = document.getElementById('checkanimation');
+    status.src = "images/loading-system.gif";
+}
+function executesCompleteGif(){
+    var status = document.getElementById('checkanimation');
+    status.src = "images/complete.png";
+}
+
 //Checkbox para habilitar os Dados da Sessao
 $('#checkboxsessiondata').on('click', function() {
     var checkbox = document.getElementById('checkboxsessiondata');
     var data_session = document.getElementById('sessiondata');
+    var status = document.getElementById('loadingcompleted');
     if (checkbox.checked == true) {
-        data_session.setAttribute("style", "visibility: visible")
+        data_session.setAttribute("style", "visibility: visible");
+        status.setAttribute("style", "visibility: visible");
     } else {
-        data_session.setAttribute("style", "visibility: hidden")
+        data_session.setAttribute("style", "visibility: hidden");
+        status.setAttribute("style", "visibility: hidden");
     }
 });
