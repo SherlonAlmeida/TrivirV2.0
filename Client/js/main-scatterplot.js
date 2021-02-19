@@ -402,6 +402,8 @@ function filterEdgesByDistance(data) {
 
 /*Sherlon: this function identifies the selected circle and create a border*/
 function StrokeCircle(docname){
+    ShowNeighborhood(docname);  //Sherlon: If active, shows only the neighbors of a document
+
     var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
     if (option == "Point Cloud") {
         var circles = d3.selectAll(".dot")._groups[0]; 
@@ -439,12 +441,16 @@ function UpdateScatterplotColors(name){
                     break;
                 }       
             }
-        //Mas se nenhum documento for passado como parametro, atualiza todos os documentos
+        //Mas se nenhum documento for passado como parametro, atualiza todos os documentos e reseta os links
         } else{
             for (var i = 0; i < circles.length; i++){ 
                 circles[i].setAttribute("style", "fill: "+ ScatterplotColor(circles[i].__data__.name)+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+circles[i].style.visibility)      
-            }         
+            }
+
+            //Define a visibilidade das arestas (Todas)
+            //d3.selectAll(".link").style("visibility", "visible");
         }
+
     } else if (option == "Force Layout") {
         var nodes = d3.selectAll(".node .dot")._groups[0];
         //Se um documento for passado como parametro, atualiza apenas este documento
@@ -455,11 +461,14 @@ function UpdateScatterplotColors(name){
                     break;
                 }       
             }
-        //Mas se nenhum documento for passado como parametro, atualiza todos os documentos
+        //Mas se nenhum documento for passado como parametro, atualiza todos os documentos e reseta os links
         } else{
             for (var i = 0; i < nodes.length; i++){ 
                 nodes[i].setAttribute("style", "fill: "+ ScatterplotColor(d3.select(nodes[i]).attr("name"))+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: "+nodes[i].style.visibility)      
-            }         
+            }
+
+            //Define a visibilidade das arestas (Todas)
+            //d3.selectAll(".link .edge").style("visibility", "visible");
         }
     }
 
@@ -797,4 +806,61 @@ $('#checkboxsessiondata').on('click', function() {
         data_session.setAttribute("style", "visibility: hidden");
         status.setAttribute("style", "visibility: hidden");
     }
+});
+
+/*Filtrar Scatterplot por cada classe separadamente*/
+function filterScatterplotByClass(label){
+
+    if (label == "seed") targetColor = colorBase;                       //Seed (Green)
+    else if (label == "relevant") targetColor = colorFocus;             //Relevant (Blue)
+    else if (label == "notrelevant") targetColor = colorNotRelevant;    //Not Relevant (Red)
+    else if (label == "suggested") targetColor = colorSuggestion;       //Suggested (Yellow)
+    else if (label == "unlabeled") targetColor = colorUnlabeled;        //Unlabeled (Gray)
+
+    $("#resetscatterplotbutton").css("visibility", "visible");
+
+    var visible_documents = [];
+    var option = $('input[name=inlineRadioOptions]:checked', '.scatterplotVisualizations').val();
+    if (option == "Point Cloud") {
+        //Define a visibilidade dos pontos
+        d3.selectAll(".dot").style("visibility", "hidden") 
+        var circles = d3.selectAll(".dot")._groups[0];
+        for (var i = 0; i < circles.length; i++){ 
+            if (circles[i].style.fill == hexToRgb(targetColor)) {
+                circles[i].setAttribute("style", "fill: "+circles[i].style.fill+"; stroke: "+circles[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible"); 
+                visible_documents.push(d3.select(circles[i]).attr("name"));
+            }
+        }
+    } else if (option == "Force Layout") {
+        //Define a visibilidade dos pontos
+        d3.selectAll(".node .dot").style("visibility", "hidden") 
+        var nodes = d3.selectAll(".node .dot")._groups[0];
+        for (var i = 0; i < nodes.length; i++){
+            //console.log(d3.select(nodes[i]).attr("name"));
+            if (nodes[i].style.fill == hexToRgb(targetColor)) {
+                nodes[i].setAttribute("style", "fill: "+nodes[i].style.fill+"; stroke: "+nodes[i].style.stroke +"; stroke-width: 1px; opacity: 1.0; visibility: visible");
+                visible_documents.push(d3.select(nodes[i]).attr("name"));
+            }
+        }
+    }
+
+    //Define a visibilidade das arestas
+    setEdgesVisibility(visible_documents, option);
+
+}
+
+$("#SeedColor").click(function(){
+    filterScatterplotByClass("seed");
+});
+$("#RelevantColor").click(function(){
+    filterScatterplotByClass("relevant");
+});
+$("#NotRelevantColor").click(function(){
+    filterScatterplotByClass("notrelevant");
+});
+$("#SuggestedColor").click(function(){
+    filterScatterplotByClass("suggested");
+});
+$("#UnlabeledColor").click(function(){
+    filterScatterplotByClass("unlabeled");
 });
