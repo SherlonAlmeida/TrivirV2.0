@@ -2,25 +2,22 @@
     width: 100%;
     height: 40%; /*Sherlon: Quando editar aqui deve mudar no main-wordcloud.js de 0.40 para a nova porcentagem escolhida*/
     position: relative;
-    /*top: 30px;*/
 }
 
 #wordcloudviewheader {
-    margin: 0px 0px 0px 3px;
     width: 100%;
     background-color: #ebebe0;
     border: #6b6b47 1px solid;
     height: 30px;
-    margin-top: 1px;
-    position: relative;
 }
 
-#wordcloudview{ 
-    margin: -1px;
-    margin-right: 0px;
-    margin-left: 3px;
-    margin-bottom: 13px;
-    padding-bottom: 0px;
+#wordcloudview{
+    display: flex;
+    width: 100%;
+    height: calc(100% - 30px); /*Sherlon: Reduz os 30px do cabecalho*/
+}
+
+#wordcloudviewdiv{ 
     background-color: #FFF;
     border: #6b6b47 1px solid;
 
@@ -30,10 +27,4 @@
     box-sizing: border-box;         /* For IE and modern versions of Chrome */
     -moz-box-sizing: border-box;    /* For Firefox                          */
     -webkit-box-sizing: border-box; /* For Safari */
-}
-
-#wordcloudviewdiv{
-    display: flex;
-    width: 100%;
-    height: 100%;
 }

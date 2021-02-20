@@ -2,7 +2,7 @@
 #docviewmenu .btn {
 	height: 32px;               /*Tamanho da altura do botao*/
     line-height: 20px;          /*Altura do texto do botao*/
-    margin-right: 8px;          /*Espacamento entre um botao e o outro*/
+    /*margin-right: 8px;*/          /*Espacamento entre um botao e o outro*/
 	font-size: 14px;
 }
 
@@ -60,14 +60,15 @@
 /*Estilo dos cabeçalhos*/
 
 #scatterplotheader {
-    margin: 0px 0px 0px 5px;
+    /*margin: 0px 0px 0px 5px;*/
     width: 98.5%;
     background-color: #ebebe0;
     border: #6b6b47 1px solid;
     height: 30px;
-    margin-top: 0px;
+    /*margin-top: 0px;
+    top: 4px;*/
     position: relative;
-    top: 4px;
+    margin: 0 auto; /*Sherlon: Centraliza toda div*/
 }
 
 #docviewheader h2,
@@ -86,14 +87,15 @@
 
 /*Define o estilo da explicação das cores dos Circulos*/
 #scatterplotdescription {
-	margin: 0px 0px 0px 5px;
+	/*margin: 0px 0px 0px 5px;*/
     width: 98.5%;
     background-color: whitesmoke;
     border: #6b6b47 1px solid;
     height: 30px;
-    margin-top: 0px;
+    /*margin-top: 0px;
+    top: 4px;*/
     position: relative;
-    top: 4px;
+    margin: 0 auto; /*Sherlon: Centraliza toda div*/
 	text-align: center;
 }
 .scatterplotSeed {

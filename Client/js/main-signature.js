@@ -199,7 +199,6 @@ function LoadSignature(update, callback){
             .attr("class", "bar-rect")
             .on("click", function(d,i){               
                 barClick(d, this, barColor, barWidth, barHeight);
-               
             }) 
 
      svg.selectAll(".bar-rect-color")

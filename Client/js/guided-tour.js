@@ -7,6 +7,9 @@ function guided_tour(){
 	var export_string = '<div style="color:yellow; font-size:24px;">Export <br></div> <div style="color:white; font-size:18px;">Click Export button to <br> export the session data.</div>';
 	
 	var scatterplot_view_string = '<div style="color:yellow; font-size:20px;">Scatterplot View <br> </div> <div style="color:white; font-size:18px;">Each circle<br>represents a<br>document from<br>the corpus.</div>';
+	var visualization_techniques_string = '<div style="color:yellow; font-size:20px;">Visualization Techniques <br> </div> <div style="color:white; font-size:18px;">Projection: The circles location are calculated<br>by a multidimensional projection algorithm.<br>Available options: t-SNE (Default) and LSP.<br><br>Force Layout: The circles location are based in<br>a force directed graph, where the distance<br>represents the similarity.</div>';
+	var scatterplot_description_string = '<div style="color:yellow; font-size:20px;">Scatterplot View <br> </div> <div style="color:white; font-size:18px;">Click on each<br>circle to view its<br>corresponding class</div>';
+	var scatterplot_parameters_string = '<div style="color:yellow; font-size:20px;">Scatterplot View <br> </div> <div style="color:white; font-size:18px;">Cosine Distance [0,100]: Is the similarity threshold.<br><br>Link Distance [1,100]: Is the link distance<br>between the similar documents.<br><br>Nighborhood: Shows the neighborhood<br>of a selected document.<br><br>Session Data: Shows the number of documents<br>per class, and the status of the system.</div>';
 	var seed_color_string = '<div style="color:yellow; font-size:20px;">Seed Documents <br> </div> <div style="color:white; font-size:18px;">The GREEN circles indicate highly <br> relevant documents to your search. <br><br> You will classify a document as SEED when you <br> notice that it is very interesting for your search. <br><br> The 10 most similar documents to a SEED <br> are set automatically as RELEVANT (Blue).</div>';
 	var relevant_color_string = '<div style="color:yellow; font-size:20px;">Relevant Documents <br> </div> <div style="color:white; font-size:18px;">The BLUE circles represent documents <br> RELEVANT to your search. <br><br> You may change the classification <br> of a document to SEED or NOT <br> RELEVANT if you wish.</div>';
 	var not_relevant_color_string = '<div style="color:yellow; font-size:20px;">Not Relevant Documents <br> </div> <div style="color:white; font-size:18px;">The RED circles represent the <br> documents NOT RELEVANT <br> to your search. <br><br> You can change the classification <br> to RELEVANT if you wish. <br><br> Or you can click the \"+\" button <br> to set also as NOT RELEVANT <br> the 10 documents most similar to it. </div>';
@@ -63,6 +66,16 @@ function guided_tour(){
 			'showSkip' : false
 		},
 		{
+			//Scatterplot View: Visualizations
+			'next .scatterplotVisualizations' : visualization_techniques_string,
+			'showSkip' : false
+		},
+		{
+			//Scatterplot View: Description
+			'next #scatterplotdescription' : scatterplot_description_string,
+			'showSkip' : false
+		},
+		{
 			//Scatterplot View: Seed Documents
 			'next #SeedColor' : seed_color_string,
 			'showSkip' : false
@@ -93,6 +106,11 @@ function guided_tour(){
 			'showSkip' : false,
 			'shape': 'circle',
 		  	'radius': 30
+		},
+		{
+			//Scatterplot View: Parameters
+			'next #scatterplotparameters' : scatterplot_parameters_string,
+			'showSkip' : false
 		},
 		{
 			//Filter by terms

@@ -322,9 +322,49 @@ function SelectOnScatterplot(document){
 /* Sherlon: This function shows the content in Document View*/
 function OpenDocument(name){
     $.get('http://127.0.0.1:3000/getdocument?docname='+name,function(resp) {                           
-        var text = document.getElementById("docview")
+        /*var text = document.getElementById("docview");
         text.value = resp;
-        text.style.color = "black";
+        text.style.color = "black";*/
+        
+        var new_text = resp.split('\n');
+
+        //Sherlon: Formatando texto
+        var div = document.getElementById("docview");
+        div.innerHTML = '<span>';
+        for (var i=0; i<new_text.length; i++){
+            var text = document.getElementById('searchdocumentinput').value;
+            if ((text != undefined)&&(text != "")&&(text.length > 1)){ //Sherlon: Permitir buscas de apenas palavras de text.length > 1 eh para evitar um erro de mostrar o html quando busca a palavra "A" (porque isso acontece?)
+                var line = new_text[i].split(' ');
+                for (var j=0; j<line.length; j++){
+                    var word = line[j];
+                    var str1 = text.toLowerCase();
+                    var str2 = word.toLowerCase();
+                    str2 = str2.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+
+                    if (i==2) str2 = str2.slice(0, -1); //Sherlon: Para o ano funcionar precisa remover o ultimo caractere (por que?)
+
+                    //if ( str1.localeCompare(str2) == 0 ){
+                    if ( str2.includes(str1) ){
+                        var highlighted = '<span style="background-color: #7FFFD4;">' + word + '</span>';
+                        new_text[i] = new_text[i].replaceAll(word, highlighted);
+                    }
+                }
+            }
+
+            if (i==0) { //Conteudo do titulo (Primeira linha do arquivo)
+                div.innerHTML += '<span><strong>' + new_text[i].toUpperCase() + '</span></strong><br>';
+            } else if (i==1) { //Conteudo dos Autores (Segunda linha do arquivo)
+                div.innerHTML += '<span style="color: #CD5C5C"><strong>Authors: </strong></span><span>' + new_text[i] + '</span><br>';
+            } else if (i==2) { //Conteudo do Ano (Terceira linha do arquivo)
+                div.innerHTML += '<span style="color: #CD5C5C"><strong>Year: </strong></span><span>' + new_text[i] + '</span><br>';
+            } else if (i==3) { //Conteudo do Abstract (Quarta linha do arquivo)
+                div.innerHTML += '<span style="color: #CD5C5C"><strong>Abstract: </strong></span><span>' + new_text[i] + '</span><br>';
+            } else {
+                div.innerHTML += new_text[i] + '<br>';
+            }
+        }
+        div.innerHTML += '</span>';
+
     });   
 }
 

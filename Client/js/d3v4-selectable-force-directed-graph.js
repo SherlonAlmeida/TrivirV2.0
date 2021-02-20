@@ -17,7 +17,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
     //let parentWidth = d3v4.select('svg').node().parentNode.clientWidth;
     //let parentHeight = d3v4.select('svg').node().parentNode.clientHeight;
     let parentWidth = $("#scatterplotheader").width();
-    let parentHeight = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height();
+    let parentHeight = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height() - $("#scatterplotheader").height() - $("#scatterplotdescription").height() - $("#scatterplotparameters").height();
 
     //var svg = d3v4.select('svg')
     var svg = d3v4.select('#scatterplotcontainer svg')
@@ -28,8 +28,8 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
     svg.selectAll('.g-main').remove();
 
     // Removing any existing menu
-        d3.selectAll(".barmenu")
-            .remove()   
+    d3.selectAll(".barmenu")
+        .remove()   
 
     var gMain = svg.append('g')
     .classed('g-main', true);

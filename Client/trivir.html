@@ -214,38 +214,39 @@
 						<button class="btn btn-load-dataset" id="LoadButton" title="Load the Dataset's directory">Load</button>
 						<button class="btn btn-seed" id="SeedButton" title="Pick the seed document to feed the initial query">Seed</button>
 						<button class="btn btn-train" id="TrainButton" title="Retrain the algorithm to improve the recommendation">Train</button>
-						<a id="exportDataDownload" href="" target="">
+                        <a id="exportDataDownload" href="" target="">
                             <button class="btn btn-export-session" id="ExportButton" title="Export a file containing the current session">Export</button>
                         </a>
-						
 						<i class="fa fa-question-circle" id="TipsButton" title="Tips to use the system"></i>
 					</div>
 				</div>
 				
-                <div id="DocumentView">
-                    <!--Define o cabeçalho do Document View-->
-                    <div id="docviewheader" title="Document View: This functionality allows to read the document content">
-                        <h2>Document View</h2>
-                    </div>
-                    <!--Define a area textual onde aparecera o conteudo do documento-->
-                    <div id="docviewdiv">
-                        <textarea id = "docview" readonly></textarea>
-                    </div>
-                </div>  
+                <div id="docwordmenus">
+                    <div id="DocumentView">
+                        <!--Define o cabeçalho do Document View-->
+                        <div id="docviewheader" title="Document View: This functionality allows to read the document content">
+                            <h2>Document View</h2>
+                        </div>
+                        <!--Define a area textual onde aparecera o conteudo do documento-->
+                        <div id="docviewdiv">
+                            <!-- <textarea id = "docview" readonly></textarea> -->
+                            <p id = "docview"></p>
+                        </div>
+                    </div>  
 
-                <div id="WordCloudView">
-                    <!--Define o cabeçalho da Wordcloud View-->
-                    <div id="wordcloudviewheader" title="Word Cloud View: This functionality allows to see the main terms in the content of a document">
-                        <h2>Word Cloud View</h2>
-                    </div>
-                    <!--Define a area da Wordcloud na interface do sistema-->
-                    <div id="wordcloudview">
-                        <div id = "wordcloudviewdiv">
-                            
+                    <div id="WordCloudView">
+                        <!--Define o cabeçalho da Wordcloud View-->
+                        <div id="wordcloudviewheader" title="Word Cloud View: This functionality allows to see the main terms in the content of a document">
+                            <h2>Word Cloud View</h2>
+                        </div>
+                        <!--Define a area da Wordcloud na interface do sistema-->
+                        <div id="wordcloudview">
+                            <div id = "wordcloudviewdiv">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-
 			</div>
         </div>
         

@@ -69,7 +69,7 @@ function LoadScatterplot() {
         svg = d3.select("#scatterplotcontainer").append("svg"),
             margin = {top: 20, right: 20, bottom: 30, left: 40},
             width = $("#scatterplotheader").width(), // - margin.left - margin.right,
-            height = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height(),
+            height = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height() - $("#scatterplotheader").height() - $("#scatterplotdescription").height() - $("#scatterplotparameters").height(),
             g = svg.append("g").attr("transform", "translate(" + (margin.left) + "," + margin.top + ")");
          
         var barHeight = 30;  
@@ -359,7 +359,7 @@ function LoadForceLayout() {
             svg = d3.select("#scatterplotcontainer").append("svg"),
                 margin = {top: 20, right: 20, bottom: 30, left: 40},
                 width = $("#scatterplotheader").width(), // - margin.left - margin.right,
-                height = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height(),
+                height = window.innerHeight - margin.top - margin.bottom - $("#termscontainer").height() - $("#scatterplotheader").height() - $("#scatterplotdescription").height() - $("#scatterplotparameters").height(),
                 g = svg.append("g").attr("transform", "translate(" + (margin.left) + "," + margin.top + ")");
             d3.select("#scatterplotcontainer")        
                 .style("height", height+"px")

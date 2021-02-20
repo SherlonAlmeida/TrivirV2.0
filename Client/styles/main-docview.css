@@ -4,14 +4,19 @@
     width: 25%;
 }
 
+#docwordmenus{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 /*Sherlon: Document View*/
 #docviewmenu{
-    display:flex;
+    display: flex;
     flex-direction: row; 
     height: 38px;
     width: 100%;
     background-color: #212121;
-    margin: 0px;
     float: right;
 }
 
@@ -19,34 +24,33 @@
     width: 100%;
     height: 60%; 
     position: relative;
+    /*margin-bottom: 30px;*/
 }
 
 #docviewheader {
-    margin: 0px 0px 0px 3px;
     width: 100%;
     background-color: #ebebe0;
     border: #6b6b47 1px solid;
     height: 30px;
-    margin-top: 1px;
-    position: relative;
-    top: 4px;
 }
 
 #docviewdiv{    
     display: flex;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 30px); /*Sherlon: Reduz os 30px do cabecalho*/
 }
 
-#docview{ 
-    margin: 3px;
-    margin-right: 0px;
-    margin-bottom: 20px;
-    padding-bottom: 0px;
+#docview{
+    position: absolute;
+
     background-color: #FFF;
     text-align: justify; /*Sherlon: This will justify the content in Document View*/
-
     width: 100%;
+    height: calc(100% - 30px);;
+
+    overflow: scroll; /* Sempre exibe barras de rolagem */
+    border: #6b6b47 1px solid;
+
     resize: none;
     box-sizing: border-box;         /* For IE and modern versions of Chrome */
     -moz-box-sizing: border-box;    /* For Firefox                          */

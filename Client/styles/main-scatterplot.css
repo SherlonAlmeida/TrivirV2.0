@@ -1,10 +1,11 @@
 #scatterplotcontainer{
-    background-color: #FFF;/*whitesmoke;*/
-    width: 98.5%;
-    /*margin-top: 40px;*/ /*Sherlon: esta sendo atualizado em tempo de execucao pelo LoadScatterplot()*/
-    margin: 5px;
-    display: flex;
+  background-color: #FFF;/*whitesmoke;*/
+  width: 98.5%;
+  /*margin-top: 40px;*/ /*Sherlon: esta sendo atualizado em tempo de execucao pelo LoadScatterplot()*/
+  /*margin: 5px;*/
+  display: flex;
 	border: #6b6b47 1px solid;
+  margin: 0 auto; /*Sherlon: Centraliza toda div*/
 }
 
 .scatterplot-svg{
@@ -88,14 +89,15 @@
 
 /*Slider Style*/
 #scatterplotparameters {
-  margin: 0px 0px 0px 5px;
+  /*margin: 0px 0px 0px 5px;*/
   width: 98.5%;
   background-color: whitesmoke;
   border: #6b6b47 1px solid;
   height: 30px;
-  margin-top: 0px;
+  /*margin-top: 0px;
+  top: 4px;*/
   position: relative;
-  top: 4px;
+  margin: 0 auto; /*Sherlon: Centraliza toda div*/
   text-align: center;
 }
 
