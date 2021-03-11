@@ -87,8 +87,9 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
       #if (distanceCos > threshold) {
         source_link[iter] <- docnames[indexFile];
         target_link[iter] <- name;
-        distanceCos_link[iter] <- distanceCos; #Sherlon: Cosine distance (The further the more similar)
-        similarity_link[iter] <- (1 - distanceCos); #Sherlon: Converts similarity (cosine distance between 0 and 1) into distance (The closer the more similar)
+        #Sherlon: The names are wrong. It is necessary to change all variables with Distance by Similarity and vice versa.
+        distanceCos_link[iter] <- distanceCos; #Sherlon: (Here is SIMILARITY) Cosine similarity (The higher the value, the more similar)
+        similarity_link[iter] <- (1 - distanceCos); #Sherlon: (Here is DISTANCE) Converts similarity into distance (The closer the more similar)
         iter <- iter + 1;
       #}
     }
@@ -96,6 +97,7 @@ createForceLayoutData <- function(path_core, path_users, projtech, embtech){
   }
 
   #Sherlon: Generates the Nested JSON to the Force Layout Visualization
+  #OBS.: Na verdade 'value' eh  a Distancia do Cosseno (Menor eh mais similar) enquanto 'cosdist' eh a similaridade do cosseno (Maior eh mais similar).
   graph <- list()
     nodes <- data.frame('id' = docnames, 'group' = 1, 'body' = coord_body, 'body_preprocessed' = coord_bodypreprocessed);
     links <- data.frame('source' = source_link, 'target' = target_link, 'value' = similarity_link, 'cosdist' = distanceCos_link);

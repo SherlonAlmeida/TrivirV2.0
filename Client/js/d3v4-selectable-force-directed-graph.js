@@ -119,7 +119,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
                 .id(function(d) { return d.id; })
                 .distance(function(d) {
                     //var dist = 20/d.value; //Garante que a menor distancia sera 20, pois o d.value esta entre 0 e 1
-                    var dist = d.value;
+                    var dist = d.value; //Cosine Distance (Quanto menor a distancia, mais similar)
                     var new_dist = parseInt(document.getElementById('sliderEdgesDistance').value);
                     var result = ( (dist*10) + new_dist );
                     return result;

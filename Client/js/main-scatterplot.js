@@ -391,8 +391,8 @@ function updateScatterplotVisualization(){
 function filterEdgesByDistance(data) {
     var threshold = document.getElementById('sliderCosineDistance').value / 100;
     data.links = data.links.filter(function(jsonObject) {
-        //return jsonObject.cosdist > threshold; //Diminui os links ao aumentar o threshold, pois menos links possuem alta similaridade (Isso sim eh distancia do cosseno).
-        return jsonObject.value < threshold; //Aumenta os links ao aumentar o threshold, pois cada vez mais links estarão abaixo de 1 (Isso nao eh distancia do cosseno (Vis-KT)).
+        //return jsonObject.cosdist > threshold; //Diminui os links ao aumentar o threshold, pois menos links possuem alta similaridade (Isso eh similaridade do cosseno).
+        return jsonObject.value < threshold; //Aumenta os links ao aumentar o threshold, pois cada vez mais links estarão abaixo do threashold (Maximo é 1) (Isso eh distancia do cosseno (Vis-KT), ou seja, quanto maior a distancia do cosseno selecionada, links cada vez menos similares serao apresentados).
     });
     console.log(data);
     return data;

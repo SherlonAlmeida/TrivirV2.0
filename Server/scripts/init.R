@@ -114,7 +114,8 @@ saveDocumentRepresentation <- function(corpus, path_core){
 #Save the cosine distance from the query document to the others
 saveCosDistance <- function(base, path_core, path_users, embtech){
   
- #retrieve the wordembeddings representation or bag of words representation    
+ #retrieve the wordembeddings representation or bag of words representation
+ #Sherlon: Here is the cosine similarity, not the cosine distance (it is necessary to change the name throughout the system)
  if (embtech == "word_embeddings"){
     Embedding <- read.csv(file=sprintf("%s/wordembedding.csv", path_core), header=TRUE, check.names=FALSE)
     
