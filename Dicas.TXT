@@ -1,7 +1,0 @@
-Inclui os artigos no Parsifal
-Baixei os artigos do parsifal em XLS
-Converti online para CSV em: https://convertio.co/pt/download/146df284c62819e23de535acdaf8d0d16c1d80/
-
-Alterei a escrita dos artigos no ExtractCorpus.R
-Adicionei o caminho para a base de dados no index.js
-Executei o script
