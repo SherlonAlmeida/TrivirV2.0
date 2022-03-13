@@ -219,10 +219,10 @@ extractScopus <- function(input, dirName){
 
 
 extractWos <- function(input, dirName){
-  D <- readFiles(input)
+  #D <- readFiles(input)
   #Create the directory for the files
   dir.create(sprintf("../../data/%s", dirName));
-  M <- convert2df(D, dbsource = "isi", format = "bibtex")
+  M <- convert2df(input, dbsource = "isi", format = "bibtex")
   count <- 1L;
   for (i in 1:length(M[,1])){
     title <- iconv(M[i, 'TI'], to = "utf8");
@@ -262,4 +262,7 @@ extractWos <- function(input, dirName){
 #extractCorpus("C:/Users/sherl/Documents/TRIVIR/Dataset_Text.csv", "SherlonText", "parsifal") #Usuario Sherlon
 
 #DEMO SISTEMA
-extractCorpus("C:/Users/sherl/Documents/TRIVIR_Estudo_Validacao/Datasets/corpus_selfdriving_develop.csv", "develop", "scopus") #Usuario admin
+#extractCorpus("C:/Users/sherl/Documents/TRIVIR_Estudo_Validacao/Datasets/corpus_selfdriving_develop.csv", "develop", "scopus") #Usuario admin
+
+#extractCorpus("C:/Users/Sherlon/Documents/TRIVIR2.0/TrivirV2.0/Datasets/corpus_text_sherlon.bib", "lit_rev_mest_2021", "wos") #Usuario sherlon
+#extractCorpus("C:/Users/Sherlon/Documents/TRIVIR2.0/TrivirV2.0/Datasets/corpus_phd_sherlon.csv", "lit_rev_dout_2022", "parsifal") #Usuario sherlon

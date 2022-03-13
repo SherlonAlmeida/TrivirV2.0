@@ -15,10 +15,19 @@ var sortJsonArray = require('sort-json-array');
 //var username = 'test';
 
 //ARQUIVOS SHERLON SOBRE TEXT RETRIEVAL (Poucos dados para facilitar no desenvolvimento, apenas os primeiros 100)
-var base = "../../data/develop/seed_0.txt";
-var corpus = "../../data/develop";
-var username = 'admin';
+//var base = "../../data/develop/seed_0.txt";
+//var corpus = "../../data/develop";
+//var username = 'admin';
 
+//ARQUIVOS SHERLON SOBRE TEXT RETRIEVAL (Revisão da Literatura em 18/09/2021)
+//var base = "../../data/lit_rev_mest_2021/seed_0.txt";
+//var corpus = "../../data/lit_rev_mest_2021";
+//var username = 'sherlon';
+
+//ARQUIVOS SHERLON SOBRE SKETCH-BASED RETRIEVAL (Revisão da Literatura em 07/03/2022)
+var base = "../../data/lit_rev_dout_2022/seed_0.txt";
+var corpus = "../../data/lit_rev_dout_2022";
+var username = 'sherlon';
 
 
 var path_core = "../../core/"+pathlib.basename(corpus);
@@ -30,7 +39,7 @@ var embtech = "bagofwords"; // or "word_embeddings"
 
 //MODIFICAR ESTA LINHA PARA O DIRETORIO ONDE O TRIVIR FOI INSTALADO
 //var workingdir = "C:/Users/AMANDA-PC/Documents/TRIVIR/Server/scripts";
-var workingdir = "C:/Users/sherl/Documents/TRIVIR_Estudo_Validacao/Server/scripts";
+var workingdir = "C:/Users/Sherlon/Documents/TRIVIR2.0/TrivirV2.0/Server/scripts";
 
 // Add headers
 app.use(function (req, res, next) {

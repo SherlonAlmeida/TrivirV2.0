@@ -1,12 +1,14 @@
-1-Instaladores/
+core/*
 
-core/demo
+data/lit_rev_dout_2022
 
-core/develop
+data/lit_rev_mest_2021
 
-file/demo
+Datasets/corpus_text_sherlon.csv
 
-file/develop
+Datasets/corpus_phd_sherlon.csv
+
+file/*
 
 Server/node_modules/
 
